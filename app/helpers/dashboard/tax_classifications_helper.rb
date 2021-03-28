@@ -1,0 +1,2 @@
+module Dashboard::TaxClassificationsHelper
+end
