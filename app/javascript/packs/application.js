@@ -9,7 +9,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "../src/application"
-import "./flashMessages"
+//import "./flashMessages"
+import "./navbar"
 
 var jQuery = require("jquery")
 
