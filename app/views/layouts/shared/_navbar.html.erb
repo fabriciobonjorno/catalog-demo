@@ -6,60 +6,123 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="index3.html" class="nav-link">Home</a>
+      <%= link_to 'Home', dashboard_index_path, class:"nav-link"%>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Suporte</a>
+      <a href="#" class="nav-link"  data-toggle="modal" data-target="#modal-lg">Suporte</a>
     </li>
   </ul>
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    <!-- Navbar Search -->
-    <li class="nav-item">
-      <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-        <i class="fas fa-search"></i>
-      </a>
-      <div class="navbar-search-block">
-        <form class="form-inline">
-          <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-              <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </li>
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-user"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-item dropdown-header">15 Notifications</span>
+        <div class="mt-3 pb-3 mb-3 text-center">
+          <div class="image">
+            <%= image_tag 'user.png', alt:"Profile",  height:"80", width:"80" %>
+          </div>
+          <div class="mt-3">
+            <a href="#" class="text-white text-uppercase font-weight-bold">Alexander Pierce</a>
+          </div>
+        </div>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-envelope mr-2"></i> 4 new messages
-          <span class="float-right text-muted text-sm">3 mins</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-users mr-2"></i> 8 friend requests
-          <span class="float-right text-muted text-sm">12 hours</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-file mr-2"></i> 3 new reports
-          <span class="float-right text-muted text-sm">2 days</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <div class="mt-2 text-center">
+          <a class="btn btn-app">
+            <i class="fas fa-edit"></i> Editar
+          </a>
+          <a class="btn btn-app">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </a>
+        </div>
       </div>
     </li>
   </ul>
 </nav>
 <!-- /.navbar -->
+<!-- Modal Suporte -->
+<div class="modal fade" id="modal-lg">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Suporte</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Abrir chamado</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Assunto</label>
+                      <input type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" data-select2-id="37">
+                    <div class="form-group">
+                      <label>Setor</label>
+                      <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                        <option selected="selected" data-select2-id="3">Alabama</option>
+                        <option data-select2-id="38">Alaska</option>
+                        <option data-select2-id="39">California</option>
+                        <option data-select2-id="40">Delaware</option>
+                        <option data-select2-id="41">Tennessee</option>
+                        <option data-select2-id="42">Texas</option>
+                        <option data-select2-id="43">Washington</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <label>Mensagem</label>
+                      <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleInputFile">Anexar Arquivos</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="exampleInputFile" multiple="multiple">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text">Upload</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
