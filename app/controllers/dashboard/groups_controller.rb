@@ -1,7 +1,9 @@
 module Dashboard
   class GroupsController < DashboardController
     before_action :set_groups, only: [:edit, :update, :destroy]
-    def index; end
+    def index
+      @groups = Group.all
+    end
   end
 
   def new

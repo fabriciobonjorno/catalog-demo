@@ -72,6 +72,35 @@
         </div>
         <!-- /.col -->
       </div>
+      <div class="table-responsive">
+        <table id=member-table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @groups.each do |group| %>
+              <tr>
+                <th scope="row"><%= group.id %></th>
+                <td><%= group.description %></td>
+                <td>
+                <%= link_to edit_dashboard_group_path(group), class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+                <%= link_to dashboard_group_path(group), class:"btn btn-danger", method: :delete, data:
+                                                         {confirm: "Tem certeza disso? Ao excluir o Grupo excluira todos os produtos vinculados",
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Grupo" do %>
+                <i class="far fa-trash-alt"></i>
+                <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
       <!-- /.row -->
     </div>
     <!--/. container-fluid -->
@@ -86,3 +115,8 @@
 <!-- /.control-sidebar -->
 <!-- Main Footer -->
 </div>
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    $('#member-table').DataTable();
+  });
+</script>
