@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'dashboard/index'
   namespace :dashboard do
     resources :products, except: [:show]

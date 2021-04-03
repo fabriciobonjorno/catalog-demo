@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalogo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <%= stylesheet_pack_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'dashboard', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+      <!-- Preloader -->
+      <div class="preloader flex-column justify-content-center align-items-center">
+        <%= image_tag 'catalogo.png', class: "animation__wobble", alt:"Catalogo",  height:"60", width:"60" %>
+      </div>
+      <%= render 'layouts/shared/navbar' %>
+      <%= render 'layouts/shared/sidebar' %>
+      <%= yield %>
+      <%= render 'layouts/shared/footer' %>
+    </div>
+  </body>
+</html>
