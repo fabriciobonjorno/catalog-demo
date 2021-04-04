@@ -14,8 +14,7 @@ module Dashboard
       if @group.save
         redirect_to dashboard_groups_path, notice: "#{@group.description} cadastrado com sucesso!"
       else
-        flash.now[:alert] = @group.errors.full_messages.to_sentence
-        render :new
+        alert_errors
       end
     end
 
@@ -25,8 +24,7 @@ module Dashboard
       if @group.update(groups_params)
         redirect_to dashboard_groups_path, notice: "#{@group.description} atualizado com sucesso!"
       else
-        flash.now[:alert] = @group.errors.full_messages.to_sentence
-        render :edit
+        alert_errors
       end
     end
 
@@ -34,12 +32,15 @@ module Dashboard
       if @group.destroy
         redirect_to dashboard_groups_path, notice: "#{@group.description} excluído com sucesso!"
       else
-        flash.now[:alert] = @group.errors.full_messages.to_sentence
-        render :index
+        alert_errors
       end
     end
 
     private
+
+    def alert_errors
+      redirect_to dashboard_groups_path, alert: @group.errors.full_messages.to_sentence
+    end
 
     def set_groups
       @group = Group.find(params[:id])

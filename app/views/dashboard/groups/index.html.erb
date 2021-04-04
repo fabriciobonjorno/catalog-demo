@@ -19,10 +19,15 @@
       <!-- Info boxes -->
       <div class="row">
         <div class="col-12 col-sm-4 col-md-4">
-          <div id= "new-group" class="info-box">
+          <div id="newGroup" class="info-box">
             <%= link_to new_dashboard_group_path, remote: true, class:"btn btn-app bg-success mt-2" do %>
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-4 col-md-4">
+          <div id="editGroup" class="info-box" style="display: none !important">
           </div>
           <!-- /.info-box -->
         </div>
@@ -42,7 +47,7 @@
                 <th scope="row"><%= group.id %></th>
                 <td><%= group.description %></td>
                 <td>
-                  <%= link_to edit_dashboard_group_path(group), class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
+                  <%= link_to edit_dashboard_group_path(group), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_group_path(group), class:"btn btn-danger", method: :delete, data:
@@ -69,4 +74,8 @@
   document.addEventListener('turbolinks:load', function() {
     $('#group-table').DataTable();
   });
+
+  function editshow() {
+  document.getElementById("editGroup").style.display = "flex";
+  }
 </script>

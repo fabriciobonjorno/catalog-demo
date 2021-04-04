@@ -1,7 +1,9 @@
 module Dashboard
   class FamiliesController < DashboardController
     before_action :set_families, only: [:edit, :update, :destroy]
-    def index; end
+    def index
+      @families = Family.all
+    end
 
     def new
       @family = Family.new
@@ -10,10 +12,9 @@ module Dashboard
     def create
       @family = Family.new(families_params)
       if @family.save
-        redirect_to dashboard_index_path, notice: "#{@family.description} cadastrada com sucesso!"
+        redirect_to dashboard_families_path, notice: "#{@family.description} cadastrada com sucesso!"
       else
-        flash.now[:alert] = @family.errors.full_messages.to_sentence
-        render :new
+        alert_errors
       end
     end
 
@@ -21,23 +22,25 @@ module Dashboard
 
     def update
       if @family.update(families_params)
-        redirect_to dashboard_index_path, notice: "#{@family.description} atualizada com sucesso!"
+        redirect_to dashboard_families_path, notice: "#{@family.description} atualizada com sucesso!"
       else
-        flash.now[:alert] = @family.errors.full_messages.to_sentence
-        render :edit
+        alert_errors
       end
     end
 
     def destroy
       if @family.destroy
-        redirect_to dashboard_index_path, notice: "#{@family.description} excluída com sucesso!"
+        redirect_to dashboard_families_path, notice: "#{@family.description} excluída com sucesso!"
       else
-        flash.now[:alert] = @family.errors.full_messages.to_sentence
-        render :index
+        alert_errors
       end
     end
 
     private
+
+    def alert_errors
+      redirect_to dashboard_families_path, alert: @family.errors.full_messages.to_sentence
+    end
 
     def set_families
       @family = Family.find(params[:id])
