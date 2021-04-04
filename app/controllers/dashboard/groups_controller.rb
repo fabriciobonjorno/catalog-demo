@@ -22,7 +22,7 @@ module Dashboard
     def edit; end
 
     def update
-      if @group = Group.update(groups_params)
+      if @group.update(groups_params)
         redirect_to dashboard_groups_path, notice: "#{@group.description} atualizado com sucesso!"
       else
         flash.now[:alert] = @group.errors.full_messages.to_sentence
@@ -31,7 +31,7 @@ module Dashboard
     end
 
     def destroy
-      if @group = Group.destroy
+      if @group.destroy
         redirect_to dashboard_groups_path, notice: "#{@group.description} excluído com sucesso!"
       else
         flash.now[:alert] = @group.errors.full_messages.to_sentence
