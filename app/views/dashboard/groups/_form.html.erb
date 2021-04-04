@@ -1,0 +1,12 @@
+<%= form_with model: [:dashboard, @group] do |f| %>
+  <div class="row p-4">
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+    <div class="text-center ml-3">
+      <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
+      <%= link_to 'Cancelar', dashboard_groups_path, class: "btn btn-danger ml-1" %>
+    </div>
+  </div>
+<% end %>

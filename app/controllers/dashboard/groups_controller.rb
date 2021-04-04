@@ -4,49 +4,49 @@ module Dashboard
     def index
       @groups = Group.all
     end
-  end
 
-  def new
-    @group = Group.new
-  end
-
-  def create
-    @group = Group.new(groups_params)
-    if @group.save
-      redirect_to dashboard_index_path, notice: "#{@group.description} cadastrado com sucesso!"
-    else
-      flash.now[:alert] = @group.errors.full_messages.to_sentence
-      render :new
+    def new
+      @group = Group.new
     end
-  end
 
-  def edit; end
-
-  def update
-    if @group = Group.update(groups_params)
-      redirect_to dashboard_index_path, notice: "#{@group.description} atualizado com sucesso!"
-    else
-      flash.now[:alert] = @group.errors.full_messages.to_sentence
-      render :edit
+    def create
+      @group = Group.new(groups_params)
+      if @group.save
+        redirect_to dashboard_groups_path, notice: "#{@group.description} cadastrado com sucesso!"
+      else
+        flash.now[:alert] = @group.errors.full_messages.to_sentence
+        render :new
+      end
     end
-  end
 
-  def destroy
-    if @group = Group.destroy
-      redirect_to dashboard_index_path, notice: "#{@group.description} excluído com sucesso!"
-    else
-      flash.now[:alert] = @group.errors.full_messages.to_sentence
-      render :index
+    def edit; end
+
+    def update
+      if @group = Group.update(groups_params)
+        redirect_to dashboard_groups_path, notice: "#{@group.description} atualizado com sucesso!"
+      else
+        flash.now[:alert] = @group.errors.full_messages.to_sentence
+        render :edit
+      end
     end
-  end
 
-  private
+    def destroy
+      if @group = Group.destroy
+        redirect_to dashboard_groups_path, notice: "#{@group.description} excluído com sucesso!"
+      else
+        flash.now[:alert] = @group.errors.full_messages.to_sentence
+        render :index
+      end
+    end
 
-  def set_groups
-    @group = Group.find(params[:id])
-  end
+    private
 
-  def groups_params
-    params.require(:group).permit(:description)
+    def set_groups
+      @group = Group.find(params[:id])
+    end
+
+    def groups_params
+      params.require(:group).permit(:description)
+    end
   end
 end
