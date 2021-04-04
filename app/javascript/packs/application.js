@@ -5,7 +5,7 @@ import "channels"
 import "bootstrap"
 import "@fortawesome/fontawesome-free/js/all"
 import "../src/application"
-//import "./flashMessages"
+import "./flashMessages"
 
 var jQuery = require("jquery")
 
