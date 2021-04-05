@@ -37,6 +37,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Grupo</th>
               <th scope="col">Descrição</th>
               <th scope="col">Ações</th>
             </tr>
@@ -45,13 +46,14 @@
             <% @families.each do |family| %>
               <tr>
                 <th scope="row"><%= family.id %></th>
+                 <td><%= family.group.description %></td>
                 <td><%= family.description %></td>
                 <td>
                   <%= link_to edit_dashboard_family_path(family), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_family_path(family), class:"btn btn-danger", method: :delete, data:
-                                                         {confirm: "Tem certeza disso? Ao excluir o Grupo excluira todos os produtos vinculados",
+                                                         {confirm: "Tem certeza disso? Ao excluir a Familia excluira todos os produtos vinculados",
                                                          toggle:"tooltip", placement:"top"}, title:"Excluir Grupo" do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>

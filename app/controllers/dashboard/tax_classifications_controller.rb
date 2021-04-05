@@ -1,7 +1,9 @@
 module Dashboard
   class TaxClassificationsController < DashboardController
     before_action :set_tax_classifications, only: [:edit, :update, :destroy]
-    def index; end
+    def index
+      @tax_classifications = TaxClassification.all
+    end
 
     def new
       @tax_classification = TaxClassification.new
@@ -10,10 +12,9 @@ module Dashboard
     def create
       @tax_classification = TaxClassification.new(tax_classifications_params)
       if @tax_classification.save
-        redirect_to dashboard_index_path, notice: "#{@tax_classification.description} cadastrada com sucesso!"
+        redirect_to dashboard_tax_classifications_path, notice: "Classificação fiscal #{@tax_classification.description} cadastrada com sucesso!"
       else
-        flash.now[:alert] = @tax_classification.errors.full_messages.to_sentence
-        render :new
+        alert_errors
       end
     end
 
@@ -21,23 +22,25 @@ module Dashboard
 
     def update
       if @tax_classification.update(tax_classifications_params)
-        redirect_to dashboard_index_path, notice: "#{@tax_classification.description} atualizada com sucesso!"
+        redirect_to dashboard_tax_classifications_path, notice: "Classificação fiscal #{@tax_classification.description} atualizada com sucesso!"
       else
-        flash.now[:alert] = @tax_classification.errors.full_messages.to_sentence
-        render :edit
+        alert_errors
       end
     end
 
     def destroy
       if @tax_classification.destroy
-        redirect_to dashboard_index_path, notice: "#{@tax_classification.description} excluída com sucesso!"
+        redirect_to dashboard_index_path, notice: "Classificação fiscal #{@tax_classification.description} excluída com sucesso!"
       else
-        flash.now[:alert] = @tax_classification.errors.full_messages.to_sentence
-        render :index
+        alert_errors
       end
     end
 
     private
+
+    def alert_errors
+      redirect_to dashboard_tax_classifications_path, alert: @tax_classification.errors.full_messages.to_sentence
+    end
 
     def set_tax_classifications
       @tax_classification = TaxClassification.find(params[:id])
