@@ -1,3 +1,27 @@
 @import "./application";
 @import "adminlte.min";
 @import "datatable";
+@import "select2/src/scss/core";
+
+
+
+/* Changing the properties of select2 */
+
+.select2-container .select2-selection--single {
+  padding: 10px 0 25px 0 !important;
+}
+
+.select2-container--default .select2-selection--single {
+  color: rgb(255, 255, 255);
+  background-color: #343a40;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  color: rgb(255, 255, 255);
+  line-height: 20px;
+}
+
+.select2-selection__arrow{
+  color: rgb(255, 255, 255);
+  background-color: #343a40;
+}

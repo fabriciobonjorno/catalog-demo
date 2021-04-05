@@ -1,12 +1,21 @@
 <%= form_with model: [:dashboard, @family] do |f| %>
-  <div class="row p-4" style="align-items: center;">
+  <div class="row p-4">
+    <div class="form-group mr-2">
+      <label>Grupo</label><br>
+      <%= collection_select(:family, :group_id, Group.all, :id, :description, prompt: "Selecione", class: "form-control") %>
+    </div>
     <div class="form-group">
       <%= f.label :description %>
       <%= f.text_field :description, class: "form-control" %>
     </div>
-    <div class="text-center ml-3 mt-3">
+  </div>
+  <div class="row">
+    <div class="text-center ml-3 mt-2">
       <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
       <%= link_to 'Cancelar', dashboard_families_path, class: "btn btn-danger ml-1" %>
     </div>
   </div>
 <% end %>
+<script>
+  $(document).ready(function() { $("#family_group_id").select2(); });
+</script>
