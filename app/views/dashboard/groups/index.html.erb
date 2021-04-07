@@ -37,6 +37,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Fabricante</th>
               <th scope="col">Descrição</th>
               <th scope="col">Ações</th>
             </tr>
@@ -45,6 +46,7 @@
             <% @groups.each do |group| %>
               <tr>
                 <th scope="row"><%= group.id %></th>
+                <td><%= group.manufacturer.description %></td>
                 <td><%= group.description %></td>
                 <td>
                   <%= link_to edit_dashboard_group_path(group), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>

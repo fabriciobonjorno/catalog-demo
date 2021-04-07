@@ -1,7 +1,7 @@
 <%= form_with model: [:dashboard, @family] do |f| %>
   <div class="row p-4">
     <div class="form-group mr-2">
-      <label>Grupo</label><br>
+      <%= f.label :group_id %><br>
       <%= collection_select(:family, :group_id, Group.all, :id, :description, prompt: "Selecione", class: "form-control") %>
     </div>
     <div class="form-group">
