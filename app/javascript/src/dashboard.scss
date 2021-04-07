@@ -6,18 +6,23 @@
 
 
 /* Changing the properties of select2 */
-
+.select2-container{
+  width: 100% !important;
+}
 .select2-container .select2-selection--single {
   padding: 10px 0 25px 0 !important;
+  width: auto;
 }
 
 .select2-container--default .select2-selection--single {
   color: rgb(255, 255, 255);
+  width: auto;
   background-color: #343a40;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
   color: rgb(255, 255, 255);
+  width: auto;
   line-height: 20px;
 }
 

@@ -2,7 +2,11 @@ module Dashboard
   class GroupsController < DashboardController
     before_action :set_groups, only: [:edit, :update, :destroy]
     def index
-      @groups = Group.all
+      if params[:manufacturer_id].present?
+        render(json: Group.where(manufacturer_id: params[:manufacturer_id]))
+      else
+        @groups = Group.all
+      end
     end
 
     def new
