@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :tax_classifications, except: [:show]
     resources :families, except: [:show]
     resources :groups, except: [:show]
+    resources :manufacturers, except: [:show]
   end
 end

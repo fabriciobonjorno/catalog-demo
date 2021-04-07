@@ -1,0 +1,2 @@
+module Dashboard::ManufacturersHelper
+end

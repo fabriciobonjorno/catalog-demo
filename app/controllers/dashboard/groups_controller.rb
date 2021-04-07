@@ -47,7 +47,7 @@ module Dashboard
     end
 
     def groups_params
-      params.require(:group).permit(:description)
+      params.require(:group).permit(:description, :manufacturer_id)
     end
   end
 end
