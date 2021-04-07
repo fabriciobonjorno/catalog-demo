@@ -1,5 +1,5 @@
 module Dashboard
-  class ManufacturersController < ApplicationController
+  class ManufacturersController < DashboardController
     before_action :set_manufacturers, only: [:edit, :update, :destroy]
     def index
       @manufacturers = Manufacturer.all

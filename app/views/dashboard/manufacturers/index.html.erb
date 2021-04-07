@@ -1,2 +1,81 @@
-<h1>Dashboard::Manufacturers#index</h1>
-<p>Find me in app/views/dashboard/manufacturers/index.html.erb</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-12 col-sm-4 col-md-4">
+          <div id="newManufacturer" class="info-box">
+            <%= link_to new_dashboard_manufacturer_path, remote: true, class:"btn btn-app bg-success mt-2" do %>
+              <i class="far fa-plus-square"></i> Adicionar
+            <% end %>
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-4 col-md-4">
+          <div id="editManufacturer" class="info-box" style="display: none !important">
+          </div>
+          <!-- /.info-box -->
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table id="manufacturerTable" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @manufacturers.each do |manufacturer| %>
+              <tr>
+                <th scope="row"><%= manufacturer.id %></th>
+                <td><%= manufacturer.description %></td>
+                <td>
+                  <%= link_to edit_dashboard_manufacturer_path(manufacturer), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
+                  <%= link_to dashboard_manufacturer_path(manufacturer), class:"btn btn-danger", method: :delete, data:
+                                                         {confirm: "Tem certeza disso? Ao excluir o Fabricante excluira todos os produtos vinculados",
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Grupo" do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!--/. container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- Main Footer -->
+</div>
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    $('#manufacturerTable').DataTable();
+  });
+
+  function editshow() {
+  document.getElementById("editManufacturer").style.display = "flex";
+  }
+</script>

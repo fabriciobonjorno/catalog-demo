@@ -12,67 +12,73 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-header">Meu painel</li>
         <li class="nav-item">
+          <%= link_to dashboard_manufacturers_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-industry"></i>
+            <p>
+              Fabricantes
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to dashboard_groups_path, class:"nav-link" do %>
             <i class="nav-icon far fa-object-group"></i>
             <p>
               Grupo
             </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to dashboard_families_path, class:"nav-link" do %>
+            <i class="nav-icon far fa-object-ungroup"></i>
+            <p>
+              Familia
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to dashboard_tax_classifications_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-barcode"></i>
+            <p>
+              Classificação Fiscal
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to dashboard_products_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-shopping-basket"></i>
+            <p>
+              Produtos
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-header">Administração</li>
+        <li class="nav-item">
+          <a href="pages/kanban.html" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Usuários
+            </p>
           </a>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to dashboard_families_path, class:"nav-link" do %>
-          <i class="nav-icon far fa-object-ungroup"></i>
-          <p>
-            Familia
-          </p>
-        </a>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to dashboard_tax_classifications_path, class:"nav-link" do %>
-        <i class="nav-icon fas fa-barcode"></i>
-        <p>
-          Classificação Fiscal
-        </p>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to dashboard_products_path, class:"nav-link" do %>
-        <i class="nav-icon fas fa-shopping-basket"></i>
-        <p>
-          Produtos
-        </p>
-      <% end %>
-    </li>
-    <li class="nav-header">Administração</li>
-    <li class="nav-item">
-      <a href="pages/kanban.html" class="nav-link">
-        <i class="nav-icon fas fa-users"></i>
-        <p>
-          Usuários
-        </p>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="pages/kanban.html" class="nav-link">
-        <i class="nav-icon fas fa-file-download"></i>
-        <p>
-          Layout PDF
-        </p>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="pages/kanban.html" class="nav-link">
-        <i class="nav-icon far fa-building"></i>
-        <p>
-          Dados da empresa
-        </p>
-      </a>
-    </li>
-  </ul>
-</nav>
-<!-- /.sidebar-menu -->
-</div>
-<!-- /.sidebar -->
+        </li>
+        <li class="nav-item">
+          <a href="pages/kanban.html" class="nav-link">
+            <i class="nav-icon fas fa-file-download"></i>
+            <p>
+              Layout PDF
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="pages/kanban.html" class="nav-link">
+            <i class="nav-icon far fa-building"></i>
+            <p>
+              Dados da empresa
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
 </aside>
