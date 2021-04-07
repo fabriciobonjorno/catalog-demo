@@ -1,6 +1,8 @@
 module Dashboard
   class ProductsController < DashboardController
-    def index; end
+    def index
+      @products = Product.all
+    end
 
     def new
       @product = Product.new

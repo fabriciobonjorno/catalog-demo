@@ -2,7 +2,11 @@ module Dashboard
   class FamiliesController < DashboardController
     before_action :set_families, only: [:edit, :update, :destroy]
     def index
-      @families = Family.all
+      if params[:group_id].present?
+        render(json: Family.where(group_id: params[:group_id]))
+      else
+        @families = Family.all
+      end
     end
 
     def new

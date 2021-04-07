@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_151834) do
+ActiveRecord::Schema.define(version: 2021_04_06_233629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2021_04_03_151834) do
   end
 
   create_table "groups", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "manufacturer_id", null: false
+    t.index ["manufacturer_id"], name: "index_groups_on_manufacturer_id"
+  end
+
+  create_table "manufacturers", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_151834) do
   end
 
   add_foreign_key "families", "groups"
+  add_foreign_key "groups", "manufacturers"
   add_foreign_key "products", "families"
   add_foreign_key "products", "tax_classifications"
   add_foreign_key "similar_products", "products"

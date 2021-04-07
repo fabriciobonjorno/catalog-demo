@@ -6,6 +6,5 @@ class Product < ApplicationRecord
   # associations
   has_many :similar_products, dependent: :destroy
   belongs_to :family
-  belongs_to :group, through: :family
   belongs_to :tax_classification
 end
