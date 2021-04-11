@@ -1,7 +1,7 @@
 import "./application"
 import "../src/dashboard"
 import "./adminlte.min"
-import "./dashboard2"
+//import "./dashboard2"
 import "datatables.net"
 import "./datatable"
 import "select2"
