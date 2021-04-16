@@ -10,10 +10,6 @@
   </head>
   <body data-flash-messages="<%= JSON.dump(flash.to_a) %>" class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
-      <!-- Preloader -->
-      <div class="preloader flex-column justify-content-center align-items-center">
-        <%= image_tag 'catalogo.png', class: "animation__wobble", alt:"Catalogo",  height:"60", width:"60" %>
-      </div>
       <%= render 'layouts/shared/navbar' %>
       <%= render 'layouts/shared/sidebar' %>
       <%= yield %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-  get 'dashboard/index'
+  get 'dashboard', to: 'dashboard#index'
   namespace :dashboard do
     resources :products, except: [:show]
     resources :tax_classifications, except: [:show]
