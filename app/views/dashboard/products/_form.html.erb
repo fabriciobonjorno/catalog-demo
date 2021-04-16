@@ -56,41 +56,38 @@
   $(document).ready(function() { $("#product_family_id").select2(); });
   $(document).ready(function() { $("#product_tax_classification_id").select2(); });
 
-  $(document).ready(function(){
-  $(".autoload_all #group_manufacturer_id").change(function(){
-    if(this.value == ""){
-      $(".autoload_all #family_group_id").html("<option value=''>Selecione</option>");
-      return
-    }
-    $.ajax( "/dashboard/groups.json?manufacturer_id=" + this.value )
-  .done(function(data) {
-    var htmlOptions = ""
-    for(var i = 0; i < data.length; i++ )
-      htmlOptions += "<option value='" + data[i].id + "'>" + data[i].description  + "</option>"
-      $(".autoload_groups #family_group_id").html(htmlOptions);
-  })
-  .fail(function() {
-    alert( "error" );
-  });
-  });
-  });
-
-    $(document).ready(function(){
-  $(".autoload_all #family_group_id").change(function(){
-    if(this.value == ""){
-      $(".autoload_groups #product_family_id").html("<option value=''>Selecione</option>");
-      return
-    }
-  $.ajax( "/dashboard/families.json?group_id=" + this.value )
-  .done(function(data) {
-    var htmlOptions = ""
-    for(var i = 0; i < data.length; i++ )
-      htmlOptions += "<option value='" + data[i].id + "'>" + data[i].description  + "</option>"
-      $(".autoload_all #product_family_id").html(htmlOptions);
-  })
-  .fail(function() {
-    alert( "error" );
-  });
-  });
+  function getManufacturerGroups(manufacturerId, callback) {
+  	if (manufacturerId == '') { callback([]); return; }
+  	$.ajax(`/dashboard/groups.json?manufacturer_id=${manufacturerId}`)
+  		.done(callback)
+  		.fail(function() { alert("error"); });
+  }
+  function getGroupFamilies(groupId, callback) {
+  	if (groupId == '') { callback([]); return; }
+  	$.ajax(`/dashboard/families.json?group_id=${groupId}`)
+  		.done(callback)
+  		.fail(function() { alert("error"); });
+  }
+  function renderSelectOptions(options) {
+  	return options.reduce(function(html, option) {
+  		return `${html}<option value="${option.id}">${option.description}</option>`;
+  	}, '<option value="">Selecione</option>');
+  }
+  $(document).ready(function() {
+  	var manufacturerElement = $(".autoload_all #group_manufacturer_id");
+  	var groupElement = $(".autoload_all #family_group_id");
+  	var familyElement = $(".autoload_all #product_family_id");
+  	manufacturerElement.change(function() {
+  		getManufacturerGroups(this.value, function(manufacturerGroups) {
+  			groupElement.html(renderSelectOptions(manufacturerGroups));
+  		});
+  		groupElement.val('').trigger('change');
+  	});
+  	groupElement.change(function() {
+  		getGroupFamilies(this.value, function(groupFamilies) {
+  			familyElement.html(renderSelectOptions(groupFamilies));
+  		});
+  		familyElement.val('').trigger('change');
+  	});
   });
 </script>
