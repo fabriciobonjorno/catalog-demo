@@ -2,11 +2,11 @@
   <div class="p-4">
     <div class="form-group">
       <%= f.label :manufacturer_id %><br>
-      <%= collection_select(:group, :manufacturer_id, Manufacturer.all, :id, :description, prompt: "Selecione", class: "form-control") %>
+      <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Select'}, class: "form-control familiaclasse select2") %>
     </div>
     <div class="form-group">
       <%= f.label :group_id %><br>
-      <%= collection_select(:family, :group_id, [], :id, :description, prompt: "Selecione", class: "form-control") %>
+      <%= f.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Select'}, class: "form-control select2") %>
     </div>
     <div class="form-group">
       <%= f.label :description %>
@@ -20,26 +20,3 @@
     </div>
   </div>
 <% end %>
-<script>
-  $(document).ready(function() { $("#family_group_id").select2(); });
-  $(document).ready(function() { $("#group_manufacturer_id").select2(); });
-
-  $(document).ready(function(){
-  $(".autoload_groups #group_manufacturer_id").change(function(){
-    if(this.value == ""){
-      $(".autoload_groups #family_group_id").html("<option value=''>Selecione</option>");
-      return
-    }
-    $.ajax( "/dashboard/groups.json?manufacturer_id=" + this.value )
-  .done(function(data) {
-    var htmlOptions = ""
-    for(var i = 0; i < data.length; i++ )
-      htmlOptions += "<option value='" + data[i].id + "'>" + data[i].description  + "</option>"
-      $(".autoload_groups #family_group_id").html(htmlOptions);
-  })
-  .fail(function() {
-    alert( "error" );
-  });
-  });
-  });
-</script>
