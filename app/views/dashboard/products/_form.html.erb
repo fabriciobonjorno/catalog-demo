@@ -8,15 +8,15 @@
         </div>
         <div class="form-group">
           <%= f.label :group_id %><br>
-          <%= collection_select(:family, :group_id, Group.all, :id, :description, {prompt: "Selecione"}, class: "form-control") %>
+          <%= collection_select(:family, :group_id, Group.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2") %>
         </div>
         <div class="form-group">
           <%= f.label :family_id %><br>
-          <%= collection_select(:product, :family_id, [], :id, :description, {prompt: "Selecione"}, class: "form-control") %>
+          <%= collection_select(:product, :family_id, [], :id, :description, {prompt: "Selecione"}, class: "form-control select2") %>
         </div>
         <div class="form-group">
           <%= f.label :tax_classification_id %><br>
-          <%= collection_select(:product, :tax_classification_id, TaxClassification.all, :id, :description, {prompt: "Selecione"}, class: "form-control") %>
+          <%= collection_select(:product, :tax_classification_id, TaxClassification.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2") %>
         </div>
         <div class="form-group">
           <%= f.label :code %>
