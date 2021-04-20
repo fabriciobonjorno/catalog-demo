@@ -4,19 +4,19 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :manufacturer_id %><br>
-          <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Select'}, class: "form-control select2") %>
+          <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Select'}, class: "form-control select2", required: true) %>
         </div>
         <div class="form-group">
           <%= f.label :group_id %><br>
-          <%= collection_select(:family, :group_id, Group.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2") %>
+          <%= f.collection_select(:group_id, Group.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2", required: true) %>
         </div>
         <div class="form-group">
           <%= f.label :family_id %><br>
-          <%= collection_select(:product, :family_id, [], :id, :description, {prompt: "Selecione"}, class: "form-control select2") %>
+          <%= f.collection_select(:family_id, Family.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2", required: true) %>
         </div>
         <div class="form-group">
           <%= f.label :tax_classification_id %><br>
-          <%= collection_select(:product, :tax_classification_id, TaxClassification.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2") %>
+          <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2", required: true) %>
         </div>
         <div class="form-group">
           <%= f.label :code %>
@@ -50,44 +50,3 @@
     </div>
   </div>
 <% end %>
-<script>
-  $(document).ready(function() { $("#family_group_id").select2(); });
-  $(document).ready(function() { $("#product_manufacturer_id").select2(); });
-  $(document).ready(function() { $("#product_family_id").select2(); });
-  $(document).ready(function() { $("#product_tax_classification_id").select2(); });
-
-  function getManufacturerGroups(manufacturerId, callback) {
-  	if (manufacturerId == '') { callback([]); return; }
-  	$.ajax(`/dashboard/groups.json?manufacturer_id=${manufacturerId}`)
-  		.done(callback)
-  		.fail(function() { alert("error"); });
-  }
-  function getGroupFamilies(groupId, callback) {
-  	if (groupId == '') { callback([]); return; }
-  	$.ajax(`/dashboard/families.json?group_id=${groupId}`)
-  		.done(callback)
-  		.fail(function() { alert("error"); });
-  }
-  function renderSelectOptions(options) {
-  	return options.reduce(function(html, option) {
-  		return `${html}<option value="${option.id}">${option.description}</option>`;
-  	}, '<option value="">Selecione</option>');
-  }
-  $(document).ready(function() {
-  	var manufacturerElement = $(".autoload_all #group_manufacturer_id");
-  	var groupElement = $(".autoload_all #family_group_id");
-  	var familyElement = $(".autoload_all #product_family_id");
-  	manufacturerElement.change(function() {
-  		getManufacturerGroups(this.value, function(manufacturerGroups) {
-  			groupElement.html(renderSelectOptions(manufacturerGroups));
-  		});
-  		groupElement.val('').trigger('change');
-  	});
-  	groupElement.change(function() {
-  		getGroupFamilies(this.value, function(groupFamilies) {
-  			familyElement.html(renderSelectOptions(groupFamilies));
-  		});
-  		familyElement.val('').trigger('change');
-  	});
-  });
-</script>
