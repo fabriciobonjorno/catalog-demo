@@ -26,11 +26,6 @@
           </div>
           <!-- /.info-box -->
         </div>
-        <div class="col-12 col-sm-3 col-md-3">
-          <div id="editProduct" class="info-box" style="display: none !important">
-          </div>
-          <!-- /.info-box -->
-        </div>
       </div>
       <div class="table-responsive">
         <table id="productTable" class="table table-hover">
@@ -72,12 +67,3 @@
 <!-- /.content-wrapper -->
 <!-- Main Footer -->
 </div>
-<script>
-  document.addEventListener('turbolinks:load', function() {
-    $('#productTable').DataTable();
-  });
-
-  function editshow() {
-  document.getElementById("editProduct").style.display = "flex";
-  }
-</script>

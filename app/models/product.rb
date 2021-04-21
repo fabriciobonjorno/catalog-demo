@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  attr_reader :group_id, :manufacturer_id
+
   # validates
   validates :code, :ean, :dun, :description, presence: true
   validates :code, :ean, :dun, uniqueness: true
@@ -7,4 +9,12 @@ class Product < ApplicationRecord
   has_many :similar_products, dependent: :destroy
   belongs_to :family
   belongs_to :tax_classification
+
+  def group_id
+    self&.family&.group_id
+  end
+
+  def manufacturer_id
+    self&.family&.group&.manufacturer_id
+  end
 end
