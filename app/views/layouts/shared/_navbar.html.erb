@@ -29,12 +29,12 @@
         </div>
         <div class="dropdown-divider"></div>
         <div class="mt-2 text-center">
-          <a class="btn btn-app">
+        <%= link_to edit_dashboard_user_path(current_user), class: "btn btn-app" do  %>
             <i class="fas fa-edit"></i> Editar
-          </a>
-          <a class="btn btn-app">
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-app" do %>
             <i class="fas fa-sign-out-alt"></i> Sair
-          </a>
+        <% end %>
         </div>
       </div>
     </li>

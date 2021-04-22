@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :families, except: [:show]
     resources :groups, except: [:show]
     resources :manufacturers, except: [:show]
+    resources :users, except: [:show]
   end
 end

@@ -1,19 +1,28 @@
 import "./application"
 import "../src/home"
 
+$(document).ready(function(){
+  $('.menu-toggle').click(function(){
+    $('nav').toggleClass('active');
+  })
+})
 
-(function($){
-  $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-    if (!$(this).next().hasClass('show')) {
-    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-    }
-    var $subMenu = $(this).next(".dropdown-menu");
-    $subMenu.toggleClass('show');
-
-    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-    $('.dropdown-submenu .show').removeClass("show");
+$(document).ready(function(){
+  //the trigger on hover when cursor directed to this class
+    $(".core-menu li").hover(
+    function(){
+      //i used the parent ul to show submenu
+        $(this).children('ul').slideDown('fast');
+    },
+      //when the cursor away
+    function () {
+        $('ul', this).slideUp('fast');
     });
-
-    return false;
-  });
-})(jQuery)
+  //this feature only show on 600px device width
+    $(".hamburger-menu").click(function(){
+      $(".burger-1, .burger-2, .burger-3").toggleClass("open");
+        $(".core-menu").slideToggle("fast");
+    });
+});
+/** credit:@rafonzoo
+http://rafonzo.blogspot.co.id/ **/
