@@ -33,13 +33,14 @@
     position: relative;
     width: 50%;
     height: 100%;
-    background: #343a40;
+    background: #093e61;
     transition: 0.5s;
   }
 
   section .container .user .imgBx img {
     position: absolute;
-    top: 25%;
+    top: 150px;
+    padding: 20px;
     left: 0;
     width: 100%;
     object-fit: cover;
@@ -114,7 +115,7 @@
 <section>
   <div class="container">
     <div class="user signinBx">
-      <div class="imgBx"><img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" alt="" /></div>
+      <div class="imgBx"><%= image_tag 'logo3.png' %></div>
       <div class="formBx">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <h2>Login</h2>
