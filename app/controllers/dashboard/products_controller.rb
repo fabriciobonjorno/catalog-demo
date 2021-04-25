@@ -48,7 +48,7 @@ module Dashboard
 
     def products_params
       params.require(:product).permit(:code, :ean, :display, :dun, :description, :family_id,
-                                      :tax_classification_id, :active, :detach)
+                                      :tax_classification_id, :active, :detach, :photo_product)
     end
   end
 end

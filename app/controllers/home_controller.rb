@@ -3,4 +3,8 @@ class HomeController < ApplicationController
   def index
     render file: 'public/index.html'
   end
+
+  def home
+    @products = Product.order(:code)
+  end
 end
