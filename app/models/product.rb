@@ -12,6 +12,14 @@ class Product < ApplicationRecord
   belongs_to :family
   belongs_to :tax_classification
 
+  def active?
+    active
+  end
+
+  def detach?
+    detach
+  end
+
   def group_id
     self&.family&.group_id
   end

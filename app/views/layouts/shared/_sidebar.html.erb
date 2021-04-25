@@ -51,7 +51,7 @@
             </p>
           <% end %>
         </li>
-        <% if current_user.profile == true %>
+        <% if current_user.admin? %>
           <li class="nav-header">Administração</li>
           <li class="nav-item">
             <%= link_to dashboard_users_path, class:"nav-link" do %>

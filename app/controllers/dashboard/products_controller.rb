@@ -1,6 +1,7 @@
 module Dashboard
   class ProductsController < DashboardController
-    before_action :set_products, only: [:edit, :update, :destroy]
+    before_action :authorize_admin, only: [:destroy]
+    before_action :set_products, only: %i[edit update destroy]
     def index
       @products = Product.all
     end
@@ -49,6 +50,12 @@ module Dashboard
     def products_params
       params.require(:product).permit(:code, :ean, :display, :dun, :description, :family_id,
                                       :tax_classification_id, :active, :detach, :photo_product)
+    end
+
+    def authorize_admin
+      return if current_user.admin?
+
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
   end
 end

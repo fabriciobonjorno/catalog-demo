@@ -1,6 +1,7 @@
 module Dashboard
   class UsersController < DashboardController
-    before_action :set_users, only: [:edit, :update, :destroy]
+    before_action :authorize_admin, only: %i[new create destroy]
+    before_action :set_users, only: %i[edit update destroy]
     before_action :allow_without_password, only: [:update]
     def index
       @users = User.all
@@ -37,6 +38,8 @@ module Dashboard
       end
     end
 
+    private
+
     def alert_errors
       redirect_to dashboard_users_path, alert: @user.errors.full_messages.to_sentence
     end
@@ -47,6 +50,12 @@ module Dashboard
 
     def users_params
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :profile, :photo_profile)
+    end
+
+    def authorize_admin
+      return if current_user.admin?
+
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
 
     # remove o input da validação do devise

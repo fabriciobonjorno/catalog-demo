@@ -1,6 +1,7 @@
 module Dashboard
   class GroupsController < DashboardController
-    before_action :set_groups, only: [:edit, :update, :destroy]
+    before_action :authorize_admin, only: [:destroy]
+    before_action :set_groups, only: %i[edit update destroy]
     def index
       if params[:manufacturer_id].present?
         render(json: Group.where(manufacturer_id: params[:manufacturer_id]))
@@ -52,6 +53,12 @@ module Dashboard
 
     def groups_params
       params.require(:group).permit(:description, :manufacturer_id)
+    end
+
+    def authorize_admin
+      return if current_user.admin?
+
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
   end
 end

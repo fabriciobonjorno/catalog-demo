@@ -1,0 +1,16 @@
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG_<%= product.id %>" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body mb-0 p-0">
+        <% if product.photo_product.attached? %>
+          <%= image_tag product.photo_product, class: "img-fluid img-item", title: product.description %>
+        <% else %>
+          <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+        <% end %>
+      </div>
+      <div class="modal-footer text-center">
+        <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 module Dashboard
   class ManufacturersController < DashboardController
-    before_action :set_manufacturers, only: [:edit, :update, :destroy]
+    before_action :authorize_admin, only: [:destroy]
+    before_action :set_manufacturers, only: %i[edit update destroy]
     def index
       @manufacturers = Manufacturer.all
     end
@@ -36,6 +37,8 @@ module Dashboard
       end
     end
 
+    private
+
     def alert_errors
       redirect_to dashboard_manufacturers_path, alert: @manufacturer.errors.full_messages.to_sentence
     end
@@ -46,6 +49,12 @@ module Dashboard
 
     def manufacturers_params
       params.require(:manufacturer).permit(:description)
+    end
+
+    def authorize_admin
+      return if current_user.admin?
+
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
   end
 end

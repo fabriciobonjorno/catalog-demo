@@ -1,6 +1,7 @@
 module Dashboard
   class FamiliesController < DashboardController
-    before_action :set_families, only: [:edit, :update, :destroy]
+    before_action :authorize_admin, only: [:destroy]
+    before_action :set_families, only: %i[edit update destroy]
     def index
       if params[:group_id].present?
         render(json: Family.where(group_id: params[:group_id]))
@@ -52,6 +53,12 @@ module Dashboard
 
     def families_params
       params.require(:family).permit(:description, :group_id)
+    end
+
+    def authorize_admin
+      return if current_user.admin?
+
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
   end
 end
