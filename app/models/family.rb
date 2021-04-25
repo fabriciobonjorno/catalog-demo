@@ -1,6 +1,6 @@
 class Family < ApplicationRecord
   attr_reader :manufacturer_id
-  
+
   # validates
   validates :description, presence: true
   validates :description, uniqueness: true

@@ -1,5 +1,4 @@
 class Manufacturer < ApplicationRecord
-
   # validates
   validates :description, presence: true
   validates :description, uniqueness: true

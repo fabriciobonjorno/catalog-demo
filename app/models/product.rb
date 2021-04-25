@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   attr_reader :group_id, :manufacturer_id
+
   has_one_attached :photo_product
 
   # validates
