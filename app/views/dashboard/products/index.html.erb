@@ -24,6 +24,8 @@
               <th scope="col">#</th>
               <th scope="col">Familia</th>
               <th scope="col">Descrição</th>
+              <th scope="col">Status</th>
+              <th scope="col">Em destaque</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -33,6 +35,8 @@
                 <th scope="row"><%= product.id %></th>
                 <td><%= product.family.description %></td>
                 <td><%= product.description %></td>
+                <td><%= product.active == true ? "Ativo" : "Inativo" %></td>
+                <td><%= product.detach == true ? "Sim" : "Não"%></td>
                 <td>
                   <%= link_to edit_dashboard_product_path(product), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>

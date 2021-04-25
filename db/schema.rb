@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_220428) do
     t.bigint "tax_classification_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "detach"
+    t.boolean "detach", default: false
     t.boolean "active", default: true
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["tax_classification_id"], name: "index_products_on_tax_classification_id"
