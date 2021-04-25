@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_015622) do
+ActiveRecord::Schema.define(version: 2021_04_24_220428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 2021_04_22_015622) do
     t.bigint "tax_classification_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "detach"
+    t.boolean "active", default: true
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["tax_classification_id"], name: "index_products_on_tax_classification_id"
   end

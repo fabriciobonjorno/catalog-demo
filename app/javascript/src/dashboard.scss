@@ -42,3 +42,18 @@
   object-fit: cover;
   object-position: center right;
 }
+
+.breadcrumb a {
+  color: #fff;
+  font-size: 25px;
+}
+
+.breadcrumb a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+  font-size: 25px;
+}
+
+.breadcrumb .active {
+  font-size: 25px;
+}
