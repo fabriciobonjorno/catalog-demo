@@ -3,26 +3,19 @@
     <%= form_with model: [:dashboard, @user], multipart: true do |f| %>
       <div class="row justify-content-center">
         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-          <div class="profile-photo-div" id="profile-photo-div">
-            <div class="profile-img-div" id="profile-img-div" style="height: 250px;">
-              <div id="loader"></div>
-              <img id="profile-img" src="https://s3.amazonaws.com/FringeBucket/default-user.png">
-              <input id="x-position" type="range" name="x-position" value="0" min="0">
-              <input id="y-position" type="range" name="y-position" value="0" min="0">
-            </div>
-            <div class="profile-buttons-div">
-              <div class="profile-img-input" id="profile-img-input">
-                <label class="button" id="user_photo_profile-label" for="user_photo_profile">UPLOAD PHOTO</label>
-                <%= f.file_field :photo_profile, id: "user_photo_profile", name: "user_photo_profile", type: "file", style: "display: none;", accept:"image/*" %>
-              </div>
-              <div class="profile-img-confirm" id="profile-img-confirm" style="display: none;">
-                <div class="button half green" id="save-img"><i class="fa fa-check" aria-hidden="true"></i></div>
-                <div class="button half red" id="cancel-img"><i class="fa fa-remove" aria-hidden="true"></i></div>
-              </div>
-            </div>
+          <div class="p-2 mt-4 mb-2">
+            <h6 class="text-center">Foto do usuário</h6>
+            <% if @user.photo_profile.attached? %>
+              <%= image_tag @user.photo_profile, class: "img-fluid img-item", title: @user.name %>
+            <% else %>
+              <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+            <% end %>
           </div>
-          <div class="error" id="error">min sizes 400*400px</div>
-          <canvas id="croppedPhoto" width="400" height="400"></canvas>
+          <div class="form-group">
+            <%= f.label :photo_profile %>
+            <%= f.file_field :photo_profile, class: "form-control" %>
+          </div>
+          <hr>
         </div>
         <div class="col-12 col-md-8 col-lg-8 col-xl-6">
           <div class="row align-items-center mt-4">
@@ -49,14 +42,14 @@
           </div>
           <div class="row justify-content-start mt-4">
             <div class="col">
-            <% if current_user.admin? %>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <%= f.check_box :profile, class: "form-check-input" %>
-                  <%= f.label :profile %> de Administrador
-                </label>
-              </div>
-            <% end %>
+              <% if current_user.admin? %>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <%= f.check_box :profile, class: "form-check-input" %>
+                    <%= f.label :profile %> de Administrador
+                  </label>
+                </div>
+              <% end %>
               <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
               <%= link_to 'Cancelar', dashboard_users_path, class: "btn btn-danger ml-1" %>
             </div>

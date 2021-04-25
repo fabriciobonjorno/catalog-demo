@@ -1,5 +1,14 @@
 <%= form_with model: [:dashboard, @product], class: 'autoload_all' do |f| %>
   <div class="p-4">
+    <div class="p-2 mb-2">
+      <h6 class="text-center">Foto do Produto</h6>
+      <% if @product.photo_product.attached? %>
+        <%= image_tag @product.photo_product, class: "img-fluid img-item", title: @product.description %>
+      <% else %>
+        <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+      <% end %>
+    </div>
+    <hr>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
