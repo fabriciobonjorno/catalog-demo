@@ -6,9 +6,9 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <%= link_to dashboard_path, class:"nav-link" do %>
+      <%= link_to dashboard_path, class:"nav-link" do %>
         <i class="fas fa-home"></i> Home
-        <% end %>
+      <% end %>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <%= link_to 'https://suporte.meucatalogo.art.br/', target: '_blank', class: "nav-link" do %>
@@ -25,7 +25,11 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <div class="mt-3 pb-3 mb-3 text-center">
           <div class="image">
-            <%= image_tag current_user.photo_profile , alt:"Profile", class: "image--cover" %>
+            <% if current_user.photo_profile.attached? %>
+              <%= image_tag current_user.photo_profile , alt:"Profile", class: "image--cover", title: current_user.photo_profile %>
+            <% else %>
+              <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+            <% end %>
           </div>
           <div class="mt-3">
             <a href="#" class="text-white text-uppercase font-weight-bold"><%= current_user.name %></a>
@@ -33,12 +37,12 @@
         </div>
         <div class="dropdown-divider"></div>
         <div class="mt-2 text-center">
-        <%= link_to edit_dashboard_user_path(current_user), class: "btn btn-app" do  %>
+          <%= link_to edit_dashboard_user_path(current_user), class: "btn btn-app" do  %>
             <i class="fas fa-edit"></i> Editar
-        <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-app" do %>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-app" do %>
             <i class="fas fa-sign-out-alt"></i> Sair
-        <% end %>
+          <% end %>
         </div>
       </div>
     </li>

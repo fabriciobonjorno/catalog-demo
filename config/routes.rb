@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :groups, except: [:show]
     resources :manufacturers, except: [:show]
     resources :users, except: [:show]
+    resources :companies, only: [:edit, :index, :update]
   end
 end
