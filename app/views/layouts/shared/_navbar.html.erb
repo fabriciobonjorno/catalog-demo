@@ -28,7 +28,7 @@
             <% if current_user.photo_profile.attached? %>
               <%= image_tag current_user.photo_profile , alt:"Profile", class: "image--cover", title: current_user.photo_profile %>
             <% else %>
-              <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+              <%= image_tag 'sem-imagem.jpg', class:"image--cover" %>
             <% end %>
           </div>
           <div class="mt-3">
