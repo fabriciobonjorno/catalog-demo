@@ -3,6 +3,48 @@
 .bg-dark {
   background-color: #4c3fab !important;
 }
+//Section home 
+.container {
+  background-color:rgb(241,241,241);
+  display:flex; 
+  flex-wrap:wrap;
+  justify-content:center;
+
+  figure {
+    width: 250px;
+    justify-content: center;
+    align-items:center;
+    height:auto;
+    display:flex;
+    flex-wrap: wrap;
+    background: white;
+    margin-right: 10px;
+    margin-top: 20px;
+    .eng-prods {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      a{
+        display: block;
+        display:flex;
+        height: 230px;
+        img{
+          max-width: 230px;
+          max-height: 230px;
+          display:block;
+          align-self: center;
+        }
+      }
+      .prod-description {
+        text-align: center;
+        font-weight: 700;
+        padding-top: 18px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+}
+
 
 .btn-outline-dark:hover {
   background-color: #4c3fab;

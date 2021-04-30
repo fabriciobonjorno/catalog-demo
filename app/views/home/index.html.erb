@@ -1,1 +1,37 @@
-<%= render 'Rails.root.join("public", "regressive" "index.html")' %>
+
+<h1> Conheça alguns dos nossos produtos</h1>
+
+<section class="container mt-" style=" ">
+
+    
+        <% @products.each do |product| %>
+          <figure> 
+          
+          <div class="eng-prods">
+          
+              <% if product.photo_product.attached? %>
+                <a>
+                  <%= image_tag product.photo_product,title: product.description %>
+                </a>
+                <% else %>
+                <a>
+                <%= image_tag '/no_image.jpg', class:"img-fluid img-item" %>
+                </a>
+              <% end %>
+              <div class="prod-description">  <%= product.description %> </div>
+          </div>
+          
+       
+        </figure>
+        
+        <% end %>
+        
+ 
+
+
+  
+ 
+</section>
+
+
+ 
