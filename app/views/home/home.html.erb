@@ -1,35 +1,41 @@
-<div class="container mt-5">
-  <h1 class="text-center">Bootstrap 4 Upload multiple files</h1>
-  <div class="col-sm-12 col-lg-6 mr-auto ml-auto border p-4">
-  <form method="post" enctype="multipart/form-data">
-    <div class="form-group">
-      <label><strong>Upload Files</strong></label>
-      <div class="custom-file">
-        <input type="file" name="files[]" multiple class="custom-file-input form-control" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+<div class="header-top bg-light py-3">
+  <div class="container">
+    <nav class="navbar navbar-light justify-content-between">
+      <%= image_tag 'logo.png', style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
+      <form class="form-inline">
+        <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+      <div>
+        <a class="nav-link text-dark btn btn-outline-dark my-2 my-sm-0" href="#" ">
+          <i class="fas fa-user"></i>
+          Login
+        </a>
       </div>
-    </div>
-  </form>
+    </nav>
+  </div>
 </div>
-<script>
-$(document).ready(function() {
-  $('input[type="file"]').on("change", function() {
-    let filenames = [];
-    let files = this.files;
-    if (files.length > 1) {
-      filenames.push("Total Files (" + files.length + ")");
-    } else {
-      for (let i in files) {
-        if (files.hasOwnProperty(i)) {
-          filenames.push(files[i].name);
-        }
-      }
-    }
-    $(this)
-      .next(".custom-file-label")
-      .html(filenames.join(","));
-  });
-});
 
-
-</script>
+<section class="container mt-5">
+  <h3 class="text-muted mt-5 mb-3">Conheça nossos lançamentos:</h3>
+  <section class="container-product mt-" style=" ">
+    <% @products.each do |product| %>
+      <% if product.active == true %>
+        <figure>
+          <div class="eng-prods">
+            <% if product.photo_product.attached? %>
+              <a>
+                <%= image_tag product.photo_product,title: product.description %>
+              </a>
+            <% else %>
+              <a>
+                <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+              </a>
+            <% end %>
+            <div class="prod-description">  <%= product.description %> </div>
+          </div>
+        </figure>
+      <% end %>
+    <% end %>
+  </section>
+</section>
