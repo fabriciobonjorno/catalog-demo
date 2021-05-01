@@ -18,6 +18,13 @@
     box-shadow: 0 0 0 0.2rem #c6adff !important;
 }
 
+@media (max-width: 768px) {
+  .container {
+    figure {
+    width: 310px;
+    }
+  }
+}
 @media (max-width: 767.98px) {
     .header-top .navbar {
         -webkit-box-orient: vertical;
