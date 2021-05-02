@@ -2,6 +2,7 @@ module Dashboard
   class ProductsController < DashboardController
     before_action :authorize_admin, only: [:destroy]
     before_action :set_products, only: %i[edit update destroy]
+
     def index
       @products = Product.all
     end
@@ -44,7 +45,7 @@ module Dashboard
     end
 
     def set_products
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     def products_params
@@ -55,7 +56,7 @@ module Dashboard
     def authorize_admin
       return if current_user.admin?
 
-      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
+      redirect_to dashboard_path, alert: "Você não tem permissão, contate o Administrador!"
     end
   end
 end
