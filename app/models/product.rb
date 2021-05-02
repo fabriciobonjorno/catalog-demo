@@ -2,11 +2,14 @@ class Product < ApplicationRecord
   attr_reader :group_id, :manufacturer_id
 
   has_one_attached :photo_product
-
+  extend FriendlyId
   # validates
   validates :code, :ean, :dun, :description, presence: true
   validates :code, :ean, :dun, uniqueness: true
   validate :image_validation
+
+  # converted
+  friendly_id :description, use: :slugged
 
   # associations
   has_many :similar_products, dependent: :destroy

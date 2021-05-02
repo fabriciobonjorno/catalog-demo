@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root "home#index"
   get "home/home"
   get "home/index"
-  get "group/product/:id", to: "products#show", as: :product
-  get "group/:id", to: "groups#show", as: :group
+  get "/:id", to: "groups#show", as: :group
+  get "/:id/:id", to: "products#show", as: :product
   get "dashboard", to: "dashboard#index"
 
   namespace :dashboard do
