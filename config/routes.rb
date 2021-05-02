@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :companies, only: %i[edit index update]
   end
 
-  get 'group/:id', to: 'groups#show', as: :group
-  get ':group_id/:id', to: 'products#show', as: :product
+  # get 'group/:id', to: 'groups#show', as: :group
+  # get 'group/:group_id/products/:id', to: 'products#show', as: :product
+  resources :groups, only: %i[show] do
+    resources :products, only: %i[show]
+  end
 end
