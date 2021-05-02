@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   # validates
   validates :code, :ean, :dun, :description, presence: true
   validates :code, :ean, :dun, uniqueness: true
+  validate :image_validation
 
   # associations
   has_many :similar_products, dependent: :destroy
@@ -26,5 +27,21 @@ class Product < ApplicationRecord
 
   def manufacturer_id
     self&.family&.group&.manufacturer_id
+  end
+
+  scope :product_home, -> { where(detach: true).where(active: true) }
+
+  private
+
+  def image_validation
+    if respond_to?(:image) && image.attached?
+      if image.blob.byte_size > 2_000_000
+        image.purge
+        errors[:base] << "Tamanho maximo 2MB"
+      elsif !image.blob.content_type.starts_with?("image/png", "image/jpeg", "image/jpg")
+        image.purge
+        errors[:base] << "Formato invalido use PNG, JPEG, JPG"
+      end
+    end
   end
 end

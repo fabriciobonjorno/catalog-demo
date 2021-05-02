@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   layout "home"
 
   def index
-    @products = Product.order(:code)
+    @products = Product.product_home.order(:code)
     @company = Company.first
   end
 
