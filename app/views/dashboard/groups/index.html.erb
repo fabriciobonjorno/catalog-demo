@@ -16,11 +16,6 @@
           </div>
           <!-- /.info-box -->
         </div>
-        <div class="col-12 col-sm-4 col-md-4">
-          <div id="editGroup" class="info-box" style="display: none !important">
-          </div>
-          <!-- /.info-box -->
-        </div>
       </div>
       <div class="table-responsive">
         <table id="groupTable" class="table table-hover">
@@ -66,7 +61,7 @@
   document.addEventListener('turbolinks:load', function() {
     $('#groupTable').DataTable();
   });
-
+  
   function editshow() {
   document.getElementById("editGroup").style.display = "flex";
   }

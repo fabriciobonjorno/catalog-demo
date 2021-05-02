@@ -27,8 +27,8 @@ module Dashboard
     end
 
     def companies_params
-      params.require(:company).permit( :social_name, :fantasy_name, :cnpj, :ie, :street, :number, :complement, :district,
-                                       :zip_code, :city, :state, :phone, :phone, :email, :site, :photo_company)
+      params.require(:company).permit(:social_name, :fantasy_name, :cnpj, :ie, :street, :number, :complement, :district,
+                                      :zip_code, :city, :state, :phone, :phone, :email, :site, :photo_company)
     end
   end
 end

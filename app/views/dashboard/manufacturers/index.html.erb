@@ -16,11 +16,6 @@
           </div>
           <!-- /.info-box -->
         </div>
-        <div class="col-12 col-sm-4 col-md-4">
-          <div id="editManufacturer" class="info-box" style="display: none !important">
-          </div>
-          <!-- /.info-box -->
-        </div>
       </div>
       <div class="table-responsive">
         <table id="manufacturerTable" class="table table-hover">
@@ -64,7 +59,7 @@
   document.addEventListener('turbolinks:load', function() {
     $('#manufacturerTable').DataTable();
   });
-
+  
   function editshow() {
   document.getElementById("editManufacturer").style.display = "flex";
   }
