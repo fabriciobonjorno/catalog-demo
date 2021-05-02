@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
     @products = Product.product_home.order(:code)
     @company = Company.first
+    @manufacturers = Manufacturer.order(:description)
   end
 
   def home
