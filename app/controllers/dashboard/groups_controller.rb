@@ -1,7 +1,7 @@
 module Dashboard
   class GroupsController < DashboardController
     before_action :authorize_admin, :only => [:destroy]
-    before_action :set_groups, :only => %i[edit update destroy]
+    before_action :set_groups, only: %i[edit update destroy]
 
     def index
       if params[:manufacturer_id].present?

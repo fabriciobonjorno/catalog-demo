@@ -1,7 +1,7 @@
 module Dashboard
   class TaxClassificationsController < DashboardController
     before_action :authorize_admin, :only => [:destroy]
-    before_action :set_tax_classifications, :only => %i[edit update destroy]
+    before_action :set_tax_classifications, only: %i[edit update destroy]
     def index
       @tax_classifications = TaxClassification.all
     end

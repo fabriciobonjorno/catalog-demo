@@ -64,6 +64,4 @@ if Rails.env.development?
       :display => rand(400..500),
     )
   end
-
 end
-

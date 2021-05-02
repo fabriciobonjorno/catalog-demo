@@ -1,6 +1,6 @@
 module Dashboard
   class CompaniesController < DashboardController
-    before_action :set_companies, :only => %i[edit update]
+    before_action :set_companies, only: %i[edit update]
 
     def index
       @companies = Company.all

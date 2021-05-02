@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root "home#index"
-  get "home/home"
-  get "home/index"
   get "dashboard", :to => "dashboard#index"
   get "group/:id", :to => "groups#show", :as => :group
-  get "group/:group_id/product/:id", :to => "products#show", :as => :product
+  get ":group_id/:id", :to => "products#show", :as => :product
 
   namespace :dashboard do
     resources :products, :except => [:show]

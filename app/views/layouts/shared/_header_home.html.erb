@@ -2,13 +2,13 @@
   <div class="container">
     <nav class="navbar navbar-light justify-content-between">
       <% if @company.photo_company.attached? %>
-        <a>
+        <%= link_to root_path do %>
           <%= image_tag @company.photo_company,title: @company.fantasy_name, style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
-        </a>
+        <% end %>
       <% else %>
-        <a>
-          <%= image_tag 'logo.png', style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
-        </a>
+        <%= link_to root_path do %>
+          <%= image_tag 'sem-imagem.jpg', style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
+        <% end %> 
       <% end %>
       <form class="form-inline">
         <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Search">

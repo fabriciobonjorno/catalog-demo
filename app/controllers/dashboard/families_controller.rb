@@ -1,7 +1,7 @@
 module Dashboard
   class FamiliesController < DashboardController
     before_action :authorize_admin, :only => [:destroy]
-    before_action :set_families, :only => %i[edit update destroy]
+    before_action :set_families, only: %i[edit update destroy]
     def index
       if params[:group_id].present?
         render(:json => Family.where(:group_id => params[:group_id]))

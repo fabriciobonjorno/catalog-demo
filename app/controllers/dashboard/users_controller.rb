@@ -1,7 +1,7 @@
 module Dashboard
   class UsersController < DashboardController
-    before_action :authorize_admin, :only => %i[new create destroy]
-    before_action :set_users, :only => %i[edit update destroy]
+    before_action :authorize_admin, only: %i[new create destroy]
+    before_action :set_users, only: %i[edit update destroy]
     before_action :allow_without_password, :only => [:update]
     def index
       @users = User.all

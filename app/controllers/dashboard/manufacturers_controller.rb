@@ -1,7 +1,7 @@
 module Dashboard
   class ManufacturersController < DashboardController
     before_action :authorize_admin, :only => [:destroy]
-    before_action :set_manufacturers, :only => %i[edit update destroy]
+    before_action :set_manufacturers, only: %i[edit update destroy]
     def index
       @manufacturers = Manufacturer.all
     end
