@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module Dashboard
   class GroupsController < DashboardController
-    before_action :authorize_admin, :only => [:destroy]
+    before_action :authorize_admin, only: [:destroy]
     before_action :set_groups, only: %i[edit update destroy]
 
     def index
       if params[:manufacturer_id].present?
-        render(:json => Group.where(:manufacturer_id => params[:manufacturer_id]))
+        render(json: Group.where(manufacturer_id: params[:manufacturer_id]))
       else
         @groups = Group.all
       end
@@ -18,7 +20,7 @@ module Dashboard
     def create
       @group = Group.new(groups_params)
       if @group.save
-        redirect_to dashboard_groups_path, :notice => "#{@group.description} cadastrado com sucesso!"
+        redirect_to dashboard_groups_path, notice: "#{@group.description} cadastrado com sucesso!"
       else
         alert_errors
       end
@@ -28,7 +30,7 @@ module Dashboard
 
     def update
       if @group.update(groups_params)
-        redirect_to dashboard_groups_path, :notice => "#{@group.description} atualizado com sucesso!"
+        redirect_to dashboard_groups_path, notice: "#{@group.description} atualizado com sucesso!"
       else
         alert_errors
       end
@@ -36,7 +38,7 @@ module Dashboard
 
     def destroy
       if @group.destroy
-        redirect_to dashboard_groups_path, :notice => "#{@group.description} excluído com sucesso!"
+        redirect_to dashboard_groups_path, notice: "#{@group.description} excluído com sucesso!"
       else
         alert_errors
       end
@@ -45,7 +47,7 @@ module Dashboard
     private
 
     def alert_errors
-      redirect_to dashboard_groups_path, :alert => @group.errors.full_messages.to_sentence
+      redirect_to dashboard_groups_path, alert: @group.errors.full_messages.to_sentence
     end
 
     def set_groups
@@ -59,7 +61,7 @@ module Dashboard
     def authorize_admin
       return if current_user.admin?
 
-      redirect_to dashboard_path, :alert => "Você não tem permissão, contate o Administrador!"
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
   end
 end

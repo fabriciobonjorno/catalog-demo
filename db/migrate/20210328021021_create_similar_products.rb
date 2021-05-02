@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSimilarProducts < ActiveRecord::Migration[6.1]
   def change
     create_table :similar_products do |t|
@@ -6,7 +8,7 @@ class CreateSimilarProducts < ActiveRecord::Migration[6.1]
       t.string :dun
       t.string :display
       t.string :description
-      t.references :product, :null => false, :foreign_key => true
+      t.references :product, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Dashboard
   class FamiliesController < DashboardController
-    before_action :authorize_admin, :only => [:destroy]
+    before_action :authorize_admin, only: [:destroy]
     before_action :set_families, only: %i[edit update destroy]
     def index
       if params[:group_id].present?
-        render(:json => Family.where(:group_id => params[:group_id]))
+        render(json: Family.where(group_id: params[:group_id]))
       else
         @families = Family.all
       end
@@ -17,7 +19,7 @@ module Dashboard
     def create
       @family = Family.new(families_params)
       if @family.save
-        redirect_to dashboard_families_path, :notice => "#{@family.description} cadastrada com sucesso!"
+        redirect_to dashboard_families_path, notice: "#{@family.description} cadastrada com sucesso!"
       else
         alert_errors
       end
@@ -27,7 +29,7 @@ module Dashboard
 
     def update
       if @family.update(families_params)
-        redirect_to dashboard_families_path, :notice => "#{@family.description} atualizada com sucesso!"
+        redirect_to dashboard_families_path, notice: "#{@family.description} atualizada com sucesso!"
       else
         alert_errors
       end
@@ -35,7 +37,7 @@ module Dashboard
 
     def destroy
       if @family.destroy
-        redirect_to dashboard_families_path, :notice => "#{@family.description} excluída com sucesso!"
+        redirect_to dashboard_families_path, notice: "#{@family.description} excluída com sucesso!"
       else
         alert_errors
       end
@@ -44,7 +46,7 @@ module Dashboard
     private
 
     def alert_errors
-      redirect_to dashboard_families_path, :alert => @family.errors.full_messages.to_sentence
+      redirect_to dashboard_families_path, alert: @family.errors.full_messages.to_sentence
     end
 
     def set_families
@@ -58,7 +60,7 @@ module Dashboard
     def authorize_admin
       return if current_user.admin?
 
-      redirect_to dashboard_path, :alert => 'Você não tem permissão, contate o Administrador!'
+      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
     end
   end
 end

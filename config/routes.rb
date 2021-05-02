@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
-  root "home#index"
-  get "dashboard", :to => "dashboard#index"
-  get "group/:id", :to => "groups#show", :as => :group
-  get ":group_id/:id", :to => "products#show", :as => :product
+  root 'home#index'
+  get 'dashboard', to: 'dashboard#index'
 
   namespace :dashboard do
-    resources :products, :except => [:show]
-    resources :tax_classifications, :except => [:show]
-    resources :families, :except => [:show]
-    resources :groups, :except => [:show]
-    resources :manufacturers, :except => [:show]
-    resources :users, :except => [:show]
-    resources :companies, :only => [:edit, :index, :update]
+    resources :products, except: [:show]
+    resources :tax_classifications, except: [:show]
+    resources :families, except: [:show]
+    resources :groups, except: [:show]
+    resources :manufacturers, except: [:show]
+    resources :users, except: [:show]
+    resources :companies, only: %i[edit index update]
   end
+
+  get 'group/:id', to: 'groups#show', as: :group
+  get ':group_id/:id', to: 'products#show', as: :product
 end
