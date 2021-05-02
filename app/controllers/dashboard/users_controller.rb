@@ -1,8 +1,8 @@
 module Dashboard
   class UsersController < DashboardController
-    before_action :authorize_admin, only: %i[new create destroy]
-    before_action :set_users, only: %i[edit update destroy]
-    before_action :allow_without_password, only: [:update]
+    before_action :authorize_admin, :only => %i[new create destroy]
+    before_action :set_users, :only => %i[edit update destroy]
+    before_action :allow_without_password, :only => [:update]
     def index
       @users = User.all
     end
@@ -14,7 +14,7 @@ module Dashboard
     def create
       @user = User.new(users_params)
       if @user.save
-        redirect_to dashboard_users_path, notice: "#{@user.name} cadastrado com sucesso!"
+        redirect_to dashboard_users_path, :notice => "#{@user.name} cadastrado com sucesso!"
       else
         alert_errors
       end
@@ -24,7 +24,7 @@ module Dashboard
 
     def update
       if @user.update(users_params)
-        redirect_to dashboard_users_path, notice: "#{@user.name} atualizado com sucesso!"
+        redirect_to dashboard_users_path, :notice => "#{@user.name} atualizado com sucesso!"
       else
         alert_errors
       end
@@ -32,7 +32,7 @@ module Dashboard
 
     def destroy
       if @user.destroy
-        redirect_to dashboard_users_path, notice: "#{@user.name} excluído com sucesso!"
+        redirect_to dashboard_users_path, :notice => "#{@user.name} excluído com sucesso!"
       else
         alert_errors
       end
@@ -41,7 +41,7 @@ module Dashboard
     private
 
     def alert_errors
-      redirect_to dashboard_users_path, alert: @user.errors.full_messages.to_sentence
+      redirect_to dashboard_users_path, :alert => @user.errors.full_messages.to_sentence
     end
 
     def set_users
@@ -55,7 +55,7 @@ module Dashboard
     def authorize_admin
       return if current_user.admin?
 
-      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
+      redirect_to dashboard_path, :alert => 'Você não tem permissão, contate o Administrador!'
     end
 
     # remove o input da validação do devise

@@ -1,7 +1,7 @@
 module Dashboard
   class ProductsController < DashboardController
-    before_action :authorize_admin, only: [:destroy]
-    before_action :set_products, only: %i[edit update destroy]
+    before_action :authorize_admin, :only => [:destroy]
+    before_action :set_products, :only => %i[edit update destroy]
 
     def index
       @products = Product.all
@@ -14,7 +14,7 @@ module Dashboard
     def create
       @product = Product.new(products_params)
       if @product.save
-        redirect_to dashboard_products_path, notice: "#{@product.description} cadastrado com sucesso!"
+        redirect_to dashboard_products_path, :notice => "#{@product.description} cadastrado com sucesso!"
       else
         alert_errors
       end
@@ -24,7 +24,7 @@ module Dashboard
 
     def update
       if @product.update(products_params)
-        redirect_to dashboard_products_path, notice: "#{@product.description} atualizado com sucesso!"
+        redirect_to dashboard_products_path, :notice => "#{@product.description} atualizado com sucesso!"
       else
         alert_errors
       end
@@ -32,7 +32,7 @@ module Dashboard
 
     def destroy
       if @product.destroy
-        redirect_to dashboard_products_path, notice: "#{@product.description} excluído com sucesso!"
+        redirect_to dashboard_products_path, :notice => "#{@product.description} excluído com sucesso!"
       else
         alert_errors
       end
@@ -41,7 +41,7 @@ module Dashboard
     private
 
     def alert_errors
-      redirect_to dashboard_products_path, alert: @product.errors.full_messages.to_sentence
+      redirect_to dashboard_products_path, :alert => @product.errors.full_messages.to_sentence
     end
 
     def set_products
@@ -56,7 +56,7 @@ module Dashboard
     def authorize_admin
       return if current_user.admin?
 
-      redirect_to dashboard_path, alert: "Você não tem permissão, contate o Administrador!"
+      redirect_to dashboard_path, :alert => "Você não tem permissão, contate o Administrador!"
     end
   end
 end

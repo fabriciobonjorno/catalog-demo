@@ -1,7 +1,7 @@
 module Dashboard
   class TaxClassificationsController < DashboardController
-    before_action :authorize_admin, only: [:destroy]
-    before_action :set_tax_classifications, only: %i[edit update destroy]
+    before_action :authorize_admin, :only => [:destroy]
+    before_action :set_tax_classifications, :only => %i[edit update destroy]
     def index
       @tax_classifications = TaxClassification.all
     end
@@ -14,7 +14,7 @@ module Dashboard
       @tax_classification = TaxClassification.new(tax_classifications_params)
       if @tax_classification.save
         redirect_to dashboard_tax_classifications_path,
-                    notice: "Classificação fiscal #{@tax_classification.description} cadastrada com sucesso!"
+                    :notice => "Classificação fiscal #{@tax_classification.description} cadastrada com sucesso!"
       else
         alert_errors
       end
@@ -25,7 +25,7 @@ module Dashboard
     def update
       if @tax_classification.update(tax_classifications_params)
         redirect_to dashboard_tax_classifications_path,
-                    notice: "Classificação fiscal #{@tax_classification.description} atualizada com sucesso!"
+                    :notice => "Classificação fiscal #{@tax_classification.description} atualizada com sucesso!"
       else
         alert_errors
       end
@@ -34,7 +34,7 @@ module Dashboard
     def destroy
       if @tax_classification.destroy
         redirect_to dashboard_index_path,
-                    notice: "Classificação fiscal #{@tax_classification.description} excluída com sucesso!"
+                    :notice => "Classificação fiscal #{@tax_classification.description} excluída com sucesso!"
       else
         alert_errors
       end
@@ -43,7 +43,7 @@ module Dashboard
     private
 
     def alert_errors
-      redirect_to dashboard_tax_classifications_path, alert: @tax_classification.errors.full_messages.to_sentence
+      redirect_to dashboard_tax_classifications_path, :alert => @tax_classification.errors.full_messages.to_sentence
     end
 
     def set_tax_classifications
@@ -57,7 +57,7 @@ module Dashboard
     def authorize_admin
       return if current_user.admin?
 
-      redirect_to dashboard_path, alert: 'Você não tem permissão, contate o Administrador!'
+      redirect_to dashboard_path, :alert => 'Você não tem permissão, contate o Administrador!'
     end
   end
 end

@@ -6,8 +6,8 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :dun
       t.string :display
       t.string :description
-      t.references :family, null: false, foreign_key: true
-      t.references :tax_classification, null: false, foreign_key: true
+      t.references :family, :null => false, :foreign_key => true
+      t.references :tax_classification, :null => false, :foreign_key => true
 
       t.timestamps
     end

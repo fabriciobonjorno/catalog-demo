@@ -1,6 +1,6 @@
 module Dashboard
   class CompaniesController < DashboardController
-    before_action :set_companies, only: %i[edit update]
+    before_action :set_companies, :only => %i[edit update]
 
     def index
       @companies = Company.all
@@ -10,7 +10,7 @@ module Dashboard
 
     def update
       if @company.update(companies_params)
-        redirect_to dashboard_companies_path, notice: "#{@company.social_name} atualizada com sucesso!"
+        redirect_to dashboard_companies_path, :notice => "#{@company.social_name} atualizada com sucesso!"
       else
         alert_errors
       end
@@ -19,7 +19,7 @@ module Dashboard
     private
 
     def alert_errors
-      redirect_to dashboard_companies_path, alert: @company.errors.full_messages.to_sentence
+      redirect_to dashboard_companies_path, :alert => @company.errors.full_messages.to_sentence
     end
 
     def set_companies

@@ -4,15 +4,15 @@ class Product < ApplicationRecord
   has_one_attached :photo_product
   extend FriendlyId
   # validates
-  validates :code, :ean, :dun, :description, presence: true
-  validates :code, :ean, :dun, uniqueness: true
+  validates :code, :ean, :dun, :description, :presence => true
+  validates :code, :ean, :dun, :uniqueness => true
   validate :image_validation
 
   # converted
-  friendly_id :description, use: :slugged
+  friendly_id :description, :use => :slugged
 
   # associations
-  has_many :similar_products, dependent: :destroy
+  has_many :similar_products, :dependent => :destroy
   belongs_to :family
   belongs_to :tax_classification
 
@@ -32,7 +32,7 @@ class Product < ApplicationRecord
     self&.family&.group&.manufacturer_id
   end
 
-  scope :product_home, -> { where(detach: true).where(active: true) }
+  scope :product_home, -> { where(:detach => true).where(:active => true) }
 
   private
 
