@@ -4,6 +4,6 @@ class GroupsController < ApplicationController
   layout "home"
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.friendly.find(params[:id])
   end
 end

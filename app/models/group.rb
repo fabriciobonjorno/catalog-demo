@@ -1,7 +1,11 @@
 class Group < ApplicationRecord
+  extend FriendlyId
   # validates
   validates :description, presence: true
   validates :description, uniqueness: true
+
+  # converted
+  friendly_id :description, use: :slugged
 
   # associations
   belongs_to :manufacturer
