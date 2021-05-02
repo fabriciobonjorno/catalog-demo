@@ -50,7 +50,7 @@ module Dashboard
 
     def products_params
       params.require(:product).permit(:code, :ean, :display, :dun, :description, :family_id,
-                                      :tax_classification_id, :active, :detach, :photo_product)
+                                      :tax_classification_id, :active, :detach, :photo_product, :quantitie)
     end
 
     def authorize_admin

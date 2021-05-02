@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_040459) do
+ActiveRecord::Schema.define(version: 2021_05_02_211509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_040459) do
     t.boolean "detach", default: false
     t.boolean "active", default: true
     t.string "slug"
+    t.string "quantitie"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["tax_classification_id"], name: "index_products_on_tax_classification_id"
   end
