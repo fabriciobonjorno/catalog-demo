@@ -1,0 +1,21 @@
+<section class="container mt-5 mb-5">
+  <h3 class="h3-responsive text-muted text-center title-home">Produtos em destaque</h3>
+  <section class="container-product mt-" style=" ">
+    <% @products.each do |product| %>
+      <figure>
+        <div class="eng-prods">
+          <% if product.photo_product.attached? %>
+            <a>
+              <%= image_tag product.photo_product,title: product.description %>
+            </a>
+          <% else %>
+            <a>
+              <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+            </a>
+          <% end %>
+          <div class="prod-description"><%= product.code %> - <%= product.description %> </div>
+        </div>
+      </figure>
+    <% end %>
+  </section>
+</section>

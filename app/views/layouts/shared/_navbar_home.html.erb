@@ -21,7 +21,7 @@
         <ul>
           <% manufacturer.groups.each do |group| %>
             <li>
-              <a href="#"><%= group.description %></a>
+              <%= link_to group.description, group_path(group), class:"accordion-toggle" %>
             </li>
           <% end %>
         </ul>

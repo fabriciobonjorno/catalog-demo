@@ -1,10 +1,9 @@
 class HomeController < ApplicationController
+  include MenuResources
+  before_action :set_resources, only: %i[index]
   layout "home"
 
   def index
-    @products = Product.product_home.order(:code)
-    @company = Company.first
-    @manufacturers = Manufacturer.order(:description)
   end
 
   def home
