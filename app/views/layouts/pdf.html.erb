@@ -57,12 +57,28 @@
    max-width: 199px;
 max-height: 180px
   }
+  .header-pdf{
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+  }
+  .header-img{
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+  }
+
 
   </style>
 </head>
 <body>  
 
-<div class='container'>
+<div>
     <%= yield %>
-  </div></body>
+  </div>
+</body>
 </html>
