@@ -3,8 +3,66 @@
 <head>
 <title>PDF</title>
   <%= wicked_pdf_stylesheet_link_tag "application" -%>
+  <style>
+   .header{
+     height:40px;
+     width:100%;
+     background-color:red;
+   }
+   .all{
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    display: -ms-flexbox;
+    -webkit-flex-wrap: wrap;
+    -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+    -webkit-justify-content: center;
+            justify-content: center;
+   }
+   .container{
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    display: -ms-flexbox;
+    -webkit-flex-wrap: wrap;
+    -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+    -webkit-justify-content: center;
+            justify-content: center;
+   }
+   figure {
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    
+    -webkit-flex-wrap: wrap;
+    display: inline-block;
+    -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+    -webkit-justify-content: center;
+            justify-content: center;
+
+   }
+   a {
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    
+    -webkit-flex-wrap: wrap;
+   }
+   img { display:block;
+   align-self: center;
+   max-width: 199px;
+max-height: 180px
+  }
+
+  </style>
 </head>
-<body>  <div class='container'>
+<body>  
+
+<div class='container'>
     <%= yield %>
   </div></body>
 </html>

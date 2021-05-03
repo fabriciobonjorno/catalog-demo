@@ -14,6 +14,22 @@ class DashboardController < ApplicationController
       v_code = "1"
       p_code = "1"
     end
+    if params[:manufacturer_id].present? then
+      v_manufacturer = "manufacturers.id"
+      p_manufacturer = params[:manufacturer_id]
+    else
+      v_manufacturer = "1"
+      p_manufacturer = "1"
+    end 
+    if params[:group_id].present? then 
+      v_group = "groups.id"
+      p_group = params[:group_id]  
+    else
+      v_group = "1"
+      p_group = "1"
+    end
+
+
     #@query = Product.all
     @query = Product.select(
       [
@@ -37,7 +53,11 @@ class DashboardController < ApplicationController
       ).join_sources
     ).where("products.description LIKE ?" ,"%#{params[:description]}%")
              .where("#{v_code} = ?" , "#{p_code}")
-             .where("detach = ?", "#{params[:detach]}")  
+             .where("detach = ?", "#{params[:detach]}") 
+             .where("#{v_manufacturer} = ?" , "#{p_manufacturer}")
+             .where("#{v_group} = ?" , "#{p_group}")
+             
+
 
     respond_to do |format|
     format.html
@@ -45,7 +65,7 @@ class DashboardController < ApplicationController
       render pdf: "produtos-selecionados",
              disposition:  "attachment",
              template: "dashboard/search.html.erb",
-             show_as_html: params.key?('debug'), 
+             show_as_html: false, 
              layout: 'pdf.html'
     end
     format.csv do
