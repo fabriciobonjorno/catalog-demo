@@ -1,12 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Fabricante"} %>
-  <!-- /.content-header -->
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <!-- Info boxes -->
       <div class="row">
         <div class="col-12 col-sm-4 col-md-4">
           <div id="newManufacturer" class="info-box">
@@ -14,7 +9,6 @@
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
           </div>
-          <!-- /.info-box -->
         </div>
       </div>
       <div class="table-responsive">
@@ -36,8 +30,8 @@
                     <i class="far fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_manufacturer_path(manufacturer), class:"btn btn-danger", method: :delete, data:
-                                                         {confirm: "Tem certeza disso? Ao excluir o Fabricante excluira todos os produtos vinculados",
-                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Grupo" do %>
+                                                         {confirm: "Tem certeza disso? Ao excluir o Fabricante excluirá todos os produtos vinculados",
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Fabricante" do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
                 </td>
@@ -46,14 +40,9 @@
           </tbody>
         </table>
       </div>
-      <!-- /.row -->
     </div>
-    <!--/. container-fluid -->
   </section>
-  <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-<!-- Main Footer -->
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {

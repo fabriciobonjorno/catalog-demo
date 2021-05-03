@@ -1,12 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Produtos"} %>
-  <!-- /.content-header -->
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <!-- Info boxes -->
       <div class="row">
         <div class="col-12 col-sm-3 col-md-4">
           <div id="newProduct" class="info-box">
@@ -14,7 +9,6 @@
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
           </div>
-          <!-- /.info-box -->
         </div>
       </div>
       <div class="table-responsive">
@@ -46,7 +40,7 @@
                     <i class="far fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_product_path(product), class:"btn btn-danger", method: :delete, data:
-                                                         {confirm: "Tem certeza disso?",
+                                                         {confirm: "Deseja realmente excluir esse produto?",
                                                          toggle:"tooltip", placement:"top"}, title:"Excluir Produto" do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
@@ -56,12 +50,7 @@
           </tbody>
         </table>
       </div>
-      <!-- /.row -->
     </div>
-    <!--/. container-fluid -->
   </section>
-  <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-<!-- Main Footer -->
 </div>

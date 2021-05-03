@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   # validates
   validates :code, :ean, :dun, :description, presence: true
   validates :code, :ean, :dun, uniqueness: true
-  validate :image_validation
+  validates :photo_product, presence: true, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
 
   # converted
   friendly_id :description, use: :slugged
@@ -36,17 +36,4 @@ class Product < ApplicationRecord
 
   scope :product_home, -> { where(detach: true).where(active: true) }
 
-  private
-
-  def image_validation
-    if respond_to?(:image) && image.attached?
-      if image.blob.byte_size > 2_000_000
-        image.purge
-        errors[:base] << 'Tamanho maximo 2MB'
-      elsif !image.blob.content_type.starts_with?('image/png', 'image/jpeg', 'image/jpg')
-        image.purge
-        errors[:base] << 'Formato invalido use PNG, JPEG, JPG'
-      end
-    end
-  end
 end

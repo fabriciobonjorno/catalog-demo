@@ -1,9 +1,5 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Familias"} %>
-  <!-- /.content-header -->
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <!-- Info boxes -->
@@ -14,7 +10,6 @@
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
           </div>
-          <!-- /.info-box -->
         </div>
       </div>
       <div class="table-responsive">
@@ -32,7 +27,7 @@
             <% @families.each do |family| %>
               <tr>
                 <th scope="row"><%= family.id %></th>
-                <td><%= family.group.manufacturer.description %></td>
+                <td><%= family.group&.manufacturer&.description %></td>
                 <td><%= family.group.description %></td>
                 <td><%= family.description %></td>
                 <td>
@@ -40,8 +35,8 @@
                     <i class="far fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_family_path(family), class:"btn btn-danger", method: :delete, data:
-                                                         {confirm: "Tem certeza disso? Ao excluir a Familia excluira todos os produtos vinculados",
-                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Grupo" do %>
+                                                         {confirm: "Tem certeza disso? Ao excluir a Família excluirá todos os produtos vinculados",
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Família" do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
                 </td>
@@ -50,20 +45,15 @@
           </tbody>
         </table>
       </div>
-      <!-- /.row -->
     </div>
-    <!--/. container-fluid -->
   </section>
-  <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-<!-- Main Footer -->
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {
     $('#familyTable').DataTable();
   });
-
+  
   function editshow() {
   document.getElementById("editFamily").style.display = "flex";
   }
