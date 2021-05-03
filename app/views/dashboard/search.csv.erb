@@ -1,6 +1,5 @@
-
 <%- headers = ['Código do Produto', 'Descrição', 'Ean', 'Dun', 'Display', 'Quantidade', 'Classificação Fiscal', 'Familia', 'Grupo', 'Fabricante'] -%>
 <%= CSV.generate_line headers %>
 <%- @query.each do |query| -%>
-<%= CSV.generate_line([query.code_prod,query.desc_prod, query.ean_prod,query.dun_prod, query.display_prod, query.qtde_prod query.desc_fiscal, query.descr_familia, query.descr_group, query.descr_fabricante ]) -%>
+  <%= CSV.generate_line([query.code_prod,query.desc_prod, query.ean_prod,query.dun_prod, query.display_prod, query.qtde_prod query.desc_fiscal, query.descr_familia, query.descr_group, query.descr_fabricante ]) -%>
 <%- end -%>

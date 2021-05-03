@@ -1,12 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Classificação Fiscal"} %>
-  <!-- /.content-header -->
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <!-- Info boxes -->
       <div class="row">
         <div class="col-12 col-sm-4 col-md-4">
           <div id="newTax" class="info-box">
@@ -14,7 +9,6 @@
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
           </div>
-          <!-- /.info-box -->
         </div>
       </div>
       <div class="table-responsive">
@@ -36,8 +30,8 @@
                     <i class="far fa-edit"></i>
                   <% end %>
                   <%= link_to dashboard_tax_classification_path(tax), class:"btn btn-danger", method: :delete, data:
-                                                         {confirm: "Tem certeza disso? Ao excluir a Classificação fiscal excluira todos os produtos vinculados",
-                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Grupo" do %>
+                                                         {confirm: "Tem certeza disso? Ao excluir a Classificação fiscal excluirá todos os produtos vinculados",
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Classificação fiscal" do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
                 </td>
@@ -46,14 +40,9 @@
           </tbody>
         </table>
       </div>
-      <!-- /.row -->
     </div>
-    <!--/. container-fluid -->
   </section>
-  <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-<!-- Main Footer -->
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {

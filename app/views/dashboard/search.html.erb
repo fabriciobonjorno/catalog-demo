@@ -1,8 +1,6 @@
 <section class="container mt-" style=" background-color:rgb(241,241,241);display:flex; flex-wrap:wrap;justify-content:center;">
-
-    
-        <% @query.each do |product| %>
-          <figure style="width: 250px;
+  <% @query.each do |product| %>
+    <figure style="width: 250px;
           justify-content: center;
           align-items:center;
           height:auto;
@@ -11,36 +9,28 @@
           background: white;
           margin-right: 10px;
           margin-top: 20px;
-          "> 
-          
-          <div style="margin-top: 20px;
+          ">
+      <div style="margin-top: 20px;
           margin-bottom: 20px;">
-          
-              <% if product.photo_product.attached? %>
-                <a style="    display:block;display: flex;
+        <% if product.photo_product.attached? %>
+          <a style="    display:block;display: flex;
                 height: 230px;
                 ">
-                  <%= image_tag product.photo_product, style:'
+            <%= image_tag product.photo_product, style:'
                   max-width: 230px;
                   max-height: 230px;
                   display:block;
                   align-self: center;
                   
                   ', title: 'image' %>
-                </a>
-                <% else %>
-                <a>
-                <%= image_tag '/no_image.jpg', class:"img-fluid img-item" %>
-                </a>
-              <% end %>
-              <div class="prod-description" style="text-align: center;font-weight: 700;padding-top: 15px;">  <%= product.desc_prod %> </div>
-              </div>
-          
-       
-        </figure>
-        
+          </a>
+        <% else %>
+          <a>
+            <%= image_tag '/no_image.jpg', class:"img-fluid img-item" %>
+          </a>
         <% end %>
-        
-     
- 
+        <div class="prod-description" style="text-align: center;font-weight: 700;padding-top: 15px;">  <%= product.desc_prod %> </div>
+      </div>
+    </figure>
+  <% end %>
 </section>
