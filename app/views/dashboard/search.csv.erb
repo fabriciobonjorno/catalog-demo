@@ -1,6 +1,12 @@
 <% headers = ['Código do Produto', 'Descrição', 'Ean', 'Dun', 'Display', 'Quantidade', 'Classificação Fiscal', 'Familia', 'Grupo', 'Fabricante'] %>
 <%= CSV.generate_line headers %>
 <% @query.each do |query| %>
+    <% if query.ean_prod.present? then nil else query.ean_prod = ' ' end%>
+    <% if query.dun_prod.present? then nil else query.dun_prod = ' ' end%>
+    <% if query.ean_prod.present? then nil else query.display_prod = ' ' end%>
+    <% if query.qtde_prod.present? then query.qtde_prod = query.qtde_prod.tr('&quot;', '') else query.qtde_prod = ' ' end%>
+    <% if query.descr_fabricante.present? then query.descr_fabricante  else query.descr_fabricante = '0' end%>
+    
   <%= CSV.generate_line([query.code_prod,query.desc_prod, query.ean_prod,query.dun_prod, query.display_prod, query.qtde_prod, query.desc_fiscal, query.descr_familia, query.descr_group, query.descr_fabricante ]) %>
 <% end %>
 
