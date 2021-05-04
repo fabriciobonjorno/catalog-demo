@@ -7,6 +7,6 @@
     <% if query.qtde_prod.present? then query.qtde_prod = query.qtde_prod.tr('&quot;', '') else query.qtde_prod = ' ' end%>
     <% if query.descr_fabricante.present? then query.descr_fabricante  else query.descr_fabricante = '0' end%>
     
-  <%= CSV.generate_line([query.code_prod,query.desc_prod, query.ean_prod,query.dun_prod, query.display_prod, query.qtde_prod, query.desc_fiscal, query.descr_familia, query.descr_group, query.descr_fabricante ]) %>
+  <%= CSV.generate_line([query.code_prod,query.desc_prod,query.ean_prod,query.dun_prod,query.display_prod,query.qtde_prod,query.desc_fiscal,query.descr_familia,query.descr_group,query.descr_fabricante]) %>
 <% end %>
 
