@@ -28,6 +28,13 @@ class DashboardController < ApplicationController
       v_group = "1"
       p_group = "1"
     end
+    if params[:family_id].present? then 
+      v_family = "families.id"
+      p_family = params[:family_id]  
+    else
+      v_family = "1"
+      p_family = "1"
+    end
 
 
     #@query = Product.all
@@ -56,6 +63,7 @@ class DashboardController < ApplicationController
              .where("detach = ?", "#{params[:detach]}") 
              .where("#{v_manufacturer} = ?" , "#{p_manufacturer}")
              .where("#{v_group} = ?" , "#{p_group}")
+             .where("#{v_family} = ?" , "#{p_family}")
              
 
 
@@ -73,12 +81,6 @@ class DashboardController < ApplicationController
       headers['Content-Type'] ||= 'text/csv'
     end
   end
-
-
-      
   end
-
-
-
 
 end
