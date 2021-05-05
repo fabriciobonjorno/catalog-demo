@@ -6,7 +6,7 @@ height: 50px;">
       <div class="header-img">
       </div>
       <div class="header-title">
-       <p style="color:white;font-weight:700;"> Catálogo de produtos  </p> 
+       <p style="color:white;font-weight:700;margin-top:40px;margin-left:20px;"> Demonstrativo de Produtos </p> 
       </div>
 
    </div>  
@@ -49,7 +49,14 @@ height: 50px;">
                 ' %>
                 </a>
               <% end %>
-              <div class="prod-description" style="text-align: center;font-weight: 700;padding-top: 15px;">  <%= product.desc_prod %> </div>
+              <div class="prod-description" style="text-align: center;font-weight: 700;padding-top: 15px;"> <%= product.code_prod %> - <%= product.desc_prod %> </div>
+              <div class="prod-description" style="color:red;  text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.qtde_prod %>  </div>
+              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.ean_prod %>  </div>
+              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.dun_prod %>  </div>
+              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.desc_fiscal %>  </div>
+
+
+
               </div>
           
               
