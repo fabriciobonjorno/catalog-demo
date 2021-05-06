@@ -1,36 +1,50 @@
-<footer class="footer-area footer--light">
-  <div class="mini-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="copyright-text">
-            <p>© <%= Date.current.year %>
-              <a href="#"><%= @company.fantasy_name %></a>. All rights reserved. Created by
-              <a href="#">Meu Catalogo</a>
-            </p>
+<div class="container-fluid news justify-content-center">
+  <div class="row py-5">
+    <div class="card border-0">
+      <div class="card-body pt-5 pb-5 text-center ">
+        <h3><b>Fique por dentro das novidades</b></h3>
+        <p class="pl-0 ml-0 mb-5">Cadastre seu e-mail para receber.</p>
+        <div class="row text-center justify-content-center">
+          <div class="col-auto">
+            <div class="input-group-lg input-group mb-3 "><input type="text" class="form-control" placeholder="Enter your e-mail address" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <div class="input-group-append"><button class="btn btn-success" type="button" id="button-addon2"> <b>Submit</b></button></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</footer>
+  <footer>
+    <div class="row justify-content-around mb-0 pt-2 pb-5 ">
+      <div class="col-12 text-center">
+        <div class="row justify-content-center">
+          <div class="col-12 font-italic align-items-center mt-md-3 mt-4">
+            <h5><span> <%= image_tag @company.photo_company, class: "img-fluid mb-1" %> </span></h5>
+            <p class="social mt-md-3 mt-2">
+              <span><i class="fab fa-facebook-square"></i>
+              </span> <span><i class="fab fa-linkedin"></i>
+              </span> <span><i class="fab fa-instagram-square"></i></span>
+              </span> <span><i class="fab fa-youtube-square"></i></span>
+            </p>
+            <small class="copy-rights cursor-pointer">&#9400;  <%= Date.current.year %> - <%= @company.fantasy_name %></a></small><br>
+            <small>All rights reserved. Created by <a href="#">Meu Catalogo</a> </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
 <div class="help-button-wrapper">
   <ul class="help-list">
-    <li><a href="mailto:name@example.com?subject=Image%20Request">Image Request</a>
-    </li>
-    <li><a href="mailto:name@example.com?subject=Product%20Request">Product Request</a></li>
-    <li><a href="mailto:name@example.com?subject=General%20Help%20Request">General Help</a></li>
+    <li><a href="https://api.whatsapp.com/send?phone=5565981659779&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
+    <li><a href="https://api.whatsapp.com/send?phone=5565981659779&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
   </ul>
-
   <button class="help-button">
-    <span>?</span>
-    Get Help
+    <span><i class="fab fa-whatsapp"></i></span>
   </button>
 </div>
-
 <script>
-$(".help-button").on("click", function() {
-    $(".help-button-wrapper").toggleClass("expanded");
-});
-  
+  $(".help-button").on("click", function() {
+      $(".help-button-wrapper").toggleClass("expanded");
+  });
 </script>
