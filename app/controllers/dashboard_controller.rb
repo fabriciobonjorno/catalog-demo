@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
 
 
   def search
+    
     if params[:code].present? then
        v_code = "products.code"
        p_code = params[:code]
@@ -40,7 +41,7 @@ class DashboardController < ApplicationController
     #@query = Product.all
     @query = Product.select(
       [
-        Product.arel_table[:code].as('code_prod'), Product.arel_table[:description].as('desc_prod'), Product.arel_table[:ean].as('ean_prod'), Product.arel_table[:dun].as('dun_prod'), Product.arel_table[:display].as('display_prod'), Product.arel_table[:quantitie].as('qtde_prod'),Family.arel_table[:description].as('desc_fam'), Group.arel_table[:description].as('desc_group'), Family.arel_table[:id], TaxClassification.arel_table[:description].as('desc_fiscal'), Family.arel_table[:description].as('descr_familia'), Group.arel_table[:description].as('descr_group'), Manufacturer.arel_table[:description].as('descr_fabricante')
+        Product.arel_table[:id], Product.arel_table[:code].as('code_prod'), Product.arel_table[:description].as('desc_prod'), Product.arel_table[:ean].as('ean_prod'), Product.arel_table[:dun].as('dun_prod'), Product.arel_table[:display].as('display_prod'), Product.arel_table[:quantitie].as('qtde_prod'), Family.arel_table[:description].as('desc_fam'), Group.arel_table[:description].as('desc_group'), Family.arel_table[:id].as('family_id'), TaxClassification.arel_table[:description].as('desc_fiscal'), Family.arel_table[:description].as('descr_familia'), Group.arel_table[:description].as('descr_group'), Manufacturer.arel_table[:description].as('descr_fabricante')
       ]
     ).joins(
       Product.arel_table.join(Family.arel_table).on(
@@ -64,8 +65,6 @@ class DashboardController < ApplicationController
              .where("#{v_manufacturer} = ?" , "#{p_manufacturer}")
              .where("#{v_group} = ?" , "#{p_group}")
              .where("#{v_family} = ?" , "#{p_family}")
-             
-
 
     respond_to do |format|
     format.html
@@ -73,8 +72,10 @@ class DashboardController < ApplicationController
       render pdf: "produtos-selecionados",
              disposition:  "attachment",
              template: "dashboard/search.html.erb",
-             show_as_html: false, 
-             layout: 'pdf.html'
+             show_as_html: true, 
+             layout: 'pdf.html',
+             encoding: 'utf8',
+             margin: { :top => 0, :bottom => 0 , :left => 0 , :right => 0}
     end
     format.csv do
       headers['Content-Disposition'] = "attachment; filename=\"relatorio-produt\""
