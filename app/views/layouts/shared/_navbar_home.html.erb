@@ -1,28 +1,23 @@
-<nav>
-  <!-- Menu Toggle btn-->
-  <div class="menu-toggle">
-    <button type="button" id="menu-btn">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% @manufacturers.each do |manufacturer| %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= manufacturer.description.upcase %>
+          </a>
+          <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+            <% manufacturer.groups.each do |group| %>
+              <%= link_to group.description, group_path(group).capitalize, class:"dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
-  <!-- Responsive Menu Structure-->
-  <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
-  <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
-    <% @manufacturers.each do |manufacturer| %>
-      <li>
-        <a href="javascript:;">
-          <span class="title"><%= manufacturer.description %></span>
-        </a>
-        <ul>
-          <% manufacturer.groups.each do |group| %>
-            <li>
-              <%= link_to group.description, group_path(group), class:"accordion-toggle" %>
-            </li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
 </nav>
+

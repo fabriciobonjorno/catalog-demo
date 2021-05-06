@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def admin?
     profile
   end
+
+  # def self.support
+  #   User.where(email: )
+  # end
 end

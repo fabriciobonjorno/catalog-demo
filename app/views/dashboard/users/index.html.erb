@@ -21,7 +21,6 @@
         <table id="userTable" class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Nome</th>
               <th scope="col">Email</th>
               <th scope="col">Perfil</th>
@@ -29,25 +28,28 @@
             </tr>
           </thead>
           <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <th scope="row"><%= user.id %></th>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
-                <td>
-                  <%= user.admin? ? 'Administrador' : 'Moderador' %>
-                </td>
-                <td>
-                  <%= link_to edit_dashboard_user_path(user), class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                  <%= link_to dashboard_user_path(user), class:"btn btn-danger", method: :delete, data:
+            <% @users.where.not(email: 'suporte@meucatalogo.art.br').each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td>
+                    <%= user.admin? ? 'Administrador' : 'Moderador' %>
+                  </td>
+                  <td>
+                    <%= link_to edit_dashboard_user_path(user), class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Usuário" do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                    <% if current_user.id == user.id %>
+                      <button class= "btn btn-danger" data-toggle= "tooltip" placement= "top" title= "Excluir Usuário" disabled><i class="far fa-trash-alt"></i></button>
+                    <% else %>
+                      <%= link_to dashboard_user_path(user), class:"btn btn-danger", method: :delete, data:
                                                          {confirm: "Deseja realmente excluir esse usuário?",
-                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Usuário" do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                </td>
-              </tr>
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Usuário", disabled: true do %>
+                        <i class="far fa-trash-alt"></i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
             <% end %>
           </tbody>
         </table>

@@ -14,3 +14,23 @@
     </div>
   </div>
 </footer>
+<div class="help-button-wrapper">
+  <ul class="help-list">
+    <li><a href="mailto:name@example.com?subject=Image%20Request">Image Request</a>
+    </li>
+    <li><a href="mailto:name@example.com?subject=Product%20Request">Product Request</a></li>
+    <li><a href="mailto:name@example.com?subject=General%20Help%20Request">General Help</a></li>
+  </ul>
+
+  <button class="help-button">
+    <span>?</span>
+    Get Help
+  </button>
+</div>
+
+<script>
+$(".help-button").on("click", function() {
+    $(".help-button-wrapper").toggleClass("expanded");
+});
+  
+</script>
