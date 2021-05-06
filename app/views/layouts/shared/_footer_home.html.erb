@@ -19,20 +19,28 @@
       <div class="col-12 text-center">
         <div class="row justify-content-center">
           <div class="col-12 font-italic align-items-center mt-md-3 mt-4">
-            <h5><span> <%= image_tag @company.photo_company, class: "img-fluid mb-1" %> </span></h5>
+            <% if @company.photo_company.attached? %>
+              <%= link_to root_path do %>
+                <h5><span> <%= image_tag @company.photo_company, class: "img-fluid mb-1" %> </span></h5>
+              <% end %>
+            <% else %>
+              <%= link_to root_path do %>
+                <%= image_tag 'sem-imagem.jpg', style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
+              <% end %>
+            <% end %>
             <p class="social mt-md-3 mt-2">
               <span><i class="fab fa-facebook-square"></i>
               </span> <span><i class="fab fa-linkedin"></i>
               </span> <span><i class="fab fa-instagram-square"></i></span>
-              </span> <span><i class="fab fa-youtube-square"></i></span>
-            </p>
-            <small class="copy-rights cursor-pointer">&#9400;  <%= Date.current.year %> - <%= @company.fantasy_name %></a></small><br>
-            <small>All rights reserved. Created by <a href="#">Meu Catalogo</a> </small>
-          </div>
-        </div>
+            </span> <span><i class="fab fa-youtube-square"></i></span>
+          </p>
+          <small class="copy-rights cursor-pointer">&#9400;  <%= Date.current.year %> - <%= @company.fantasy_name %></a></small><br>
+        <small>All rights reserved. Created by <a href="#">Meu Catalogo</a> </small>
       </div>
     </div>
-  </footer>
+  </div>
+</div>
+</footer>
 </div>
 <div class="help-button-wrapper">
   <ul class="help-list">
