@@ -2,6 +2,7 @@
 
 class Company < ApplicationRecord
   has_one_attached :photo_company
-
+  has_many :extra_informations
+  accepts_nested_attributes_for :extra_informations
   validates :photo_company, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
 end

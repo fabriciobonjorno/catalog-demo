@@ -30,7 +30,8 @@ module Dashboard
 
     def companies_params
       params.require(:company).permit(:social_name, :fantasy_name, :cnpj, :ie, :street, :number, :complement, :district,
-                                      :zip_code, :city, :state, :phone, :phone, :email, :site, :photo_company)
+                                      :zip_code, :city, :state, :phone, :phone, :email, :site, :photo_company, extra_informations_attributes: [
+                                        :facebook, :youtube, :instagram, :linkedin])
     end
   end
 end
