@@ -6,7 +6,7 @@
         <%= f.file_field :photo_product, class:" form-control photo-upload custom-file-input", id:"browse" %>
 
         <%= f.label :photo_product, class: "custom-file-label" do %>
-          Selectione um Arquivo
+          Selecione um Arquivo
         <% end %>
 
       </div>
@@ -83,76 +83,3 @@
     </div>
   </div>
 <% end %>
-
-<script>
-$(document).ready(function () {
-    var elBrowse  = document.getElementById("browse");
-    elBrowse.addEventListener("change", function() {
-      var files  = this.files;
-      var errors = "";
-    
-      if (!files) {
-        errors += "File upload not supported by your browser.";
-      }
-      if (files && files[0]) {
-        for(var i=0; i<files.length; i++) {
-          var file = files[i];
-          if ( (/\.(png|jpeg|jpg)$/i).test(file.name) ) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-              //var image = new Image();
-
-              //image.src = reader.result;
-
-              //image.onload = function() {
-              //  console.log(image.height);
-              //  console.log(image.width);
-              //};
-              
-              $('.img_prev')
-                .attr('src', e.target.result)
-                .width(300);
-            };
-
-            reader.readAsDataURL(file);
-          } else {
-            errors += file.name +"\nExtensão do arquivo inválida. São válidos apenas png, jpg e jpeg\n";
-          }
-        }
-      }
-
-      if (errors) {
-        alert(errors);
-      }
-    });
-
-    $('.photo-upload').on('change', function (e) {
-         e.target.nextElementSibling.innerHTML = e.target.files[0].name;
-    });
-});
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        var image = new Image();
-
-        image.src = reader.result;
-
-        image.onload = function() {
-          console.log(image.height);
-          console.log(image.width);
-        };
-        
-        $('.img_prev')
-          .attr('src', e.target.result)
-          .width(300);
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-
-</script>
