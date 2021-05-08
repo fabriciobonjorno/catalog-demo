@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 puts 'Criando Administrador'
-User.create!(name: 'Fabricio Bonjorno', email: 'admin@admin.com', password: '123456',
-             password_confirmation: '123456', profile: true)
+User.create!(name: 'Suporte', email: 'suporte@meucatalogo.art.br', password: '159357',
+             password_confirmation: '159357', profile: true)
 
 puts 'Criando Empresa'
 Company.create!(
@@ -21,6 +21,15 @@ Company.create!(
   cell_phone: '(65) 98465-5547',
   email: 'example@meusite.com',
   site: 'www.meusite.com'
+)
+
+puts 'Adicionando redes sociais'
+ExtraInformation.create!(
+  facebook: 'https://www.facebook.com/',
+  instagram: 'https://www.instagram.com/',
+  linkedin: 'https://www.linkedin.com/',
+  youtube: 'https://www.youtube.com/',
+  company_id: 1
 )
 
 if Rails.env.development?
