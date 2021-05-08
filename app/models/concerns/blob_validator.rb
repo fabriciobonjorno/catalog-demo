@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlobValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, values)
     return unless values.attached?
@@ -11,9 +13,7 @@ class BlobValidator < ActiveModel::EachValidator
         end
       end
 
-      unless valid_content_type?(value.blob)
-        record.errors.add(attribute, :content_type)
-      end
+      record.errors.add(attribute, :content_type) unless valid_content_type?(value.blob)
     end
   end
 

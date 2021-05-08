@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
   get 'dashboard', to: 'dashboard#index'
-  get 'dashboard/search' 
+  get 'dashboard/search'
 
   namespace :dashboard do
     resources :products, except: [:show]

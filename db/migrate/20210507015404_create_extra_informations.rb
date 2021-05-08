@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateExtraInformations < ActiveRecord::Migration[6.1]
   def change
     create_table :extra_informations do |t|

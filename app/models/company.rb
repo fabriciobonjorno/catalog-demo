@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Company < ApplicationRecord
-
   # associations
   has_one_attached :photo_company
 

@@ -35,5 +35,4 @@ class Product < ApplicationRecord
   end
 
   scope :product_home, -> { where(detach: true).where(active: true) }
-
 end
