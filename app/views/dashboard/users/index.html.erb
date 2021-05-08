@@ -1,12 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Usuários"} %>
-  <!-- /.content-header -->
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <!-- Info boxes -->
       <div class="row">
         <div class="col-12 col-sm-4 col-md-4">
           <div id="newManufacturer" class="info-box">
@@ -14,7 +9,6 @@
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
           </div>
-          <!-- /.info-box -->
         </div>
       </div>
       <div class="table-responsive">
@@ -54,17 +48,16 @@
           </tbody>
         </table>
       </div>
-      <!-- /.row -->
     </div>
-    <!--/. container-fluid -->
   </section>
-  <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-<!-- Main Footer -->
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {
-    $('#userTable').DataTable();
+    $('#userTable').DataTable({
+    language: {
+      url: '/packs/pt_br.json'
+    }
+    });
   });
 </script>

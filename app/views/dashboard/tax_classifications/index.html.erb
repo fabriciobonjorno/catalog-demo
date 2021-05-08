@@ -46,7 +46,11 @@
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {
-    $('#taxTable').DataTable();
+    $('#taxTable').DataTable({
+    language: {
+      url: '/packs/pt_br.json'
+    }
+    });
   });
   
   function editshow() {

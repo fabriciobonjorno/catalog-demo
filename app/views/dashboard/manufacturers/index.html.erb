@@ -46,7 +46,11 @@
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {
-    $('#manufacturerTable').DataTable();
+    $('#manufacturerTable').DataTable({
+    language: {
+      url: '/packs/pt_br.json'
+    }
+    });
   });
   
   function editshow() {

@@ -36,10 +36,10 @@
 </div>
 <script>
   document.addEventListener('turbolinks:load', function() {
-    $('#companyTable').DataTable();
+    $('#companyTable').DataTable({
+    language: {
+      url: '/packs/pt_br.json'
+    }
+    });
   });
-  
-  function editshow() {
-  document.getElementById("editGroup").style.display = "flex";
-  }
 </script>

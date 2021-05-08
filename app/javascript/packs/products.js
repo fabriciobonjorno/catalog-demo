@@ -1,6 +1,12 @@
 document.addEventListener("turbolinks:load", () => {
 
-  $('#productTable').DataTable();
+  $('#productTable').DataTable(
+    {
+      language: {
+        url: '/packs/pt_br.json'
+      }
+    }
+  );
 
 
   $(document.body).on("change", "#product_manufacturer_id", function () {
@@ -36,19 +42,19 @@ document.addEventListener("turbolinks:load", () => {
   });
 
   $(document.body).on("change", "#browse", function () {
-    var files  = this.files;
+    var files = this.files;
     var errors = "";
-    
+
     if (!files) {
       errors += "File upload not supported by your browser.";
     }
     if (files && files[0]) {
-      for(var i=0; i<files.length; i++) {
+      for (var i = 0; i < files.length; i++) {
         var file = files[i];
-        if ( (/\.(png|jpeg|jpg)$/i).test(file.name) ) {
+        if ((/\.(png|jpeg|jpg)$/i).test(file.name)) {
           var reader = new FileReader();
           reader.onload = function (e) {
-              
+
             $('.img_prev')
               .attr('src', e.target.result)
               .width(300);
@@ -56,7 +62,7 @@ document.addEventListener("turbolinks:load", () => {
 
           reader.readAsDataURL(file);
         } else {
-          errors += file.name +"\nExtensão do arquivo inválida. São válidos apenas png, jpg e jpeg\n";
+          errors += file.name + "\nExtensão do arquivo inválida. São válidos apenas png, jpg e jpeg\n";
         }
       }
     }

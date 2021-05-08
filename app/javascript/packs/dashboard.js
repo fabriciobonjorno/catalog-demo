@@ -9,4 +9,3 @@ import "./products"
 // app/javascript/packs/application.js
 import './addfields'
 import './removefields'
-
