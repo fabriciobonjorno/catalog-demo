@@ -21,6 +21,9 @@
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Redes Sociais</a>
         </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contatos</a>
+        </li>
       </ul>
       <div class="col-md-6">
         <div class="tab-content" id="myTabContent">
@@ -106,8 +109,16 @@
                 <%= ff.label :youtube %>
                 <%= ff.text_field :youtube, class: "form-control" %>
               </div>
+            <% end %>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div id="contacts">
+              <%= f.fields_for :contacts do |ct| %>
+                <%= render 'contacts_fields', ff: ct %>
+              <% end %>
+              <%= link_to_add_association 'add task', f, :contacts, class: "btn btn-success mt-2" %>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
       <div class="row">
