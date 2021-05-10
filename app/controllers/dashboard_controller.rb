@@ -6,6 +6,8 @@ class DashboardController < ApplicationController
   def index; end
 
   def search
+    @companies = Company.all
+
     if params[:code].present?
       v_code = 'products.code'
       p_code = params[:code]
@@ -71,6 +73,7 @@ class DashboardController < ApplicationController
                template: 'dashboard/search.html.erb',
                show_as_html: false,
                layout: 'pdf.html',
+               encoding: 'utf-8',
                margin: { top: 0, bottom: 0, left: 0, right: 0 }
       end
       format.csv do

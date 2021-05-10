@@ -4,6 +4,10 @@
 <title>PDF</title>
   <%= wicked_pdf_stylesheet_link_tag "application" -%>
   <style>
+   body {
+    width: 100%;
+    margin: 0;
+   }
    .header{
      height:40px;
      width:100%;
@@ -49,6 +53,9 @@
     display: -webkit-flex;
     display: flex;
     flex-wrap: wrap;
+    webkit-box-pack: center; /* wkhtmltopdf uses this one */
+    -webkit-justify-content: center;
+            justify-content: center;
     
     -webkit-flex-wrap: wrap;
    }

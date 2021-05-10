@@ -1,20 +1,32 @@
 <section style="width: 100%;
 background-color: #2c2c8e;
-margin-top: -20px;
-height: 50px;"> 
+margin-top: -20px; "> 
+
    <div class="header-pdf" >
       <div class="header-img">
+      <% @companies.each do |comp| %>
+         <% if comp.photo_company.attached? %>
+            <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:"max-width: 100px;
+            max-height: 139px;"%>
+            <% else %>
+            <%= image_tag  'file://#{File.expand_path("public/app/assets/images/sem-imagem.jpg")}', class:"img-fluid img-item", style:"max-width: 100px;
+            max-height: 139px; " %>
+         <% end %>
+      
       </div>
       <div class="header-title">
        <p style="color:white;font-weight:700;margin-top:10px;margin-left:20px;"> Demonstrativo de Produtos </p> 
       </div>
+      <% end %>
 
    </div>  
 </section>
 
 <section class="container mt-" style=" background-color:rgb(241,241,241); ">
 
+
         <% @query.each do |product| %>
+          
           <figure style="width: 200px;
           justify-content: center;
           align-items:center;
@@ -27,25 +39,34 @@ height: 50px;">
           margin-bottom: 20px;">
               <% if product.photo_product.attached? %>
                 <a style="    display:block;display: flex;
-                height: 180px;
+                height: 180px;-webkit-justify-content: center;
+                justify-content:center;
+                -webkit-box-pack: center;text-align: center;
                 ">
-                  <%= image_tag url_for(product.photo_product), style:'
+                  <%= image_tag  product.photo_product, style:'
                   max-width: 180px;
                   max-height: 180px;
                   display:block;
                   align-self: center;
+                  -webkit-justify-content: center;
+                  justify-content:center;
+                  -webkit-box-pack: center;
                   
                   ', title: 'image' %>
                 </a>
                 <% else %>
                 <a style="    display:block;display: flex;
-                height: 180px;>
+                height: 180px;-webkit-justify-content: center;
+                justify-content:center;-webkit-box-pack: center;text-align: center;>
                 <%= image_tag '/no_image.jpg', class:"img-fluid img-item", style:'
                 max-width: 180px;
                 max-height: 180px;
                 display:block;
                 align-self: center;
-                
+                -webkit-justify-content: center;
+                  justify-content:center;
+                  -webkit-box-pack: center;
+                  text-align: center;
                 ' %>
                 </a>
               <% end %>
@@ -53,7 +74,7 @@ height: 50px;">
               <div class="prod-description" style="color:red;  text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.qtde_prod %>  </div>
               <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.ean_prod %>  </div>
               <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.dun_prod %>  </div>
-              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.desc_fiscal %>  </div>
+              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.desc_fiscal.force_encoding('UTF-8') %>  </div>
 
 
 
@@ -66,9 +87,22 @@ height: 50px;">
 </section>
 <section style="width: 100%;
 background-color: #2c2c8e;
-height: 50px;"> 
+margin-top: -20px; "> 
+
    <div class="header-pdf" >
       <div class="header-img">
+      <% @companies.each do |comp| %>
+         <% if comp.photo_company.attached? %>
+            <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:"max-width: 100px;
+            max-height: 139px;"%>
+            <% else %>
+            <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item", style:"max-width: 100px;
+            max-height: 139px;" %>
+         <% end %>
+      <% end %>
+      </div>
+      <div class="header-title">
+       <p style="color:white;font-weight:700;margin-top:10px;margin-left:20px;"> Demonstrativo de Produtos </p> 
       </div>
 
    </div>  
