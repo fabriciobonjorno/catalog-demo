@@ -1,0 +1,12 @@
+<%= form_with model: [:dashboard, @layoutpdf] do |f| %>
+  <div class="row p-4" style="align-items: center;">
+    <div class="form-group">
+      <%= f.label :color_header %>
+      <%= f.text_field :color_header, class: "form-control" %>
+      <%= f.text_field :type, class: "form-control" %>
+    </div>
+    <div class="text-center ml-3 mt-3">
+      <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
+    </div>
+  </div>
+<% end %>

@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
 
   def search
     @companies = Company.all
+    @layoutpdf = Layoutpdf.all
 
     if params[:code].present?
       v_code = 'products.code'

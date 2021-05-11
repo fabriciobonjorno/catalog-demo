@@ -1,0 +1,59 @@
+<div class="content-wrapper">
+  <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Layout PDF"} %>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-sm-4 col-md-4">
+          <div id="newTax" class="info-box">
+            <%= link_to new_dashboard_layoutpdf_path, remote: true, class:"btn btn-app bg-success mt-2" do %>
+              <i class="far fa-plus-square"></i> Adicionar
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table id="taxTable" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Color</th>
+              <th scope="col">Posicao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @layoutpdf.each do |lay| %>
+              <tr>
+                <th scope="row"><%= lay.color_header %></th>
+                <td><%= lay.type_logo %></td>
+                <td>
+                  <%= link_to edit_dashboard_layoutpdf_path(lay), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
+                  <%= link_to dashboard_layoutpdf_path(tax), class:"btn btn-danger", method: :delete, data:
+                                                         {confirm: "Tem certeza disso? Ao excluir a Classificação fiscal excluirá todos os produtos vinculados",
+                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Classificação fiscal" do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    $('#layoutpdfTable').DataTable({
+    language: {
+      url: '/packs/pt_br.json'
+    }
+    });
+  });
+  
+  function editshow() {
+  document.getElementById("editlayoutpdf").style.display = "flex";
+  }
+</script>
