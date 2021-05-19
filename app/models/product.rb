@@ -34,5 +34,5 @@ class Product < ApplicationRecord
     self&.family&.group&.manufacturer_id
   end
 
-  scope :product_home, -> { where(detach: true).where(active: true) }
+  scope :product_home, -> { where(detach: true).where(active: true) } 
 end

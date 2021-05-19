@@ -47,6 +47,7 @@ pt-BR:
         <<: *default
         description: 'Nome da Família/Subcategoria'
         group_id: 'Grupo/Categoria'
+        manufacturer_id: 'Fabricante'
       tax_classification:
         <<: *default
         description: 'Classificação Fiscal'

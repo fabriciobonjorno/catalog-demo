@@ -106,9 +106,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_004433) do
 
   create_table "layoutpdfs", force: :cascade do |t|
     t.string "color_header"
-    t.integer "type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "type_logo"
   end
 
   create_table "manufacturers", force: :cascade do |t|
