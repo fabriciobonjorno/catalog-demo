@@ -7,24 +7,24 @@ class Company < ApplicationRecord
   has_many :extra_informations
   accepts_nested_attributes_for :extra_informations
 
-  has_many :contacts, inverse_of: :company
+  has_many :contacts
   accepts_nested_attributes_for :contacts, allow_destroy: true, reject_if: :all_blank
 
   validates :photo_company, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
 
-  def commercial?
-    Contact.where(commercial: true).sample
+  def random_commercial_contact
+    Contact.where(commercial: true).order('random()').first
   end
 
-  def financial?
-    Contact.where(financial: true).sample
+  def random_financial_contact
+    Contact.where(financial: true).order('random()').first
   end
 
-  def logistic?
-    Contact.where(logistic: true).sample
+  def random_logistic_contact
+    Contact.where(logistic: true).order('random()').first
   end
 
-  def administrative?
-    Contact.where(administrative: true).sample
+  def random_administrative_contact
+    Contact.where(administrative: true).order('random()').first
   end
 end

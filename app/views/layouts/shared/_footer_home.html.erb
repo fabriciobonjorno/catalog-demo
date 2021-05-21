@@ -44,18 +44,18 @@
 </div>
 <div class="help-button-wrapper">
   <ul class="help-list">
-       <% if @company.financial? %>
-        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
-      <% end %>
-      <% if @company.commercial? %>
-        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
-      <% end %>
-      <% if @company.logistic? %>
-        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Logistica</a></li>
-      <% end %>
-      <% if @company.administrative? %>
-        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Administrativo</a></li>
-      <% end %>
+    <% if @company.random_financial_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_financial_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
+    <% end %>
+    <% if @company.random_logistic_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_logistic_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-truck-moving"></i> Logistica</a></li>
+    <% end %>
+    <% if @company.random_commercial_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_commercial_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
+    <% end %>
+    <% if @company.random_administrative_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_administrative_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-digital-tachograph"></i> Administrativo</a></li>
+    <% end %>
   </ul>
   <button class="help-button">
     <span><i class="fab fa-whatsapp"></i></span>
