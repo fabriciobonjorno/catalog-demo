@@ -25,7 +25,7 @@ module DashboardHelper
       # `association.to_s.singularize + "_fields"` ends up evaluating to `address_fields`
       # The render function will then look for `views/people/_address_fields.html.erb`
       # The render function also needs to be passed the value of 'builder', because `views/people/_address_fields.html.erb` needs this to render the form tags.
-      render(association.to_s.singularize + '_fields', f: builder)
+      render("#{association.to_s.singularize}_fields", f: builder)
     end
 
     # This renders a simple link, but passes information into `data` attributes.

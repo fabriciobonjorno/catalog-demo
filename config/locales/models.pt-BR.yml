@@ -99,7 +99,7 @@ pt-BR:
         message: 'Mensagem Whatsapp'
         commercial: 'Comercial'
         financial: 'Financeiro'
-        logistics: 'Logistica'
+        logistic: 'Logistica'
         administrative: 'Administrativo'
         company_id: 'Empresa'
       extra_informations:

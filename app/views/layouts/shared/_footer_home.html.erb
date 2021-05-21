@@ -44,8 +44,18 @@
 </div>
 <div class="help-button-wrapper">
   <ul class="help-list">
-    <li><a href="https://api.whatsapp.com/send?phone=5565981659779&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
-    <li><a href="https://api.whatsapp.com/send?phone=5565981659779&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
+       <% if @company.financial? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
+      <% end %>
+      <% if @company.commercial? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
+      <% end %>
+      <% if @company.logistic? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Logistica</a></li>
+      <% end %>
+      <% if @company.administrative? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.contacts.first.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Administrativo</a></li>
+      <% end %>
   </ul>
   <button class="help-button">
     <span><i class="fab fa-whatsapp"></i></span>

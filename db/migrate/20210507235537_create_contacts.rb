@@ -7,7 +7,7 @@ class CreateContacts < ActiveRecord::Migration[6.1]
       t.string :message
       t.boolean :commercial, default: false
       t.boolean :financial, default: false
-      t.boolean :logistics, default: false
+      t.boolean :logistic, default: false
       t.boolean :administrative, default: false
       t.references :company, null: false, foreign_key: true
 

@@ -3,7 +3,7 @@
 module Dashboard
   class LayoutpdfController < DashboardController
     before_action :authorize_admin, only: [:destroy]
-    
+
     def index
       @layoutpdf = Layoutpdf.all
     end
@@ -18,7 +18,7 @@ module Dashboard
       @layoutpdf = Layoutpdf.new(layoutpdf_params)
       if @layoutpdf.save
         redirect_to dashboard_layoutpdf_path,
-                    notice: "Layout pdf cadastrada com sucesso!"
+                    notice: 'Layout pdf cadastrada com sucesso!'
       else
         alert_errors
       end

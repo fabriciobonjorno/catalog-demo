@@ -33,7 +33,7 @@ module Dashboard
       params.require(:company).permit(:social_name, :fantasy_name, :cnpj, :ie, :street, :number, :complement, :district,
                                       :zip_code, :city, :state, :phone, :phone, :email, :site, :photo_company,
                                       extra_informations: %i[facebook instagram linkedin youtube],
-                                      contacts_attributes: [:id, :phone, :message, :commercial, :financial, :logistics, :administrative, :_destroy])
+                                      contacts_attributes: %i[id phone message commercial financial logistic administrative _destroy])
     end
   end
 end

@@ -51,7 +51,7 @@
         <% if Family.all.size > 0 %>
           <div class="form-group">
             <%= f.label :family_id %><br>
-            <%= f.collection_select(:family_id, Family.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2", required: true) %>
+            <%= f.collection_select(:family_id, Family.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
           </div>
         <% else %>
           <div class="form-group">
@@ -65,7 +65,7 @@
         <% if TaxClassification.all.size > 0 %>
           <div class="form-group">
             <%= f.label :tax_classification_id %><br>
-            <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: "Selecione"}, class: "form-control select2", required: true) %>
+            <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
           </div>
         <% else %>
           <div class="form-group">
