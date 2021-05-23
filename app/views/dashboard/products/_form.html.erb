@@ -39,13 +39,40 @@
         </div>
         <div class="form-group col-md-6">
             <% if Group.all.size > 0 %>
-                <%= f.label :group_id %><br>
+                <%= f.label :group_id %>
                 <%= f.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2") %>
             <% else %>
-                <label for=""> <%= f.label :group_id %></label>
+                <label> <%= f.label :group_id %></label>
                 <select class="form-control" id="">
                     <option>Selecione</option>
                     <option>Cadastre um Grupo</option>
+                </select>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <% if Family.all.size > 0 %>
+                <%= f.label :family_id %>
+                <%= f.collection_select(:family_id, Family.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
+            <% else %>
+                <label> <%= f.label :family_id %></label>
+                <select class="form-control" id="">
+                  <option>Selecione</option>
+                  <option>Cadastre uma Familia</option>
+                </select>
+            <% end %>
+        </div>
+        <div class="form-group col-md-6">
+            <% if TaxClassification.all.size > 0 %>
+                <%= f.label :tax_classification_id %>
+                <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
+            <% else %>
+                <label for=""> <%= f.label :tax_classification_id %></label>
+                <select class="form-control" id="">
+                  <option>Selecione</option>
+                  <option>Cadastre uma Classificação</option>
                 </select>
             <% end %>
         </div>
