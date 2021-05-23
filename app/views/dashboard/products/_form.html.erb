@@ -24,6 +24,33 @@
     
     <hr>
     
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <% if Manufacturer.all.size > 0 %>
+                <%= f.label :manufacturer_id %>
+                <%= collection_select(:group, :manufacturer_id, Manufacturer.all, :id, :description,  {prompt: 'Selecione'}, class: "form-control select2") %>
+            <% else %>
+                <label> <%= f.label :manufacturer_id %></label>
+                <select class="form-control" id="">
+                    <option>Selecione</option>
+                    <option>Cadastre um Fabricante</option>
+                </select>
+            <% end %>
+        </div>
+        <div class="form-group col-md-6">
+            <% if Group.all.size > 0 %>
+                <%= f.label :group_id %><br>
+                <%= f.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2") %>
+            <% else %>
+                <label for=""> <%= f.label :group_id %></label>
+                <select class="form-control" id="">
+                    <option>Selecione</option>
+                    <option>Cadastre um Grupo</option>
+                </select>
+            <% end %>
+        </div>
+    </div>
+    
     <div class="row">
       <div class="col-md-6">
         <% if Manufacturer.all.size > 0 %>
