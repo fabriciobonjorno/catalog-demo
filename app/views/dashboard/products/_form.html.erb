@@ -77,102 +77,51 @@
             <% end %>
         </div>
     </div>
-    
-    <div class="row">
-      <div class="col-md-6">
-        <% if Manufacturer.all.size > 0 %>
-          <div class="form-group">
-            <%= f.label :manufacturer_id %><br>
-            <%= collection_select(:group, :manufacturer_id, Manufacturer.all, :id, :description,  {prompt: 'Selecione'}, class: "form-control select2") %>
-          </div>
-        <% else %>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1"> <%= f.label :manufacturer_id %></label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Selecione</option>
-              <option>Cadastre um Fabricante</option>
-            </select>
-          </div>
-        <% end %>
-        <% if Group.all.size > 0 %>
-          <div class="form-group">
-            <%= f.label :group_id %><br>
-            <%= f.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2") %>
-          </div>
-        <% else %>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1"> <%= f.label :group_id %></label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Selecione</option>
-              <option>Cadastre um Grupo</option>
-            </select>
-          </div>
-        <% end %>
-        <% if Family.all.size > 0 %>
-          <div class="form-group">
-            <%= f.label :family_id %><br>
-            <%= f.collection_select(:family_id, Family.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
-          </div>
-        <% else %>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1"> <%= f.label :family_id %></label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Selecione</option>
-              <option>Cadastre uma Familia</option>
-            </select>
-          </div>
-        <% end %>
-        <% if TaxClassification.all.size > 0 %>
-          <div class="form-group">
-            <%= f.label :tax_classification_id %><br>
-            <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
-          </div>
-        <% else %>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1"> <%= f.label :tax_classification_id %></label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Selecione</option>
-              <option>Cadastre uma Classificação</option>
-            </select>
-          </div>
-        <% end %>
-        <div class="form-group">
-          <%= f.label :code %>
-          <%= f.text_field :code, class: "form-control", placeholder: '123456' %>
-        </div>
-        <div class="form-group form-check">
-          <%= f.check_box :active, class: "form-check-input" %>
-          <label class="form-check-label" for="exampleCheck1">Produto Ativo</label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
           <%= f.label :description %>
           <%= f.text_field :description, class: "form-control", placeholder: 'Meu Produto' %>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <%= f.label :ean %>
           <%= f.text_field :ean, class: "form-control", placeholder: '7891000061190' %>
         </div>
-        <div class="form-group">
-          <%= f.label :dun %>
-          <%= f.text_field :dun, class: "form-control", placeholder: '1845678901001' %>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :code %>
+          <%= f.text_field :code, class: "form-control", placeholder: '123456' %>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <%= f.label :display %>
           <%= f.text_field :display, class: "form-control", placeholder: '978020137962' %>
         </div>
-        <div class="form-group">
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :dun %>
+          <%= f.text_field :dun, class: "form-control", placeholder: '1845678901001' %>
+        </div>
+        <div class="form-group col-md-6">
           <%= f.label :quantitie %>
           <%= f.text_field :quantitie, class: "form-control", placeholder: '24x200' %>
         </div>
-        <div class="form-group form-check">
-          <%= f.check_box :detach, class: "form-check-input" %>
-          <label class="form-check-label" for="exampleCheck1">Produto Destaque</label>
-        </div>
-      </div>
     </div>
+
+    <div class="form-check">
+      <%= f.check_box :active, class: "form-check-input" %>
+      <label class="form-check-label">Produto Ativo</label>
+    </div>
+    <div class="form-check">
+      <%= f.check_box :detach, class: "form-check-input" %>
+      <label class="form-check-label" for="exampleCheck1">Produto Destaque</label>
+    </div>
+    
   </div>
+
   <div class="row">
     <div class="text-center ml-3 mt-2">
       <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
