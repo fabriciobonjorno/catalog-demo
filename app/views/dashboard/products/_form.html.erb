@@ -122,10 +122,8 @@
     
   </div>
 
-  <div class="row">
-    <div class="text-center ml-3 mt-2">
-      <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
-      <%= link_to 'Cancelar', dashboard_products_path, class: "btn btn-danger ml-1" %>
-    </div>
+  <div class="my-2">
+    <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
+    <%= link_to 'Cancelar', dashboard_products_path, class: "btn btn-danger ml-1" %>
   </div>
 <% end %>
