@@ -8,27 +8,16 @@ document.addEventListener("turbolinks:load", () => {
     }
   );
 
-
-  $(document.body).on("change", "#product_manufacturer_id", function () {
+  $(document.body).on("change", ".load_manufacturer", function () {
     getManufacturerGroups(this.value, function (manufacturerGroups) {
-      $("#product_group_id").html(renderSelectOptions(manufacturerGroups)).trigger('change');
+      $(".load_group").html(renderSelectOptions(manufacturerGroups)).trigger('change');
     });
-  });
-  $(document.body).on("change", "#manufacturer_id", function () {
-    getManufacturerGroups(this.value, function (manufacturerGroups) {
-      $("#group_id").html(renderSelectOptions(manufacturerGroups)).trigger('change');
-    });
-
   });
 
-  $(document.body).on("change", "#product_group_id", function () {
+  $(document.body).on("change", ".load_group", function () {
+    console.log('asdfdeeee')
     getGroupFamilies(this.value, function (groupFamilies) {
-      $("#product_family_id").html(renderSelectOptions(groupFamilies));
-    });
-  });
-  $(document.body).on("change", "#group_id", function () {
-    getGroupFamilies(this.value, function (groupFamilies) {
-      $("#family_id").html(renderSelectOptions(groupFamilies));
+      $(".load_family").html(renderSelectOptions(groupFamilies));
     });
   });
 
@@ -95,7 +84,7 @@ function getGroupFamilies(groupId, callback) {
 }
 
 function renderSelectOptions(options) {
-  var htmlOptions = ""
+  var htmlOptions = '<option selected="true" disabled="disabled">Selecione</option>'
   options.forEach(function (option) {
     htmlOptions += "<option value='" + option.id + "'>" + option.description + "</option>"
   })

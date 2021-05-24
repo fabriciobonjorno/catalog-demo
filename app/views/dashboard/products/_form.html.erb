@@ -28,7 +28,7 @@
         <div class="form-group col-md-6">
             <% if Manufacturer.all.size > 0 %>
                 <%= f.label :manufacturer_id %>
-                <%= collection_select(:group, :manufacturer_id, Manufacturer.all, :id, :description,  {prompt: 'Selecione'}, class: "form-control select2") %>
+                <%= collection_select(:product, :manufacturer_id, Manufacturer.all, :id, :description,  {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer") %>
             <% else %>
                 <label> <%= f.label :manufacturer_id %></label>
                 <select class="form-control" id="">
@@ -40,7 +40,7 @@
         <div class="form-group col-md-6">
             <% if Group.all.size > 0 %>
                 <%= f.label :group_id %>
-                <%= f.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2") %>
+                <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
             <% else %>
                 <label> <%= f.label :group_id %></label>
                 <select class="form-control" id="">
@@ -55,7 +55,7 @@
         <div class="form-group col-md-6">
             <% if Family.all.size > 0 %>
                 <%= f.label :family_id %>
-                <%= f.collection_select(:family_id, Family.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
+                <%= f.select :family_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_family"%>
             <% else %>
                 <label> <%= f.label :family_id %></label>
                 <select class="form-control" id="">
