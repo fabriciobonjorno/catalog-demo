@@ -32,6 +32,12 @@ ExtraInformation.create!(
   company_id: 1
 )
 
+puts 'Layout pdf'
+Layoutpdf.create(
+  color_header: '#000',
+  type_logo: '1'
+)
+
 if Rails.env.development?
   puts 'Criando Fabricantes'
   10.times do
