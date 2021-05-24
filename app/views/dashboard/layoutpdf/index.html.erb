@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-sm-4 col-md-4">
-          <div id="newTax" class="info-box">
+          <div id="newLay" class="info-box">
             <%= link_to new_dashboard_layoutpdf_path, remote: true, class:"btn btn-app bg-success mt-2" do %>
               <i class="far fa-plus-square"></i> Adicionar
             <% end %>
@@ -15,25 +15,27 @@
         <table id="taxTable" class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Color</th>
-              <th scope="col">Posicao</th>
+              <th scope="col">Cor - Hexadecimal </th>
+              <th scope="col">Tipo de Exibição</th>
+              <th scope="col">Ação</th>
             </tr>
           </thead>
           <tbody>
             <% @layoutpdf.each do |lay| %>
               <tr>
                 <th scope="row"><%= lay.color_header %></th>
-                <td><%= lay.type_logo %></td>
+                <% if lay.type_logo == '1'  %>
+                    <th scope="row"><%= 'Cabeçalho' %></th>
+                <% else %>
+                    <th scope="row"><%= 'Rodapé' %></th>
+                <% end %>
                 <td>
-                  <%= link_to edit_dashboard_layoutpdf_path(lay), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                  <%= link_to dashboard_layoutpdf_path(tax), class:"btn btn-danger", method: :delete, data:
-                                                         {confirm: "Tem certeza disso? Ao excluir a Classificação fiscal excluirá todos os produtos vinculados",
-                                                         toggle:"tooltip", placement:"top"}, title:"Excluir Classificação fiscal" do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
+                  <%= link_to dashboard_layoutpdf_path(lay.id), class:"btn btn-danger", method: :delete, data:
+                  {confirm: "Tem certeza disso? ",
+                  toggle:"tooltip", placement:"top"}, title:"Excluir Família" do %>
+<i class="far fa-trash-alt"></i>
+<% end %>
+                   
                 </td>
               </tr>
             <% end %>
@@ -54,6 +56,6 @@
   });
   
   function editshow() {
-  document.getElementById("editlayoutpdf").style.display = "flex";
+  document.getElementById("newLay").style.display = "flex";
   }
 </script>
