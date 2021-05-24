@@ -1,12 +1,20 @@
-<%= form_with model: [:dashboard, @layoutpdf] do |f| %>
+<%= form_with url: dashboard_layoutpdf_index_path(1) do |f| %>
   <div class="row p-4" style="align-items: center;">
     <div class="form-group">
       <%= f.label :color_header %>
-      <%= f.text_field :color_header, class: "form-control" %>
-      <%= f.text_field :type, class: "form-control" %>
+      <%= f.color_field :color_header, class: "form-control" %>
+     </div>
+    <div style="width: 100%;" class="form-group">
+       <label> Posição da Imagem </label>
+
+      <%= f.select(:type_logo, [['Cabeçalho', 1], ['Rodapé', 2]], {}, :class => 'form-control', :id => "type_logo")%>
     </div>
+
     <div class="text-center ml-3 mt-3">
       <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
-    </div>
+      <%= link_to 'Cancelar', dashboard_layoutpdf_index_path	, class: "btn btn-danger ml-1" %>
+     
+    
+      </div>
   </div>
 <% end %>
