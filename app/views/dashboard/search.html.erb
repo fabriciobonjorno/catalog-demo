@@ -1,26 +1,52 @@
+<% @layoutpdf.each do |lay| %>
 <section style="width: 100%;
-background-color: ##{@layoutpdf.color_header};
-margin-top: -20px; "> 
+background-color: <%= lay.color_header %>; margin-top: -20px; "> 
 
-   <div class="header-pdf" >
-      <div class="header-img">
+
+
+   <div class="header-pdf" style="min-height: 40px;display:flex;
+   align-self: center;
+   -webkit-justify-content: center;
+   justify-content:center;
+   -webkit-box-pack: center; 
+   -webkit-justify-content: center;
+                  justify-content:center;
+                  -webkit-box-pack: center;
+                  text-align: center;
+                  -webkit-box-pack: center; 
+                  -webkit-flex-direction: row; 
+                  vertical-align: middle;
+                  padding-top:10px;
+                  padding-bottom:10px;
+                  
+                  ">
+      <div class="header-img" style="">
       <% @companies.each do |comp| %>
-         <% if comp.photo_company.attached? %>
-            <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:"max-width: 100px;
-            max-height: 139px;"%>
-            <% else %>
-            <%= image_tag  'file://#{File.expand_path("public/app/assets/images/sem-imagem.jpg")}', class:"img-fluid img-item", style:"max-width: 100px;
-            max-height: 139px; " %>
+         <% if lay.type_logo == '1'  %>
+            <% if comp.photo_company.attached? %>
+               <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:"
+               max-width: 180px;
+               max-height: 180px;
+               display:block;
+               align-self: center;
+               -webkit-justify-content: center;
+               justify-content:center;
+               -webkit-box-pack: center;"%>
+               <% else %>
+               <%= image_tag 'file://#{File.expand_path("public/app/assets/images/sem-imagem.jpg")}', class:"img-fluid img-item", style:"max-width: 100px;
+               max-height: 139px; " %>
+            <% end %>
          <% end %>
       
       </div>
       <div class="header-title">
-       <p style="color:white;font-weight:700;margin-top:10px;margin-left:20px;"> Demonstrativo de Produtos </p> 
+       <p style="width:300px;color:white;font-weight:700;margin: auto;"> Demonstrativo de Produtos </p> 
       </div>
       <% end %>
 
    </div>  
 </section>
+
 
 <section class="container mt-" style=" background-color:rgb(241,241,241); ">
 
@@ -86,24 +112,46 @@ margin-top: -20px; ">
         <% end %>
 </section>
 <section style="width: 100%;
-background-color: ##{@layoutpdf.color_header};;
+background-color: <%= lay.color_header %> ;
 margin-top: -20px; "> 
 
-   <div class="header-pdf" >
+   <div class="header-pdf" style="min-height: 40px;display:flex;
+   align-self: center;
+   -webkit-justify-content: center;
+   justify-content:center;
+   -webkit-box-pack: center; 
+   -webkit-justify-content: center;
+                  justify-content:center;
+                  -webkit-box-pack: center;
+                  text-align: center;
+                  -webkit-box-pack: center; 
+                  -webkit-flex-direction: row; 
+                  vertical-align: middle;
+                  padding-top:10px;
+                  padding-bottom:10px;" >
       <div class="header-img">
-      <% @companies.each do |comp| %>
-         <% if comp.photo_company.attached? %>
-            <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:"max-width: 100px;
-            max-height: 139px;"%>
-            <% else %>
-            <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item", style:"max-width: 100px;
-            max-height: 139px;" %>
+      <% if lay.type_logo == '2' %>
+         <% @companies.each do |comp| %>
+            <% if comp.photo_company.attached? %>
+               <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:" 
+               max-width: 180px;
+               max-height: 180px;
+               display:block;
+               align-self: center;
+               -webkit-justify-content: center;
+               justify-content:center;
+               -webkit-box-pack: center;"%>
+               <% else %>
+               <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item", style:"max-width: 100px;
+               max-height: 139px;" %>
+            <% end %>
          <% end %>
       <% end %>
       </div>
       <div class="header-title">
-       <p style="color:white;font-weight:700;margin-top:10px;margin-left:20px;"> Demonstrativo de Produtos </p> 
+       <p style="width:300px;color:white;font-weight:700;margin-top:20px;margin-left:20px;"> Demonstrativo de Produtos </p> 
       </div>
 
    </div>  
 </section>
+<% end %>
