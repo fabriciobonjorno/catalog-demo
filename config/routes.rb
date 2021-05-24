@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'dashboard', to: 'dashboard#index'
   get 'dashboard/search'
+  get 'dashboard/layoutpdfs'
 
   namespace :dashboard do
     resources :products, except: [:show]
