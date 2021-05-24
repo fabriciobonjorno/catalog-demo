@@ -24,9 +24,9 @@ background-color: <%= lay.color_header %>; margin-top: -20px; ">
       <% @companies.each do |comp| %>
          <% if lay.type_logo == '1'  %>
             <% if comp.photo_company.attached? %>
-               <%= image_tag comp.photo_company, class: "img-fluid", width: '350', style:"
-               max-width: 180px;
-               max-height: 180px;
+               <%= image_tag comp.photo_company, class: "img-fluid", width: '80', style:"
+               max-width: 100px;
+               max-height: 100px;
                display:block;
                align-self: center;
                -webkit-justify-content: center;
@@ -40,7 +40,9 @@ background-color: <%= lay.color_header %>; margin-top: -20px; ">
       
       </div>
       <div class="header-title">
-       <p style="width:300px;color:white;font-weight:700;margin: auto;"> Demonstrativo de Produtos </p> 
+       <p style="width:300px;color:white;font-weight:700;margin: auto;margin-top: 10px"> 
+         <%= Manufacturer.first.description %> - <%= Group.first.description %> 
+       </p> 
       </div>
       <% end %>
 
@@ -98,9 +100,9 @@ background-color: <%= lay.color_header %>; margin-top: -20px; ">
               <% end %>
               <div class="prod-description" style="text-align: center;font-weight: 700;padding-top: 15px;"> <%= product.code_prod %> - <%= product.desc_prod %> </div>
               <div class="prod-description" style="color:red;  text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.qtde_prod %>  </div>
-              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.ean_prod %>  </div>
-              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.dun_prod %>  </div>
-              <div class="prod-description" style="text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.desc_fiscal.force_encoding('UTF-8') %>  </div>
+              <div class="prod-description" style="margin-left: 5px;font-weight: 300;padding-top: 15px;">Ean: <%= product.ean_prod %>  </div>
+              <div class="prod-description" style="margin-left: 5px;font-weight: 300;padding-top: 15px;">Dun: <%= product.dun_prod %>  </div>
+              <div class="prod-description" style="margin-left: 5px;font-weight: 300;padding-top: 15px;">Ncm: <%= product.desc_fiscal.force_encoding('UTF-8') %>  </div>
 
 
 
@@ -149,7 +151,9 @@ margin-top: -20px; ">
       <% end %>
       </div>
       <div class="header-title">
-       <p style="width:300px;color:white;font-weight:700;margin-top:20px;margin-left:20px;"> Demonstrativo de Produtos </p> 
+       <p style="width:100%;text-align:center;color:white;font-weight:700;margin-top:20px;margin-left:20px;">
+        <%= Company.first.fantasy_name %> - <%= Company.first.phone %> <br> <%= Company.first.site %> - <%= Company.first.email %> 
+       </p> 
       </div>
 
    </div>  
