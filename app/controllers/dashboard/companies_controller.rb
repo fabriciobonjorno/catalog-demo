@@ -11,7 +11,6 @@ module Dashboard
     def edit; end
 
     def update
-      @company.contacts.build
       if @company.update(companies_params)
         redirect_to dashboard_companies_path, notice: "#{@company.social_name} atualizada com sucesso!"
       else
