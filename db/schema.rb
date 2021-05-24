@@ -109,6 +109,13 @@ ActiveRecord::Schema.define(version: 20_210_510_004_433) do
     t.string 'color_header'
     t.integer 'type_logo'
   end
+  
+  create_table "layoutpdfs", force: :cascade do |t|
+    t.string "color_header"
+    t.string "type_logo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table 'manufacturers', force: :cascade do |t|
     t.string 'description'
