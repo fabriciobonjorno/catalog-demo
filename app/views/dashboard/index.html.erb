@@ -86,11 +86,6 @@
         <%= form.label :group_id %><br>
         <%= form.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group", required: false) %>
       </div>
-      <div class="form-group">
-        <%= form.label :family_id %><br>
-        <%= form.collection_select(:family_id, Family.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_family", required: false) %>
-      </div>
-      </div>
     </div>
     <div class="form-check form-check-inline">
     <%= form.label :query, "Produtos em Destaque?" %>
