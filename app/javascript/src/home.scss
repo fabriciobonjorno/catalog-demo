@@ -125,8 +125,8 @@ body {
     font-size: calc(12px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;
     padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
     padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-    padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
-    padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+    padding-top: calc(6px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+    padding-bottom: calc(6px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
 }
 
 .news button:focus {
@@ -143,6 +143,7 @@ body {
 
 .news input {
     border: 2px solid green !important;
+    border-radius: 0;
 }
 
 .news .input-group-lg > .custom-select,

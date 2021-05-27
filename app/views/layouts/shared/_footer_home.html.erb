@@ -6,11 +6,21 @@
         <p class="pl-0 ml-0 mb-5">Cadastre seu e-mail para receber.</p>
         <div class="row text-center justify-content-center">
           <div class="col-auto">
-            <div class="input-group-lg input-group mb-3 ">
-                <input type="text" class="form-control" placeholder="Seu Nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <input type="text" class="form-control" placeholder="Seu melhor e-mail" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <div class="input-group-append"><button class="btn btn-success" type="button" id="button-addon2"> <b>Submit</b></button></div>
-            </div>
+            <form>
+              <div class="form-row align-items-center">
+                <div class="col-md-5 col-sm-12">
+                  <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Seu nome">
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Seu melhor email">
+                  </div>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                  <button type="submit" class="btn btn-success btn-sm mb-2">Inscrever</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -46,24 +56,24 @@
 </div>
 <% if @company.contact_home.present? %>
   <div class="help-button-wrapper">
-  <ul class="help-list">
-    <% if @company.financial_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.financial_contact.phone %>&text=<%= @company.financial_contact.message %>" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
-    <% end %>
-    <% if @company.logistic_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.logistic_contact.phone %>&text=<%= @company.logistic_contact.message %>" target="_blank"><i class="fas fa-truck-moving"></i> Logistica</a></li>
-    <% end %>
-    <% if @company.commercial_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.commercial_contact.phone %>&text=<%= @company.commercial_contact.message %>" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
-    <% end %>
-    <% if @company.administrative_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.administrative_contact.phone %>&text=<%= @company.administrative_contact.message %>!" target="_blank"><i class="fas fa-digital-tachograph"></i> Administrativo</a></li>
-    <% end %>
-  </ul>
-  <button class="help-button">
-    <span><i class="fab fa-whatsapp"></i></span>
-  </button>
-</div>
+    <ul class="help-list">
+      <% if @company.financial_contact.present? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.financial_contact.phone %>&text=<%= @company.financial_contact.message %>" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
+      <% end %>
+      <% if @company.logistic_contact.present? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.logistic_contact.phone %>&text=<%= @company.logistic_contact.message %>" target="_blank"><i class="fas fa-truck-moving"></i> Logistica</a></li>
+      <% end %>
+      <% if @company.commercial_contact.present? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.commercial_contact.phone %>&text=<%= @company.commercial_contact.message %>" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
+      <% end %>
+      <% if @company.administrative_contact.present? %>
+        <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.administrative_contact.phone %>&text=<%= @company.administrative_contact.message %>!" target="_blank"><i class="fas fa-digital-tachograph"></i> Administrativo</a></li>
+      <% end %>
+    </ul>
+    <button class="help-button">
+      <span><i class="fab fa-whatsapp"></i></span>
+    </button>
+  </div>
 <% end %>
 <script>
   $(".help-button").on("click", function() {
