@@ -6,7 +6,9 @@
         <p class="pl-0 ml-0 mb-5">Cadastre seu e-mail para receber.</p>
         <div class="row text-center justify-content-center">
           <div class="col-auto">
-            <div class="input-group-lg input-group mb-3 "><input type="text" class="form-control" placeholder="Enter your e-mail address" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-lg input-group mb-3 ">
+                <input type="text" class="form-control" placeholder="Seu Nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" class="form-control" placeholder="Seu melhor e-mail" aria-label="Recipient's username" aria-describedby="button-addon2">
               <div class="input-group-append"><button class="btn btn-success" type="button" id="button-addon2"> <b>Submit</b></button></div>
             </div>
           </div>
@@ -21,11 +23,11 @@
           <div class="col-12 font-italic align-items-center mt-md-3 mt-4">
             <% if @company.photo_company.attached? %>
               <%= link_to root_path do %>
-                <h5><span> <%= image_tag @company.photo_company, class: "img-fluid mb-1" %> </span></h5>
+                <h5><span> <%= image_tag @company.photo_company, class: "img-fluid mb-1", style:"max-width: 300px; max-height: 150px;" %> </span></h5>
               <% end %>
             <% else %>
               <%= link_to root_path do %>
-                <%= image_tag 'sem-imagem.jpg', style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
+                <%= image_tag 'sem-imagem.jpg', class: "img-fluid mb-1", style:"max-width: 300px; max-height: 150px;" %>
               <% end %>
             <% end %>
             <p class="social mt-md-3 mt-2">
@@ -35,14 +37,15 @@
             </span> <span><i class="fab fa-youtube-square"></i></span>
           </p>
           <small class="copy-rights cursor-pointer">&#9400;  <%= Date.current.year %> - <%= @company.fantasy_name %></a></small><br>
-        <small>All rights reserved. Created by <a href="#">Meu Catalogo</a> </small>
+        <small class="copy-rights cursor-pointer">All rights reserved. Created by <a href="https://meucatalogo.art.br/" style="color: #fff" target="_blank">Meu Catalogo</a> </small>
       </div>
     </div>
   </div>
 </div>
 </footer>
 </div>
-<div class="help-button-wrapper">
+<% if @company.contacts.present? %>
+  <div class="help-button-wrapper">
   <ul class="help-list">
     <% if @company.random_financial_contact.present? %>
       <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_financial_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
@@ -61,6 +64,7 @@
     <span><i class="fab fa-whatsapp"></i></span>
   </button>
 </div>
+<% end %>
 <script>
   $(".help-button").on("click", function() {
       $(".help-button-wrapper").toggleClass("expanded");
