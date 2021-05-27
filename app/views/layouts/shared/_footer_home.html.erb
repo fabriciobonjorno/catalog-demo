@@ -27,7 +27,7 @@
               <% end %>
             <% else %>
               <%= link_to root_path do %>
-                <%= image_tag 'sem-imagem.jpg', class: "img-fluid mb-1", style:"max-width: 300px; max-height: 150px;" %>
+                <%= image_tag 'sem-imagem.jpg', class: "img-fluid mb-1", style: "max-height: 150px;" %>
               <% end %>
             <% end %>
             <p class="social mt-md-3 mt-2">
@@ -44,20 +44,20 @@
 </div>
 </footer>
 </div>
-<% if @company.contacts.present? %>
+<% if @company.contact_home.present? %>
   <div class="help-button-wrapper">
   <ul class="help-list">
-    <% if @company.random_financial_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_financial_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
+    <% if @company.financial_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.financial_contact.phone %>&text=<%= @company.financial_contact.message %>" target="_blank"><i class="fas fa-dollar-sign"></i> Finaceiro</a></li>
     <% end %>
-    <% if @company.random_logistic_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_logistic_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-truck-moving"></i> Logistica</a></li>
+    <% if @company.logistic_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.logistic_contact.phone %>&text=<%= @company.logistic_contact.message %>" target="_blank"><i class="fas fa-truck-moving"></i> Logistica</a></li>
     <% end %>
-    <% if @company.random_commercial_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_commercial_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
+    <% if @company.commercial_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.commercial_contact.phone %>&text=<%= @company.commercial_contact.message %>" target="_blank"><i class="fas fa-cart-plus"></i> Comercial</a></li>
     <% end %>
-    <% if @company.random_administrative_contact.present? %>
-      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.random_administrative_contact.phone %>&text=Olá,%20meu%20amigo!" target="_blank"><i class="fas fa-digital-tachograph"></i> Administrativo</a></li>
+    <% if @company.administrative_contact.present? %>
+      <li><a href="https://api.whatsapp.com/send?phone=55<%= @company.administrative_contact.phone %>&text=<%= @company.administrative_contact.message %>!" target="_blank"><i class="fas fa-digital-tachograph"></i> Administrativo</a></li>
     <% end %>
   </ul>
   <button class="help-button">

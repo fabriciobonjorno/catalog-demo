@@ -12,19 +12,23 @@ class Company < ApplicationRecord
 
   validates :photo_company, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
 
-  def random_commercial_contact
+  def commercial_contact
     Contact.where(commercial: true).order('random()').first
   end
 
-  def random_financial_contact
+  def financial_contact
     Contact.where(financial: true).order('random()').first
   end
 
-  def random_logistic_contact
+  def logistic_contact
     Contact.where(logistic: true).order('random()').first
   end
 
-  def random_administrative_contact
+  def administrative_contact
     Contact.where(administrative: true).order('random()').first
+  end
+
+  def contact_home
+    Contact.where.not(phone: nil)
   end
 end

@@ -2,6 +2,7 @@
   <h3 class="h3-responsive text-muted text-center title-home">Produtos em destaque</h3>
   <section class="container-product mt-" style=" ">
     <% @products.each do |product| %>
+    <%= link_to group_product_path(product.group_id, product) do %>
       <figure>
         <div class="eng-prods">
           <% if product.photo_product.attached? %>
@@ -13,9 +14,10 @@
               <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
             </span>
           <% end %>
-          <div class="prod-description"><%= product.code %> - <%= product.description %> </div>
+          <div class="prod-description"><%= product.description %> </div>
         </div>
       </figure>
+       <% end %>
     <% end %>
   </section>
 </section>
