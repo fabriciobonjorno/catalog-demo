@@ -3,8 +3,8 @@
 module Dashboard
   class LayoutpdfController < DashboardController
     before_action :authorize_admin, only: [:destroy]
-    before_action :set_companies , only: %i[edit update destroy]
-    
+    before_action :set_companies, only: %i[edit update destroy]
+
     def index
       @layoutpdf = Layoutpdf.all
     end
@@ -18,7 +18,6 @@ module Dashboard
         alert_errors
       end
     end
-
 
     def new
       @layoutpdf = Layoutpdf.new
@@ -36,12 +35,11 @@ module Dashboard
 
     def destroy
       if @layoutpdf.destroy
-        redirect_to dashboard_layoutpdf_index_path, notice: " excluída com sucesso!"
+        redirect_to dashboard_layoutpdf_index_path, notice: ' excluída com sucesso!'
       else
         alert_errors
       end
     end
-
 
     private
 
@@ -64,4 +62,3 @@ module Dashboard
     end
   end
 end
-

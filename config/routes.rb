@@ -23,5 +23,4 @@ Rails.application.routes.draw do
   resources :groups, only: %i[show] do
     resources :products, only: %i[show]
   end
-  
 end

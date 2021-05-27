@@ -34,9 +34,9 @@ gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-  gem 'ruby-debug-ide', '~> 0.7.2'
   gem 'debase', '~> 0.2.4.1'
   gem 'rubocop', '~> 1.15'
+  gem 'ruby-debug-ide', '~> 0.7.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
