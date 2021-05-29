@@ -15,7 +15,6 @@ document.addEventListener("turbolinks:load", () => {
   });
 
   $(document.body).on("change", ".load_group", function () {
-    console.log('asdfdeeee')
     getGroupFamilies(this.value, function (groupFamilies) {
       $(".load_family").html(renderSelectOptions(groupFamilies));
     });
