@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Company < ApplicationRecord
+  # validates
+  validates :photo_company, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
+  strip_attributes
+
   # associations
   has_one_attached :photo_company
 
@@ -10,9 +14,8 @@ class Company < ApplicationRecord
   has_many :contacts
   accepts_nested_attributes_for :contacts, allow_destroy: true, reject_if: :all_blank?
 
-  validates :photo_company, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
-
-  def commercial_contact
+  # Methods public
+   def commercial_contact
     Contact.where(commercial: true).order('random()').first
   end
 

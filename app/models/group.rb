@@ -5,6 +5,7 @@ class Group < ApplicationRecord
   # validates
   validates :description, presence: true
   validates :description, uniqueness: true
+  strip_attributes
 
   # converted
   friendly_id :description, use: :slugged

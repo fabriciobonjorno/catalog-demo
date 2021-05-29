@@ -7,5 +7,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.friendly.find(params[:id])
+    @subscriber = Subscriber.new
   end
 end

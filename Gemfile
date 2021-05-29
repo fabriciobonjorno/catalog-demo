@@ -26,6 +26,7 @@ gem 'friendly_id', '~> 5.4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'strip_attributes', '~> 1.8'
 
 # Use Active Storage variant
 gem 'devise'

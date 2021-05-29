@@ -6,21 +6,21 @@
         <p class="pl-0 ml-0 mb-5">Cadastre seu e-mail para receber.</p>
         <div class="row text-center justify-content-center">
           <div class="col-auto">
-            <form>
+          <%= form_with model: @subscriber, :url => subscriber_path, method: :post, local: true do |f| %>
               <div class="form-row align-items-center">
                 <div class="col-md-5 col-sm-12">
-                  <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Seu nome">
+                  <%= f.text_field :name, type: "text", class: "form-control mb-2", placeholder: "Seu nome", required: true %>
                 </div>
                 <div class="col-md-5 col-sm-12">
                   <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Seu melhor email">
+                  <%= f.text_field :email, type: "email", class: "form-control", placeholder: "Seu melhor email", required: true %>
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-12">
-                  <button type="submit" class="btn btn-success btn-sm mb-2">Inscrever</button>
+                  <%= f.submit "Inscrever!", class: "btn btn-success btn-sm mb-2" %>
                 </div>
               </div>
-            </form>
+             <% end %>
           </div>
         </div>
       </div>

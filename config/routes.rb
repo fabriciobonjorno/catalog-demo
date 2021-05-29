@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   resources :groups, only: %i[show] do
     resources :products, only: %i[show]
   end
+
+  post "/newsletter", to: 'home#newsletter', as: :subscriber
+
 end

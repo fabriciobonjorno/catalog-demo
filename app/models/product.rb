@@ -9,6 +9,7 @@ class Product < ApplicationRecord
   validates :code, :ean, :dun, :description, presence: true
   validates :code, :ean, :dun, uniqueness: true
   validates :photo_product, presence: true, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..5.megabytes }
+  strip_attributes
 
   # converted
   friendly_id :description, use: :slugged
@@ -18,6 +19,7 @@ class Product < ApplicationRecord
   belongs_to :family
   belongs_to :tax_classification
 
+  # Methods public
   def active?
     active
   end
@@ -34,5 +36,6 @@ class Product < ApplicationRecord
     self&.family&.group&.manufacturer_id
   end
 
+  # Scopes
   scope :product_home, -> { where(detach: true).where(active: true) }
 end

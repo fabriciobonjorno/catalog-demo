@@ -5,5 +5,7 @@ class HomeController < ApplicationController
   before_action :set_resources, only: %i[index]
   layout 'home'
 
-  def index; end
+  def index
+    @subscriber = Subscriber.new
+  end
 end

@@ -4,6 +4,7 @@ class Manufacturer < ApplicationRecord
   # validates
   validates :description, presence: true
   validates :description, uniqueness: true
+  strip_attributes
 
   # associations
   has_many :groups, dependent: :destroy
