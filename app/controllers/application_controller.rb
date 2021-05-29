@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   private
 
   def subscriber_params
-    params.require(:subscriber).permit(:name, :email)
+    params.require(:subscriber).permit(:name, :email, :unsubscribe)
   end
 end
