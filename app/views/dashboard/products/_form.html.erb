@@ -28,7 +28,7 @@
         <div class="form-group col-md-6 col-lg-5">
             <% if Manufacturer.all.size > 0 %>
                 <%= f.label :manufacturer_id %>
-                <%= collection_select(:product, :manufacturer_id, Manufacturer.all, :id, :description,  {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer") %>
+                <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer" , selected: @product.manufacturer_id %>
             <% else %>
                 <label> <%= f.label :manufacturer_id %></label>
                 <select class="form-control" id="">
@@ -40,7 +40,11 @@
         <div class="form-group col-md-6 col-lg-5">
             <% if Group.all.size > 0 %>
                 <%= f.label :group_id %>
-                <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
+                <% if @product.group_id.blank? %>
+                  <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
+                <% else %>
+                  <%= f.collection_select :group_id, Group.where(manufacturer_id: @product.manufacturer_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group" , :selected => @product.group_id %>
+                <% end %> 
             <% else %>
                 <label> <%= f.label :group_id %></label>
                 <select class="form-control" id="">
@@ -55,7 +59,11 @@
         <div class="form-group col-md-6 col-lg-5">
             <% if Family.all.size > 0 %>
                 <%= f.label :family_id %>
-                <%= f.select :family_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_family"%>
+                <% if @product.group_id.blank? %>
+                  <%= f.select :family_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_family"%>
+                <% else %>
+                  <%= f.collection_select :family_id, Family.where(group_id: @product.group_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_family" , :selected => @product.family_id %>
+                <% end %> 
             <% else %>
                 <label> <%= f.label :family_id %></label>
                 <select class="form-control" id="">
