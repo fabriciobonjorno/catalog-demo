@@ -1,7 +1,8 @@
 class ProductMailer < ApplicationMailer
-  def send_detach_product(product, company)
+  def send_detach_product(product, company, subscriber)
     @product = product
     @company = company
-    mail(to: 'fabriciocomeli@gmail.com', subject: 'Testando')
+    @subscriber = subscriber
+    mail(from: @company.email, to: @subscriber.email, subject: 'Temos uma novidade fresquinha para você!')
   end
 end

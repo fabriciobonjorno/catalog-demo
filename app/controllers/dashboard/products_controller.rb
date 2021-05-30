@@ -14,11 +14,13 @@ module Dashboard
     end
 
     def create
-      @company = Company.first
+      search_email_company
       @product = Product.new(products_params)
       if @product.save
         redirect_to dashboard_products_path, notice: "#{@product.description} cadastrado com sucesso!"
-        ProductMailer.send_detach_product(@product, @company).deliver_now!
+        @subscriber.each do |subscriber|
+          ProductMailer.send_detach_product(@product, @company, subscriber).deliver_now!
+        end
       else
         alert_errors
       end
@@ -27,10 +29,12 @@ module Dashboard
     def edit; end
 
     def update
-      @company = Company.first
+      #search_email_company # Usar para testes
       if @product.update(products_params)
         redirect_to dashboard_products_path, notice: "#{@product.description} atualizado com sucesso!"
-        ProductMailer.send_detach_product(@product, @company).deliver_now!
+        # @subscriber.each do |subscriber| Usar para testes
+        #   ProductMailer.send_detach_product(@product, @company, subscriber).deliver_now!
+        # end
       else
         alert_errors
       end
@@ -45,6 +49,11 @@ module Dashboard
     end
 
     private
+
+    def search_email_company
+      @company = Company.first
+      @subscriber = Subscriber.all.where(unsubscribe: false)
+    end
 
     def alert_errors
       redirect_to dashboard_products_path, alert: @product.errors.full_messages.to_sentence
