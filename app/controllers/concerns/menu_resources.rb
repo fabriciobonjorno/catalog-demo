@@ -7,7 +7,7 @@ module MenuResources
     @products = Product.product_home.order(:code)
     @company = Company.first
     if @products.present?
-      @manufacturers = Manufacturer.joins(groups: [families: [:products]]).distinct.order(:description)
+      @manufacturers = Manufacturer.all
     end
   end
 end
