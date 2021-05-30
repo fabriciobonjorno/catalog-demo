@@ -6,6 +6,6 @@ module MenuResources
   def set_resources
     @products = Product.product_home.order(:code)
     @company = Company.first
-    @manufacturers = Manufacturer.joins(groups: [families: [:products]]).order(:description)
+    @manufacturers = Manufacturer.joins(groups: [families: [:products]]).distinct.order(:description)
   end
 end
