@@ -14,9 +14,11 @@ module Dashboard
     end
 
     def create
+      @company = Company.first
       @product = Product.new(products_params)
       if @product.save
         redirect_to dashboard_products_path, notice: "#{@product.description} cadastrado com sucesso!"
+        ProductMailer.send_detach_product(@product, @company).deliver_now!
       else
         alert_errors
       end
@@ -25,8 +27,10 @@ module Dashboard
     def edit; end
 
     def update
+      @company = Company.first
       if @product.update(products_params)
         redirect_to dashboard_products_path, notice: "#{@product.description} atualizado com sucesso!"
+        ProductMailer.send_detach_product(@product, @company).deliver_now!
       else
         alert_errors
       end

@@ -9,96 +9,63 @@
       </div>
     </div>
   </div>
-  <section class="content mt-5">
+  <section class="content mt-1">
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
-              <span class="info-box-number">
-                10
-                <small>%</small>
-              </span>
-            </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="mt-1">
+            <h4> Ultimos produtos cadastrados </h4>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">41,410</span>
-            </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="mt-1">
+            <h4> Estatisticas de acesso </h4>
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-8f565b46-4923-4d9f-8478-c0945abfd47f"></div>
           </div>
         </div>
-        <div class="clearfix hidden-md-up"></div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
-              <span class="info-box-number">760</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number">2,000</span>
-            </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="mt-1">
+            <h4> Exportar produtos </h4>
+            <%= form_with(url:dashboard_search_path + ".csv", :format => 'csv', local: true, :method => 'get', :id => 'relatorio') do |form| %>
+              <div class="form-row ">
+                <%= form.label :description, "Descrição:" %>
+                <%= form.text_field  :description , class: 'form-control' %>
+                <%= form.label :code, "Código:" %>
+                <%= form.text_field :code, class: 'form-control' %>
+                <div class="field">
+                  <div class="txt-tprel">Tipo de relatório <br />
+                    <%= form.radio_button :tiporelatorio, true %>
+                    <%= form.label :tiporelatorio, "PDF", :value => "PDF"  %>
+                    <%= form.radio_button :tiporelatorio, false, :checked => true %>
+                    <%= form.label :tiporelatorio, "CSV", :value => "CSV" %>
+                  </div>
+                </div>
+                <div class="container gro-search">
+                  <div class="container">
+                    <div class="row">
+                      <div class="form-group">
+                        <%= form.label :manufacturer_id %><br>
+                        <%= form.collection_select( :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer", required: false) %>
+                      </div>
+                      <div class="form-group">
+                        <%= form.label :group_id %><br>
+                        <%= form.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group", required: false) %>
+                      </div>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <%= form.label :query, "Produtos em Destaque?" %>
+                      <%= form.check_box :detach , class: 'form-check-label' %>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="container mt-5">
-  <h4> Exportar produtos </h4>
-  <%= form_with(url:dashboard_search_path + ".csv", :format => 'csv', local: true, :method => 'get', :id => 'relatorio') do |form| %>
-    
-    <div class="form-row ">
-    <%= form.label :description, "Descrição:" %>
-    <%= form.text_field  :description , class: 'form-control' %>
-    <%= form.label :code, "Código:" %>
-    <%= form.text_field :code, class: 'form-control' %>
-
-    <div class="field">
-    <div class="txt-tprel">Tipo de relatório <br /></div>
-    
-    <%= form.radio_button :tiporelatorio, true %>
-    <%= form.label :tiporelatorio, "PDF", :value => "PDF"  %>
-    <%= form.radio_button :tiporelatorio, false, :checked => true %>
-    <%= form.label :tiporelatorio, "CSV", :value => "CSV" %>
-  </div>
-  
-   <div class="container gro-search">
-    <div class="container">
-      <div class="row">
-      <div class="form-group">
-        <%= form.label :manufacturer_id %><br>
-        <%= form.collection_select( :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer", required: false) %>
-      </div>
-      <div class="form-group">
-        <%= form.label :group_id %><br>
-        <%= form.collection_select(:group_id, Group.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group", required: false) %>
-      </div>
-    </div>
-    <div class="form-check form-check-inline">
-    <%= form.label :query, "Produtos em Destaque?" %>
-    <%= form.check_box :detach , class: 'form-check-label' %>
-    </div>
-  
-    </div>
-  
-    <button type="submit" class="btn btn-primary">Pesquisar</button>
-  <% end %>
-  </div>
-
-  </section>
-
-</div>
 </div>

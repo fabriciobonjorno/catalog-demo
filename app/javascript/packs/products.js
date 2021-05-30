@@ -3,7 +3,7 @@ document.addEventListener("turbolinks:load", () => {
   $('#productTable').DataTable(
     {
       language: {
-        url: '/packs/pt_br.json'
+        url: '/pt_br.json'
       }
     }
   );
