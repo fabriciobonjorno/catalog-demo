@@ -10,5 +10,4 @@ module MenuResources
       @manufacturers = Manufacturer.joins(groups: [families: [:products]]).distinct.order(:description)
     end
   end
-
 end
