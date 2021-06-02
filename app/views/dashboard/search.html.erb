@@ -1,20 +1,18 @@
 <% @layoutpdf.each do |lay| %>
 <section style="width: 100%;
-background-color: <%= lay.color_header %>; margin-top: -20px; "> 
+background-color: <%= lay.color_header %>; margin-top: -20px;  "> 
 
 
 <% if lay.type_logo == '1'  %>
    <div class="header-pdf" style="min-height: 40px;display:flex;
-   align-self: center;
-   -webkit-justify-content: center;
-   justify-content:center;
+ 
    -webkit-box-pack: center; 
    -webkit-justify-content: center;
+    
                   justify-content:center;
                   -webkit-box-pack: center;
                   text-align: center;
-                  -webkit-box-pack: center; 
-                  -webkit-flex-direction: row; 
+                   -webkit-flex-direction: row-reverse; 
                   vertical-align: middle;
                   padding-top:10px;
                   padding-bottom:10px;
@@ -28,6 +26,7 @@ background-color: <%= lay.color_header %>; margin-top: -20px; ">
    -webkit-box-pack: center; /* wkhtmltopdf uses this one */
    -webkit-justify-content: center;
            justify-content: center;
+           -webkit-flex-direction: row-reverse; 
                   
                   ">
 <% end %>
@@ -79,19 +78,27 @@ background-color: <%= lay.color_header %>; margin-top: -20px; ">
       <div style="margin-top: 20px;
           margin-bottom: 20px;">
               <% if product.photo_product.attached? %>
-                <a style="    display:block;display: flex;
-                height: 180px;-webkit-justify-content: center;
-                justify-content:center;
-                -webkit-box-pack: center;text-align: center;
+                <a style="     display: flex;
+                 min-height:180px;
+                 display: -webkit-box; /* wkhtmltopdf uses this one */
+                 -webkit-justify-content: center;
+                display: flex;
+                -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+                justify-content: center;
+                 
                 ">
                   <%= image_tag  product.photo_product, style:'
-                  max-width: 180px;
-                  max-height: 180px;
+                   
+                  text-align: center;
+                  width:auto;
+                  height:auto;
+                  object-fit: cover;
                   display:block;
                   align-self: center;
                   -webkit-justify-content: center;
                   justify-content:center;
                   -webkit-box-pack: center;
+                  align-items: center; 
                   
                   ', title: 'image' %>
                 </a>
