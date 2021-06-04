@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:fabriciobonjorno/demo-deploy.git"
 
 set :deploy_to, "/var/www/demo"
 
-append :linked_files, "config/database.yml", "config/master.key"
+append :linked_files, "config/database.yml", "config/storage.yml", "config/master.key"
 append :linked_dirs, "log", "tmp", "storage"
 
 set :keep_releases, 5
