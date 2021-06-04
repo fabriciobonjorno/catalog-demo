@@ -1,9 +1,9 @@
 <% @layoutpdf.each do |lay| %>
 <section style="width: 100%;
-background-color: <%= lay.color_header %>; margin-top: -20px;  "> 
+background-color: <%= lay.color_header %>; margin-top: -20px; min-height:80px; "> 
 
 
-<% if lay.type_logo == '1'  %>
+<% if lay.type_logo == '2'  %>
    <div class="header-pdf" style="min-height: 40px;display:flex;
  
    -webkit-box-pack: center; 
@@ -18,9 +18,40 @@ background-color: <%= lay.color_header %>; margin-top: -20px;  ">
                   padding-bottom:10px;
                   
                   ">
+
+                  <div class="header-img" style="">
+                  <% @companies.each do |comp| %>
+                     
+                        <% if comp.photo_company.attached? %>
+                           <%= image_tag comp.photo_company, class: "img-fluid", width: '80', style:"
+                           max-width: 100px;
+                           max-height: 100px;
+                           display:block;
+                           align-self: center;
+                           -webkit-justify-content: center;
+                           justify-content:center;
+                           -webkit-box-pack: center;"%>
+                           <% else %>
+                           <%= image_tag 'file://#{File.expand_path("public/app/assets/images/sem-imagem.jpg")}', class:"img-fluid img-item", style:"max-width: 100px;
+                           max-height: 139px; " %>
+                        <% end %>
+                  
+                  
+                  </div>
+                  <div class="header-title">
+                   <p style="width:300px;color:white;font-weight:700;margin: auto;margin-top: 10px"> 
+                     <%= Manufacturer.first.description %> - <%= Group.first.description %> 
+                   </p> 
+                  </div>
+                  <% end %>
+            
+               </div> 
+
+
+
 <% end %>
 
-<% if lay.type_logo == '2'  %>
+<% if lay.type_logo == '1'  %>
    <div class="header-pdf" style="display: -webkit-flex;
    display: flex;
    -webkit-box-pack: center; /* wkhtmltopdf uses this one */
@@ -29,36 +60,42 @@ background-color: <%= lay.color_header %>; margin-top: -20px;  ">
            -webkit-flex-direction: row-reverse; 
                   
                   ">
+                  <div class="header-title">
+                  <p style="width:300px;color:white;font-weight:700;margin: auto;margin-top: 10px"> 
+                    <%= Manufacturer.first.description %> - <%= Group.first.description %> 
+                  </p> 
+                 </div>
+                  
+                  <div class="header-img" style="">
+
+                  <% @companies.each do |comp| %>
+                    
+                        <% if comp.photo_company.attached? %>
+                           <%= image_tag comp.photo_company, class: "img-fluid", width: '80', style:"
+                           max-width: 100px;
+                           max-height: 100px;
+                           display:block;
+                           align-self: center;
+                           -webkit-justify-content: center;
+                           justify-content:center;
+                           -webkit-box-pack: center;"%>
+                           <% else %>
+                           <%= image_tag 'file://#{File.expand_path("public/app/assets/images/sem-imagem.jpg")}', class:"img-fluid img-item", style:"max-width: 100px;
+                           max-height: 139px; " %>
+                        <% end %>
+                  
+                  
+                  </div>
+                  
+                  <% end %>
+            
+               </div> 
+
+
 <% end %>
 
 
-      <div class="header-img" style="">
-      <% @companies.each do |comp| %>
-         
-            <% if comp.photo_company.attached? %>
-               <%= image_tag comp.photo_company, class: "img-fluid", width: '80', style:"
-               max-width: 100px;
-               max-height: 100px;
-               display:block;
-               align-self: center;
-               -webkit-justify-content: center;
-               justify-content:center;
-               -webkit-box-pack: center;"%>
-               <% else %>
-               <%= image_tag 'file://#{File.expand_path("public/app/assets/images/sem-imagem.jpg")}', class:"img-fluid img-item", style:"max-width: 100px;
-               max-height: 139px; " %>
-            <% end %>
-      
-      
-      </div>
-      <div class="header-title">
-       <p style="width:300px;color:white;font-weight:700;margin: auto;margin-top: 10px"> 
-         <%= Manufacturer.first.description %> - <%= Group.first.description %> 
-       </p> 
-      </div>
-      <% end %>
-
-   </div>  
+ 
 </section>
 
 
