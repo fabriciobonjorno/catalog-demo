@@ -12,7 +12,7 @@ class User < ApplicationRecord
     profile
   end
 
-  # def self.support
-  #   User.where(email: )
-  # end
+  def self.support
+    User.where.not(email: 'suporte@meucatalogo.art.br')
+  end
 end
