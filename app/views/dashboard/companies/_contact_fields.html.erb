@@ -1,30 +1,34 @@
 <div class="nested-fields">
-  <%= f.hidden_field :_destroy %>
-  <div class="form-group">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
+  <div class="row mt-3">
+    <%= f.hidden_field :_destroy %>
+    <div class="form-group">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="form-group">
+      <%= f.label :message %>
+      <%= f.text_field :message %>
+    </div>
+    <div>
+      <%= link_to "Remove", '#', class: "remove_fields btn btn-sm btn-danger p-1" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :message %>
-    <%= f.text_field :message %>
-  </div>
-  <div class="form-group">
-    <%= f.label :commercial %>
-    <%= f.check_box :commercial %>
-  </div>
-  <div class="form-group">
-    <%= f.label :financial %>
-    <%= f.check_box :financial %>
-  </div>
-  <div class="form-group">
-    <%= f.label :logistic %>
-    <%= f.check_box :logistic %>
-  </div>
-  <div class="form-group">
-    <%= f.label :administrative %>
-    <%= f.check_box :administrative %>
-  </div>
-  <div>
-    <%= link_to "Remove", '#', class: "remove_fields" %>
+  <div class="row">
+    <div class="form-group">
+      <%= f.check_box :commercial %>
+      <%= f.label :commercial %>
+    </div>
+    <div class="form-group">
+      <%= f.check_box :financial %>
+      <%= f.label :financial %>
+    </div>
+    <div class="form-group">
+      <%= f.check_box :logistic %>
+      <%= f.label :logistic %>
+    </div>
+    <div class="form-group">
+      <%= f.check_box :administrative %>
+      <%= f.label :administrative %>
+    </div>
   </div>
 </div>
