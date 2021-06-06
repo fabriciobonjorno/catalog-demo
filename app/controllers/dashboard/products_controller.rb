@@ -29,7 +29,7 @@ module Dashboard
     def edit; end
 
     def update
-      #search_email_company # Usar para testes
+      # search_email_company # Usar para testes
       if @product.update(products_params)
         redirect_to dashboard_products_path, notice: "#{@product.description} atualizado com sucesso!"
         # @subscriber.each do |subscriber| Usar para testes

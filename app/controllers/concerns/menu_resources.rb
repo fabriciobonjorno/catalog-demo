@@ -6,9 +6,7 @@ module MenuResources
   def set_resources
     @products = Product.product_home.order(:code)
     @company = Company.first
-    if Manufacturer.present?
-      @manufacturers = Manufacturer.joins(groups: [families: [:products]]).distinct.order(:description)
-    end
+    @manufacturers = Manufacturer.joins(groups: [families: [:products]]).distinct.order(:description) if Manufacturer.present?
     @q = Product.ransack(params[:q])
     @products = @q.result
   end
