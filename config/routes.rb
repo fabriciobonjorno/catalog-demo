@@ -26,4 +26,5 @@ Rails.application.routes.draw do
 
   post "/newsletter", to: 'home#newsletter', as: :subscriber
 
+  get "/search", to: 'home#search', as: :products
 end

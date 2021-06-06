@@ -9,5 +9,7 @@ module MenuResources
     if Manufacturer.present?
       @manufacturers = Manufacturer.joins(groups: [families: [:products]]).distinct.order(:description)
     end
+    @q = Product.ransack(params[:q])
+    @products = @q.result
   end
 end

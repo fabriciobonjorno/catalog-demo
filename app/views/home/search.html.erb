@@ -1,6 +1,6 @@
 <section class="container mt-5 mb-5">
   <% if @products.present? %>
-    <h3 class="h3-responsive text-muted text-center title-home">Produtos em destaque</h3>
+    <h3 class="h3-responsive text-muted text-center title-home"><%= pluralize(@products.count, 'Resultado encontrado') %> : </h3>
     <section class="container-product mt-" style=" ">
       <% @products.each do |product| %>
         <%= link_to group_product_path(product.group_id, product) do %>
@@ -22,7 +22,6 @@
       <% end %>
     </section>
   <% else %>
-    <h3 class="h3-responsive text-muted text-center title-home">Nenhum produto em destaque</h3>
+    <h3 class="h3-responsive text-muted text-center title-home">Nenhum produto encontrado!</h3>
   <% end %>
 </section>
-
