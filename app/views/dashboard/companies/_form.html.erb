@@ -152,10 +152,15 @@
         </div>
         
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <%= f.fields_for :contacts do |contact_form| %>
-              <%= render "contact_fields", f: contact_form %>
-            <% end %>
-            <%= link_to_add_fields "Adicionar novo Contato", f, :contacts %>
+            <div class="form-row justify-content-lg-center">
+              <div class="form-group col-md-12 col-lg-10">
+                <%= f.fields_for :contacts do |contact_form| %>
+                  <%= render "contact_fields", f: contact_form %>
+                <% end %>
+                <%= link_to_add_fields "Adicionar novo Contato", f, :contacts %>
+              </div>
+            </div>
+            
         </div>
       </div>
       
