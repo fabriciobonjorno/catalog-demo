@@ -72,72 +72,7 @@
     </div>
   </div>
     
-    
-    
-    
-    
-    
-    
-    
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-          <div class="p-2 mt-4 mb-2">
-            <h6 class="text-center">Foto do usuário</h6>
-            <% if @user.photo_profile.attached? %>
-              <%= image_tag @user.photo_profile, class: "img-fluid img-item", title: @user.name %>
-            <% else %>
-              <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
-            <% end %>
-          </div>
-          <div class="form-group">
-            <%= f.label :photo_profile %>
-            <%= f.file_field :photo_profile, class: "form-control" %>
-          </div>
-          <hr>
-        </div>
-        
-        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-          <div class="row align-items-center mt-4">
-            <div class="col">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: "form-control", type: "text", placeholder: "E-mail" %>
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <%= f.label :email %>
-              <%= f.text_field :email, class: "form-control", type: "email", placeholder: "Nome" %>
-            </div>
-          </div>
-          <div class="row align-items-center mt-4">
-            <div class="col">
-              <%= f.label :password %>
-              <%= f.password_field :password, class: "form-control", type: "password", placeholder: "Senha" %>
-            </div>
-            <div class="col">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, class: "form-control", type: "password", placeholder: "Confirme a senha" %>
-            </div>
-          </div>
-          <div class="row justify-content-start mt-4">
-            <div class="col">
-              <% if current_user.admin? %>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <%= f.check_box :profile, class: "form-check-input" %>
-                    <%= f.label :profile %> de Administrador
-                  </label>
-                </div>
-              <% end %>
-              <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
-              <%= link_to 'Cancelar', dashboard_users_path, class: "btn btn-danger ml-1" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    
-    
+<% end %>
     
     
   </div>
