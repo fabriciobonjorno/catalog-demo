@@ -1,21 +1,12 @@
 <%= form_with model: [:dashboard, @manufacturer] do |f| %>
 
 <div class="p-4">
-
-    <div class="form-group row justify-content-md-center">
-      <%= f.label :description, class: "col-md-2 col-lg-2 col-form-label" %>
-      <div class="col-md-10 col-lg-8">
-        <%= f.text_field :description, class: "form-control" %>
-      </div>
-    </div>
-    
     <div class="form-row justify-content-lg-center">
         <div class="form-group col-md-12 col-lg-10">
           <%= f.label :description %>
           <%= f.text_field :description, class: "form-control" %>
         </div>
     </div>
-  
 </div>
 
 <div class="col-md-12 col-lg-10 offset-lg-1">
@@ -25,17 +16,4 @@
   </div>
 </div>
 
-
-
-
-  <div class="row p-4" style="align-items: center;">
-    <div class="form-group">
-      <%= f.label :description %>
-      <%= f.text_field :description, class: "form-control" %>
-    </div>
-    <div class="text-center ml-3 mt-3">
-      <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
-      <%= link_to 'Cancelar', dashboard_manufacturers_path, class: "btn btn-danger ml-1" %>
-    </div>
-  </div>
 <% end %>
