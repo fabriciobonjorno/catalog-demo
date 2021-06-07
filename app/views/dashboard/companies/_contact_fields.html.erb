@@ -1,4 +1,45 @@
 <div class="nested-fields">
+  <div class="form-row align-items-center">
+    <%= f.hidden_field :_destroy %>
+    <div class="col-auto">
+      <%= f.label :phone, class: "sr-only" %>
+      <%= f.text_field :phone, class: "form-control mb-2" %>
+    </div>
+    <div class="col-auto">
+      <%= f.label :message, class: ""sr-only" %>
+      <%= f.text_field :message, class: "form-control mb-2" %>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :commercial, class: "form-check-input" %>
+        <%= f.label :commercial, class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :financial, class: "form-check-input" %>
+        <%= f.label :financial, class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :logistic, class: "form-check-input" %>
+        <%= f.label :logistic, class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :administrative, class: "form-check-input" %>
+        <%= f.label :administrative, class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-auto">
+      <%= link_to "Remove", '#', class: "remove_fields btn btn-sm btn-danger mb-2" %>
+    </div>
+  </div>
+  
+  
+  
   <div class="row mt-3">
     <%= f.hidden_field :_destroy %>
     <div class="form-group">
@@ -14,21 +55,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group">
+    <div class="form-check form-check-inline">
       <%= f.check_box :commercial, class: "form-check-input" %>
       <%= f.label :commercial, class: "form-check-label" %>
     </div>
-    <div class="form-group">
+    
+    <div class="form-check form-check-inline">
       <%= f.check_box :financial, class: "form-check-input" %>
       <%= f.label :financial, class: "form-check-label" %>
     </div>
-    <div class="form-group">
+    
+    <div class="form-check form-check-inline">
       <%= f.check_box :logistic, class: "form-check-input" %>
       <%= f.label :logistic, class: "form-check-label" %>
     </div>
-    <div class="form-group">
+    
+    <div class="form-check form-check-inline">
       <%= f.check_box :administrative, class: "form-check-input" %>
       <%= f.label :administrative, class: "form-check-label" %>
     </div>
+
   </div>
 </div>
