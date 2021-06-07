@@ -15,7 +15,7 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :contacts, allow_destroy: true, reject_if: :all_blank?
 
   # Methods public
-   def commercial_contact
+  def commercial_contact
     Contact.where(commercial: true).order('random()').first
   end
 

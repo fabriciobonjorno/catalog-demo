@@ -22,11 +22,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 gem 'friendly_id', '~> 5.4.0'
+gem 'ransack', '~> 2.4', '>= 2.4.2'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'strip_attributes', '~> 1.8'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem 'strip_attributes', '~> 1.8'
 
 # Use Active Storage variant
 gem 'devise'

@@ -8,12 +8,12 @@
       <% else %>
         <%= link_to root_path do %>
           <%= image_tag 'sem-imagem.jpg', style:"max-width: 300px; max-height: 100px;", class: "navbar-brand" %>
-        <% end %> 
+        <% end %>
       <% end %>
-      <form class="form-inline">
-        <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
+        <%= search_form_for @q, class:"form-inline" do |f| %>
+          <%= f.search_field :code_or_description_or_ean_or_dun_or_display_cont, class:"form-control mr-2", placeholder:"Buscar" %>
+          <%= f.submit "Buscar", class:"btn btn-outline-dark my-2 my-sm-0" %>
+        <% end %>
       <div>
         <%= link_to dashboard_path, class: "nav-link btn btn-outline-dark my-2 my-sm-0" do %>
           <i class="fas fa-user"></i>

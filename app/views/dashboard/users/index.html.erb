@@ -22,7 +22,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @users.where.not(email: 'suporte@meucatalogo.art.br').each do |user| %>
+            <% @users.support.each do |user| %>
                 <tr>
                   <td><%= user.name %></td>
                   <td><%= user.email %></td>
@@ -53,11 +53,11 @@
 </div>
 </div>
 <script>
-  document.addEventListener('turbolinks:load', function() {
+  //document.addEventListener('turbolinks:load', function() {
     $('#userTable').DataTable({
     language: {
       url: '/pt_br.json'
     }
     });
-  });
+  //});
 </script>
