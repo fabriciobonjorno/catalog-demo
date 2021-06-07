@@ -1,8 +1,5 @@
 {
   "name": "catalogo",
-  "engines" : { 
-    "node" : ">=14.0.0" 
-  },
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
