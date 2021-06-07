@@ -2,15 +2,17 @@
 
 <div class="p-4">
   <div class="form-row justify-content-lg-center">
-      <div class="form-group col-md-6 col-lg-5">
+      <div class="form-group col-md-12 col-lg-2 offset-lg-8">
         <%= f.label :color_header %>
         <%= f.color_field :color_header, class: "form-control" %>
       </div>
-      <div class="form-group col-md-6 col-lg-5">
+  </div>
+  <div class="form-row justify-content-lg-center">
+      <div class="form-group col-md-12 col-lg-10">
         <label>Posição da Imagem</label>
         <%= f.select(:type_logo, [['Direita', 1], ['Esquerda', 2]], {}, :class => 'form-control', :id => "type_logo")%>
       </div>
-  </div>  
+  </div>
 </div>
 
 <div class="col-md-12 col-lg-10 offset-lg-1">
