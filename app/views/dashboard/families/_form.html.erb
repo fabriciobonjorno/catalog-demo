@@ -1,46 +1,51 @@
 <%= form_with model: [:dashboard, @family], class: 'autoload_groups' do |f| %>
   <div class="p-4">
-    <% if Manufacturer.all.size > 0 %>
-      <div class="form-group">
-        <%= f.label :manufacturer_id %><br>
-        <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer" , :selected => @family.manufacturer_id %>
-      </div>
-    <% else %>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1"> <%= f.label :manufacturer_id %></label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Selecione</option>
-          <option>Cadastre um Fabricante</option>
-        </select>
-      </div>
-    <% end %>
-    <% if Group.all.size > 0 %>
-      <div class="form-group">
-        <%= f.label :group_id %><br>
-        <% if @family.group_id.blank? %>
-          <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
-        <% else %>
-          <%= f.collection_select :group_id, Group.where(manufacturer_id: @family.manufacturer_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group" , :selected => @family.group_id %>
-        <% end %>    
-      </div>
-    <% else %>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1"> <%= f.label :group_id %></label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Selecione</option>
-          <option>Cadastre um Grupo</option>
-        </select>
-      </div>
-    <% end %>
-    <div class="form-group">
-      <%= f.label :description %>
-      <%= f.text_field :description, class: "form-control" %>
+    
+    <div class="form-row justify-content-lg-center">
+        <div class="form-group col-md-6 col-lg-5">
+            <% if Manufacturer.all.size > 0 %>
+                <%= f.label :manufacturer_id %>
+                <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer" , :selected => @family.manufacturer_id %>
+            <% else %>
+                <label><%= f.label :manufacturer_id %></label>
+                <select class="form-control" id="">
+                  <option>Selecione</option>
+                  <option>Cadastre um Fabricante</option>
+                </select>
+            <% end %>
+        </div>
+        <div class="form-group col-md-6 col-lg-5">
+            <% if Group.all.size > 0 %>
+                <%= f.label :group_id %>
+                <% if @family.group_id.blank? %>
+                  <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
+                <% else %>
+                  <%= f.collection_select :group_id, Group.where(manufacturer_id: @family.manufacturer_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group" , :selected => @family.group_id %>
+                <% end %> 
+            <% else %>
+                <label><%= f.label :group_id %></label>
+                <select class="form-control" id="">
+                  <option>Selecione</option>
+                  <option>Cadastre um Grupo</option>
+                </select>
+            <% end %>
+        </div>
     </div>
+    
+    <div class="form-row justify-content-lg-center">
+        <div class="form-group col-md-12 col-lg-10">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+    </div>
+    
   </div>
-  <div class="row">
-    <div class="text-center ml-3 mt-2">
+
+  <div class="col-md-12 col-lg-10 offset-lg-1">
+    <div class="px-4 mb-4 text-center">
       <%= f.submit class: 'btn btn-success', data: { disable_with: 'Criando....⌛'} %>
       <%= link_to 'Cancelar', dashboard_families_path, class: "btn btn-danger ml-1" %>
     </div>
   </div>
+
 <% end %>
