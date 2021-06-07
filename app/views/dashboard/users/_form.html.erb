@@ -1,6 +1,44 @@
 <section>
   <div class="container">
     <%= form_with model: [:dashboard, @user], multipart: true do |f| %>
+    
+    <div class="p-4">
+      
+      <div class="form-group row justify-content-md-center">
+        <%= f.label :photo_profile, class: "col-md-2 col-lg-2 col-form-label" %>
+        <div class="col-md-10 col-lg-8">
+          <div class="custom-file mb-3">
+            <%= f.file_field :photo_profile, class: "custom-file-input", id:"browse" %>
+            <%= f.label :photo_product, class: "custom-file-label" do %>
+              Selecione um Arquivo
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+     <div class="p-2 mb-2 text-center">
+      <h6>Foto do usuário</h6>
+      <% if @user.photo_profile.attached? %>
+        <%= image_tag @user.photo_profile, class: "img-fluid img-item", title: @user.name %>
+      <% else %>
+        <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
+      <% end %>
+    </div>
+    
+    <hr>
+      
+      
+      
+      
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
       <div class="row justify-content-center">
         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
           <div class="p-2 mt-4 mb-2">
@@ -17,6 +55,7 @@
           </div>
           <hr>
         </div>
+        
         <div class="col-12 col-md-8 col-lg-8 col-xl-6">
           <div class="row align-items-center mt-4">
             <div class="col">
