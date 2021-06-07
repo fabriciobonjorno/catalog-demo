@@ -2,12 +2,12 @@
   <div class="row mt-3">
     <%= f.hidden_field :_destroy %>
     <div class="form-group">
-      <%= f.label :phone %>
-      <%= f.text_field :phone %>
+      <%= f.label :phone, class: "form-check-label" %>
+      <%= f.text_field :phone, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :message %>
-      <%= f.text_field :message %>
+      <%= f.label :message, class: "form-check-label" %>
+      <%= f.text_field :message, class: "form-control" %>
     </div>
     <div>
       <%= link_to "Remove", '#', class: "remove_fields btn btn-sm btn-danger p-1" %>
@@ -15,20 +15,20 @@
   </div>
   <div class="row">
     <div class="form-group">
-      <%= f.check_box :commercial %>
-      <%= f.label :commercial %>
+      <%= f.check_box :commercial, class: "form-check-input" %>
+      <%= f.label :commercial, class: "form-check-label" %>
     </div>
     <div class="form-group">
-      <%= f.check_box :financial %>
-      <%= f.label :financial %>
+      <%= f.check_box :financial, class: "form-check-input" %>
+      <%= f.label :financial, class: "form-check-label" %>
     </div>
     <div class="form-group">
-      <%= f.check_box :logistic %>
-      <%= f.label :logistic %>
+      <%= f.check_box :logistic, class: "form-check-input" %>
+      <%= f.label :logistic, class: "form-check-label" %>
     </div>
     <div class="form-group">
-      <%= f.check_box :administrative %>
-      <%= f.label :administrative %>
+      <%= f.check_box :administrative, class: "form-check-input" %>
+      <%= f.label :administrative, class: "form-check-label" %>
     </div>
   </div>
 </div>
