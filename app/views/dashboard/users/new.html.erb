@@ -1,3 +1,15 @@
 <div class="content-wrapper">
-<%= render 'form' %>
+  <%= render partial: "dashboard/shared/breadcrumb", locals: {title: "Usuários"} %>
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-12 col-sm-3 col-md-12">
+          <div id="newFamily" class="bg-box">
+            <%= render 'form' %>
+          </div>
+         </div>
+       </div>
+     </div>
+  </section>
 </div>

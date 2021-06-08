@@ -1,34 +1,41 @@
 <div class="nested-fields">
-  <div class="row mt-3">
+  <div class="form-row align-items-center">
     <%= f.hidden_field :_destroy %>
-    <div class="form-group">
+    <div class="form-group col-auto">
       <%= f.label :phone %>
-      <%= f.text_field :phone %>
+      <%= f.text_field :phone, class: "form-control mb-2" %>
     </div>
-    <div class="form-group">
+    <div class="form-group col-auto">
       <%= f.label :message %>
-      <%= f.text_field :message %>
+      <%= f.text_field :message, class: "form-control mb-2" %>
     </div>
-    <div>
-      <%= link_to "Remove", '#', class: "remove_fields btn btn-sm btn-danger p-1" %>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :commercial, class: "form-check-input" %>
+        <%= f.label :commercial, class: "form-check-label" %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <%= f.check_box :commercial %>
-      <%= f.label :commercial %>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :financial, class: "form-check-input" %>
+        <%= f.label :financial, class: "form-check-label" %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.check_box :financial %>
-      <%= f.label :financial %>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :logistic, class: "form-check-input" %>
+        <%= f.label :logistic, class: "form-check-label" %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.check_box :logistic %>
-      <%= f.label :logistic %>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= f.check_box :administrative, class: "form-check-input" %>
+        <%= f.label :administrative, class: "form-check-label" %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.check_box :administrative %>
-      <%= f.label :administrative %>
+    <div class="col-auto">
+      <%= link_to "Remove", '#', class: "remove_fields btn btn-sm btn-danger mb-2" %>
     </div>
+    
   </div>
 </div>
