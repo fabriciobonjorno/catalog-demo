@@ -10,8 +10,6 @@ import "./products"
 import './addfields'
 import './removefields'
 
-document.addEventListener("turbolinks:load", () => {
-
   $(document.body).on("change", "#browse", function () {
     var files = this.files;
     var errors = "";
@@ -46,5 +44,3 @@ document.addEventListener("turbolinks:load", () => {
   $(document.body).on("change", ".photo-upload", function (e) {
     e.target.nextElementSibling.innerHTML = e.target.files[0].name;
   });
-
-})
