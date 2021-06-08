@@ -9,21 +9,21 @@
         <div class="col-md-10 col-lg-8">
           <div class="custom-file mb-3">
             <%= f.file_field :photo_profile, class: "custom-file-input", id:"browse" %>
-            <%= f.label :photo_product, class: "custom-file-label" do %>
+            <%= f.label :photo_profile, class: "custom-file-label" do %>
               Selecione um Arquivo
             <% end %>
           </div>
         </div>
       </div>
       
-     <div class="p-2 mb-2 text-center">
-      <h6>Foto do usuário</h6>
-      <% if @user.photo_profile.attached? %>
-        <%= image_tag @user.photo_profile, class: "img-fluid img-item", title: @user.name %>
-      <% else %>
-        <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
-      <% end %>
-    </div>
+        <div class="p-2 mb-2 text-center">
+          <h6>Foto de perfil</h6>
+          <% if @user.photo_profile.attached? %>
+            <%= image_tag @user.photo_profile.variant(resize_to_limit: [300,500]), class: 'img_prev mt-2', style: 'max-width: 300px; max-height: 500px' %>
+          <% else %>
+            <%= image_tag("sem-imagem.jpg", class: "img_prev", style: 'max-width: 300px;') %>
+          <% end %>
+        </div>
     
     <hr>
       
