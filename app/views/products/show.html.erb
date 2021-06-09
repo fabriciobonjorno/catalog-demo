@@ -88,8 +88,11 @@
           <div class="product_description">
             <nav>
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Accessories</li>
+                <li class="breadcrumb-item">
+                  <a href="#"><%= %></a>
+                  <%= link_to "#{@product.family.group.description }", group_path(@product.family.group) %>
+                </li>
+                <li class="breadcrumb-item active"><%= @product.family.description %></li>
               </ol>
             </nav>
             <div class="product_name text-center mt-4">
