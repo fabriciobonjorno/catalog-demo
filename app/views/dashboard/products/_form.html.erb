@@ -1,6 +1,5 @@
 <%= form_with model: [:dashboard, @product] do |f| %>
   <div class="p-4">
-
     <div class="form-group row justify-content-md-center">
       <label class="col-md-2 col-lg-2 col-form-label"><strong>Buscar foto</strong></label>
       <div class="col-md-10 col-lg-8">
@@ -12,7 +11,6 @@
         </div>
       </div>
     </div>
-
     <div class="p-2 mb-2 text-center">
       <h6>Foto do Produto</h6>
       <% if @product.photo_product.attached? %>
@@ -21,104 +19,103 @@
         <%= image_tag("sem-imagem.jpg", class: "img_prev", style: 'max-width: 300px;') %>
       <% end %>
     </div>
-    
     <hr>
-    
     <div class="form-row justify-content-lg-center">
-        <div class="form-group col-md-6 col-lg-5">
-            <% if Manufacturer.all.size > 0 %>
-                <%= f.label :manufacturer_id %>
-                <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer" , selected: @product.manufacturer_id %>
-            <% else %>
-                <label> <%= f.label :manufacturer_id %></label>
-                <select class="form-control" id="">
-                    <option>Selecione</option>
-                    <option>Cadastre um Fabricante</option>
-                </select>
-            <% end %>
-        </div>
-        <div class="form-group col-md-6 col-lg-5">
-            <% if Group.all.size > 0 %>
-                <%= f.label :group_id %>
-                <% if @product.group_id.blank? %>
-                  <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
-                <% else %>
-                  <%= f.collection_select :group_id, Group.where(manufacturer_id: @product.manufacturer_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group" , :selected => @product.group_id %>
-                <% end %> 
-            <% else %>
-                <label> <%= f.label :group_id %></label>
-                <select class="form-control" id="">
-                    <option>Selecione</option>
-                    <option>Cadastre um Grupo</option>
-                </select>
-            <% end %>
-        </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <% if Manufacturer.all.size > 0 %>
+          <%= f.label :manufacturer_id %>
+          <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_manufacturer" , selected: @product.manufacturer_id %>
+        <% else %>
+          <label> <%= f.label :manufacturer_id %></label>
+          <select class="form-control" id="">
+            <option>Selecione</option>
+            <option>Cadastre um Fabricante</option>
+          </select>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <% if Group.all.size > 0 %>
+          <%= f.label :group_id %>
+          <% if @product.group_id.blank? %>
+            <%= f.select :group_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_group"%>
+          <% else %>
+            <%= f.collection_select :group_id, Group.where(manufacturer_id: @product.manufacturer_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_group" , :selected => @product.group_id %>
+          <% end %>
+        <% else %>
+          <label> <%= f.label :group_id %></label>
+          <select class="form-control" id="">
+            <option>Selecione</option>
+            <option>Cadastre um Grupo</option>
+          </select>
+        <% end %>
+      </div>
     </div>
-
     <div class="form-row justify-content-lg-center">
-        <div class="form-group col-md-6 col-lg-5">
-            <% if Family.all.size > 0 %>
-                <%= f.label :family_id %>
-                <% if @product.group_id.blank? %>
-                  <%= f.select :family_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_family"%>
-                <% else %>
-                  <%= f.collection_select :family_id, Family.where(group_id: @product.group_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_family" , :selected => @product.family_id %>
-                <% end %> 
-            <% else %>
-                <label> <%= f.label :family_id %></label>
-                <select class="form-control" id="">
-                  <option>Selecione</option>
-                  <option>Cadastre uma Familia</option>
-                </select>
-            <% end %>
-        </div>
-        <div class="form-group col-md-6 col-lg-5">
-            <% if TaxClassification.all.size > 0 %>
-                <%= f.label :tax_classification_id %>
-                <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
-            <% else %>
-                <label for=""> <%= f.label :tax_classification_id %></label>
-                <select class="form-control" id="">
-                  <option>Selecione</option>
-                  <option>Cadastre uma Classificação</option>
-                </select>
-            <% end %>
-        </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <% if Family.all.size > 0 %>
+          <%= f.label :family_id %>
+          <% if @product.group_id.blank? %>
+            <%= f.select :family_id, {}, {prompt: 'Selecione'}, class: "form-control select2 load_family"%>
+          <% else %>
+            <%= f.collection_select :family_id, Family.where(group_id: @product.group_id), :id, :description, {prompt: 'Selecione'}, class: "form-control select2 load_family" , :selected => @product.family_id %>
+          <% end %>
+        <% else %>
+          <label> <%= f.label :family_id %></label>
+          <select class="form-control" id="">
+            <option>Selecione</option>
+            <option>Cadastre uma Familia</option>
+          </select>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <% if TaxClassification.all.size > 0 %>
+          <%= f.label :tax_classification_id %>
+          <%= f.collection_select(:tax_classification_id, TaxClassification.all, :id, :description, {prompt: 'Selecione'}, class: "form-control select2", required: true) %>
+        <% else %>
+          <label for=""> <%= f.label :tax_classification_id %></label>
+          <select class="form-control" id="">
+            <option>Selecione</option>
+            <option>Cadastre uma Classificação</option>
+          </select>
+        <% end %>
+      </div>
     </div>
-
     <div class="form-row justify-content-lg-center">
-        <div class="form-group col-md-6 col-lg-5">
-          <%= f.label :description %>
-          <%= f.text_field :description, class: "form-control", placeholder: 'Meu Produto' %>
-        </div>
-        <div class="form-group col-md-6 col-lg-5">
-          <%= f.label :ean %>
-          <%= f.text_field :ean, class: "form-control", placeholder: '7891000061190' %>
-        </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control", placeholder: 'Meu Produto' %>
+      </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :ean %>
+        <%= f.text_field :ean, class: "form-control", placeholder: '7891000061190' %>
+      </div>
     </div>
-
     <div class="form-row justify-content-lg-center">
-        <div class="form-group col-md-6 col-lg-5">
-          <%= f.label :code %>
-          <%= f.text_field :code, class: "form-control", placeholder: '123456' %>
-        </div>
-        <div class="form-group col-md-6 col-lg-5">
-          <%= f.label :display %>
-          <%= f.text_field :display, class: "form-control", placeholder: '978020137962' %>
-        </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :code %>
+        <%= f.text_field :code, class: "form-control", placeholder: '123456' %>
+      </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :display %>
+        <%= f.text_field :display, class: "form-control", placeholder: '978020137962' %>
+      </div>
     </div>
-
     <div class="form-row justify-content-lg-center">
-        <div class="form-group col-md-6 col-lg-5">
-          <%= f.label :dun %>
-          <%= f.text_field :dun, class: "form-control", placeholder: '1845678901001' %>
-        </div>
-        <div class="form-group col-md-6 col-lg-5">
-          <%= f.label :quantitie %>
-          <%= f.text_field :quantitie, class: "form-control", placeholder: '24x200' %>
-        </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :dun %>
+        <%= f.text_field :dun, class: "form-control", placeholder: '1845678901001' %>
+      </div>
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :quantitie %>
+        <%= f.text_field :quantitie, class: "form-control", placeholder: '24x200' %>
+      </div>
     </div>
-
+    <div class="form-row justify-content-lg-center">
+      <div class="form-group col-md-6 col-lg-5">
+        <%= f.label :note %>
+        <%= f.text_area :note, class: "form-control", placeholder: 'Observações', rows:"5" %>
+      </div>
+    </div>
     <div class="form-row">
       <div class="form-check col-md-12 col-lg-10 offset-lg-1">
         <%= f.check_box :active, class: "form-check-input" %>
@@ -131,9 +128,7 @@
         <label class="form-check-label" for="exampleCheck1">Produto Destaque</label>
       </div>
     </div>
-    
   </div>
-
   <div class="col-md-12 col-lg-10 offset-lg-1">
     <div class="px-4 mb-4 text-center">
       <%= f.submit class: 'btn btn-success my-1', data: { disable_with: 'Criando....⌛'} %>
