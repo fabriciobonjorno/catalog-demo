@@ -40,7 +40,7 @@ background-color: <%= lay.color_header %>; margin-top: -20px; min-height:80px; "
                   </div>
                   <div class="header-title">
                    <p style="width:300px;color:white;font-weight:700;margin: auto;margin-top: 10px"> 
-                     <%= Manufacturer.first.description %> - <%= Group.first.description %> 
+                     <%= Manufacturer.find(@query.first.manufacturer_id).description %> - <%= Group.find(@query.first.group_id).description %> 
                    </p> 
                   </div>
                   <% end %>
@@ -62,7 +62,7 @@ background-color: <%= lay.color_header %>; margin-top: -20px; min-height:80px; "
                   ">
                   <div class="header-title">
                   <p style="width:300px;color:white;font-weight:700;margin: auto;margin-top: 10px"> 
-                    <%= Manufacturer.first.description %> - <%= Group.first.description %> 
+                  <%= Manufacturer.find(@query.first.manufacturer_id).description %> - <%= Group.find(@query.first.group_id).description %> 
                   </p> 
                  </div>
                   
@@ -99,7 +99,7 @@ background-color: <%= lay.color_header %>; margin-top: -20px; min-height:80px; "
 </section>
 
 
-<section class="container mt-" style=" background-color:rgb(241,241,241); ">
+<section class="container mt-">
 
 
         <% @query.each do |product| %>
@@ -157,11 +157,9 @@ background-color: <%= lay.color_header %>; margin-top: -20px; min-height:80px; "
               <% end %>
               <div class="prod-description" style="text-align: center;font-weight: 700;padding-top: 15px;"> <%= product.code_prod %> - <%= product.desc_prod %> </div>
               <div class="prod-description" style="color:red;  text-align: center;font-weight: 300;padding-top: 15px;"> <%= product.qtde_prod %>  </div>
-              <div class="prod-description" style="margin-left: 5px;font-weight: 300;padding-top: 15px;">Ean: <%= product.ean_prod %>  </div>
-              <div class="prod-description" style="margin-left: 5px;font-weight: 300;padding-top: 15px;">Dun: <%= product.dun_prod %>  </div>
-              <div class="prod-description" style="margin-left: 5px;font-weight: 300;padding-top: 15px;">Ncm: <%= product.desc_fiscal.force_encoding('UTF-8') %>  </div>
-
-
+              <div class="prod-description" style="margin-left: 5px; padding-top: 15px;"> <strong>Ean:</strong> <%= product.ean_prod %>  </div>
+              <div class="prod-description" style="margin-left: 5px; padding-top: 15px;"> <b>Dun:</b> <%= product.dun_prod %>  </div>
+              <div class="prod-description" style="margin-left: 5px; padding-top: 15px;"> <b>Ncm:</b> <%= product.desc_fiscal.force_encoding('UTF-8') %>  </div>
 
               </div>
           
@@ -172,26 +170,11 @@ background-color: <%= lay.color_header %>; margin-top: -20px; min-height:80px; "
 </section>
 <section style="width: 100%;
 background-color: <%= lay.color_header %> ;
-margin-top: -20px; "> 
+margin-top: 20px;
+min-height:65px; "> 
 
-   <div class="header-pdf" style="min-height: 40px;display:flex;
-   align-self: center;
-   -webkit-justify-content: center;
-   justify-content:center;
-   -webkit-box-pack: center; 
-   -webkit-justify-content: center;
-                  justify-content:center;
-                  -webkit-box-pack: center;
-                  text-align: center;
-                  -webkit-box-pack: center; 
-                  -webkit-flex-direction: row; 
-                  vertical-align: middle;
-                  padding-top:10px;
-                  padding-bottom:10px;" >
-      <div class="header-img">
-      </div>
       <div class="header-title">
-       <p style="width:100%;text-align:center;color:white;font-weight:700;margin-top:20px;margin-left:20px;">
+       <p style="width:100%;text-align:center;color:white;font-weight:700;margin-top:20px;margin-left:20px; padding-top:12px;padding-bottom:12px;">
         <%= Company.first.fantasy_name %> - <%= Company.first.phone %> <br> <%= Company.first.site %> - <%= Company.first.email %> 
        </p> 
       </div>
