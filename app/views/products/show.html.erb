@@ -82,7 +82,7 @@
     <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
       <div class="row">
         <div class="col-lg-5">
-          <div class="image_selected"><img src="https://i.imgur.com/qEwct2O.jpg" alt=""></div>
+          <div class="image_selected"><%= image_tag @product.photo_product, title: @product.description %></div>
         </div>
         <div class="col-lg-6 order-3">
           <div class="product_description">
