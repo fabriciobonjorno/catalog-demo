@@ -26,13 +26,13 @@
           <tbody>
             <% @products.each do |product| %>
               <tr>
-                <th scope="row"><%= product.id %></th>
-                <td><%= product.family.description %></td>
-                <td><%= product.description %></td>
-                <td><%= product.active? ? "Ativo" : "Inativo" %></td>
-                <td><%= product.detach? ? "Sim" : "Não"%></td>
+                <th scope="row"><%= product&.id %></th>
+                <td><%= product&.family&.description %></td>
+                <td><%= product&.description %></td>
+                <td><%= product&.active? ? "Ativo" : "Inativo" %></td>
+                <td><%= product&.detach? ? "Sim" : "Não"%></td>
                 <td>
-                  <button type="button" class='btn btn-success' data-toggle="modal" data-target="#modalIMG_<%= product.id %>">
+                  <button type="button" class='btn btn-success' data-toggle="modal" data-target="#modalIMG_<%= product&.id %>">
                     <i class="fas fa-image" data-toggle="tooltip" data-placement="top" title="Visualizar"></i>
                   </button>
                   <%= render 'open_image', product: product %>
