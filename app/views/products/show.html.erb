@@ -1,1 +1,161 @@
-aeee
+<style>
+  .breadcrumb-item+.breadcrumb-item::before {
+  content: ">"
+  }
+  
+  .breadcrumb {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: .1rem 0rem !important;
+  margin-bottom: 0rem;
+  list-style: none;
+  background-color: #ffffff;
+  border-radius: .25rem
+  }
+  
+  
+  .product_name {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 0px
+  }
+  
+  .product_description{
+    margin-left: 7%;
+  }
+  
+  
+    .info-product ul{
+    list-style-type: none;
+  }
+  
+  
+  .row-underline {
+  content: "";
+  display: block;
+  border-bottom: 2px solid #3798db;
+  margin: 0px 0px;
+  margin-bottom: 20px;
+  margin-top: 15px
+  }
+  
+  .p_specification {
+  font-weight: 500;
+  margin-left: 22px;
+  }
+  
+  
+  .image_selected {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 15px);
+  margin-left: 7%;
+  -webkit-transform: translateX(-15px);
+  -moz-transform: translateX(-15px);
+  -ms-transform: translateX(-15px);
+  -o-transform: translateX(-15px);
+  transform: translateX(-15px);
+  border: solid 1px #e8e8e8;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 15px
+  }
+  
+  .image_selected img {
+  max-width: 100%;
+  max-height: 450px;
+  }
+</style>
+<section class="container mt-5 mb-5">
+  <div class="single_product">
+    <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="image_selected"><%= image_tag @product.photo_product, title: @product.description, class: "img-fluid" %></div>
+        </div>
+        <div class="col-lg-6 order-3">
+          <div class="product_description">
+            <nav>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#"><%= %></a>
+                  <%= link_to "#{@product.family.group.description }", group_path(@product.family.group) %>
+                </li>
+                <li class="breadcrumb-item active"><%= @product.family.description %></li>
+              </ol>
+            </nav>
+            <div class="product_name text-center mt-4">
+              <span class=" deal-text"><%= @product.code %> - <%= @product.description %></span>
+            </div>
+            <div class="row row-underline">
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="col-md-12 info-product">
+                  <tbody>
+                    <tr class="row mt-10">
+                      <th class="col-md-4"><span class="p_specification">Ean :</span> </th>
+                      <td class="col-md-8">
+                        <ul>
+                          <li><%= @product.ean %></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="row mt-10">
+                      <th class="col-md-4"><span class="p_specification">Dun :</span> </th>
+                      <td class="col-md-8">
+                        <ul>
+                          <li><%= @product.dun %></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="row mt-10">
+                      <th class="col-md-4"><span class="p_specification">Display :</span> </th>
+                      <td class="col-md-8">
+                        <ul>
+                          <li><%= @product.display if @product.display.present? %></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="row mt-10">
+                      <th class="col-md-4"><span class="p_specification">Ncm :</span> </th>
+                      <td class="col-md-8">
+                        <ul>
+                          <li><%= @product.tax_classification.description %></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="row mt-10">
+                      <th class="col-md-4"><span class="p_specification">Embalagem :</span> </th>
+                      <td class="col-md-8">
+                        <ul>
+                          <li><%= @product.quantitie %></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row row-underline">
+                  <div class="col-md-6">
+                    <span class=" deal-text">Observações :</span>
+                  </div>
+                  <div class="col-md-6">
+                    <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a>
+                  </div>
+                </div>
+                <%= sanitize(@product.note.gsub("\n", '<br>')).html_safe %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
