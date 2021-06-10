@@ -26,9 +26,6 @@
     margin-left: 7%;
   }
   
-  .info-product{
-    background-color: #f6f6f6;
-  }
   
     .info-product ul{
     list-style-type: none;
@@ -60,7 +57,6 @@
   justify-content: center;
   align-items: center;
   width: calc(100% + 15px);
-  height: 525px;
   margin-left: 7%;
   -webkit-transform: translateX(-15px);
   -moz-transform: translateX(-15px);
@@ -74,7 +70,8 @@
   }
   
   .image_selected img {
-  max-width: 100%
+  max-width: 100%;
+  max-height: 450px;
   }
 </style>
 <section class="container mt-5 mb-5">
@@ -82,7 +79,7 @@
     <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
       <div class="row">
         <div class="col-lg-5">
-          <div class="image_selected"><%= image_tag @product.photo_product, title: @product.description %></div>
+          <div class="image_selected"><%= image_tag @product.photo_product, title: @product.description, class: "img-fluid" %></div>
         </div>
         <div class="col-lg-6 order-3">
           <div class="product_description">
