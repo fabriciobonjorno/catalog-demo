@@ -23,8 +23,8 @@
           <tbody>
             <% @manufacturers.each do |manufacturer| %>
               <tr>
-                <th scope="row"><%= manufacturer.id %></th>
-                <td><%= manufacturer.description %></td>
+                <th scope="row"><%= manufacturer&.id %></th>
+                <td><%= manufacturer&.description %></td>
                 <td>
                   <%= link_to edit_dashboard_manufacturer_path(manufacturer), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>

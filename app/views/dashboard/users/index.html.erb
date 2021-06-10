@@ -22,18 +22,18 @@
             </tr>
           </thead>
           <tbody>
-            <% @users.support.each do |user| %>
+            <% @users&.support.each do |user| %>
                 <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.email %></td>
+                  <td><%= user&.name %></td>
+                  <td><%= user&.email %></td>
                   <td>
-                    <%= user.admin? ? 'Administrador' : 'Moderador' %>
+                    <%= user&.admin? ? 'Administrador' : 'Moderador' %>
                   </td>
                   <td>
                     <%= link_to edit_dashboard_user_path(user), class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Usuário" do %>
                       <i class="far fa-edit"></i>
                     <% end %>
-                    <% if current_user.id == user.id %>
+                    <% if current_user&.id == user&.id %>
                       <button class= "btn btn-danger" data-toggle= "tooltip" placement= "top" title= "Excluir Usuário" disabled><i class="far fa-trash-alt"></i></button>
                     <% else %>
                       <%= link_to dashboard_user_path(user), class:"btn btn-danger", method: :delete, data:

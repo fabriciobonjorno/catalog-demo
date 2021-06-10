@@ -23,8 +23,8 @@
           <tbody>
             <% @tax_classifications.each do |tax| %>
               <tr>
-                <th scope="row"><%= tax.id %></th>
-                <td><%= tax.description %></td>
+                <th scope="row"><%= tax&.id %></th>
+                <td><%= tax&.description %></td>
                 <td>
                   <%= link_to edit_dashboard_tax_classification_path(tax), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>
