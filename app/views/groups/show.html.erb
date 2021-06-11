@@ -5,16 +5,16 @@
       <%= link_to group_product_path(@group, product) do %>
         <figure>
           <div class="eng-prods">
-            <% if product&.photo_product&.attached? %>
+            <% if product.photo_product.attached? %>
               <span>
-                <%= image_tag product&.photo_product,title: product&.description %>
+                <%= image_tag product.photo_product,title: product.description %>
               </span>
             <% else %>
               <span>
                 <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
               </span>
             <% end %>
-            <div class="prod-description"><%= product&.description %></div>
+            <div class="prod-description"><%= product.description %></div>
           </div>
         </figure>
       <% end %>

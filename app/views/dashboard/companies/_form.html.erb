@@ -15,8 +15,8 @@
         </div>
         <div class="p-2 mb-2 text-center">
           <h6>Logomarca</h6>
-          <% if @company&.photo_company&.attached? %>
-            <%= image_tag @company&.photo_company&.variant(resize_to_limit: [300,500]), class: 'img_prev mt-2', style: 'max-width: 300px; max-height: 500px' %>
+          <% if @company.photo_company.attached? %>
+            <%= image_tag @company.photo_company.variant(resize_to_limit: [300,500]), class: 'img_prev mt-2', style: 'max-width: 300px; max-height: 500px' %>
           <% else %>
             <%= image_tag("sem-imagem.jpg", class: "img_prev", style: 'max-width: 300px;') %>
           <% end %>

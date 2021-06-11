@@ -16,10 +16,10 @@
           <tbody>
             <% @companies.each do |company| %>
               <tr>
-                <th scope="row"><%= company&.id %></th>
-                <td><%= company&.social_name %></td>
-                <td><%= company&.fantasy_name %></td>
-                <td><%= company&.cnpj %></td>
+                <th scope="row"><%= company.id %></th>
+                <td><%= company.social_name %></td>
+                <td><%= company.fantasy_name %></td>
+                <td><%= company.cnpj %></td>
                 <td>
                   <%= link_to edit_dashboard_company_path(company), class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar dados" do %>
                     <i class="far fa-edit"></i>

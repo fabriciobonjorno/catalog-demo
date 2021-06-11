@@ -24,9 +24,9 @@
           <tbody>
             <% @groups.each do |group| %>
               <tr>
-                <th scope="row"><%= group&.id %></th>
-                <td><%= group&.manufacturer&.description %></td>
-                <td><%= group&.description %></td>
+                <th scope="row"><%= group.id %></th>
+                <td><%= group.manufacturer.description %></td>
+                <td><%= group.description %></td>
                 <td>
                   <%= link_to edit_dashboard_group_path(group), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>

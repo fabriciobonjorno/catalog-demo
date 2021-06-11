@@ -84,7 +84,7 @@ https://github.com/konsav/email-templates/  -->
                       padding-top: 20px;
                       color: #127DB3;
                       font-family: sans-serif;" class="header">
-                    Olá <%= @subscriber&.name %>, foi aqui que pediu um lançamento?
+                    Olá <%= @subscriber.name %>, foi aqui que pediu um lançamento?
                   </td>
                 </tr>
                 <!-- SUBHEADER -->
@@ -102,8 +102,8 @@ https://github.com/konsav/email-templates/  -->
                 <tr>
                   <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
                       padding-top: 20px;" class="hero">
-                    <%= image_tag @product&.photo_product,  border: "0", vspace:"0", hspace:"0",
-                      alt:"Please enable images to view this content", title:"#{@product&.description}",
+                    <%= image_tag @product.photo_product,  border: "0", vspace:"0", hspace:"0",
+                      alt:"Please enable images to view this content", title:"#{@product.description}",
                       height:"350", style:"
                       height: 88.33%;
                       max-height: 350px;
@@ -146,34 +146,34 @@ https://github.com/konsav/email-templates/  -->
                           <table style="text-align:left;width: 100%; margin: auto; max-width:500px;background-color:#f8f8f8;border-radius:3px;font-family:helvetica;" cellpadding="10">
                             <tr>
                               <th width='10'>Código:</th>
-                              <td><%= @product&.code %></td>
+                              <td><%= @product.code %></td>
                             </tr>
                             <tr>
                               <th width='10'>Descrição:</th>
-                              <td><%= @product&.description %></td>
+                              <td><%= @product.description %></td>
                             </tr>
                             <tr>
                               <th>Ean:</th>
-                              <td><%= @product&.ean %></td>
+                              <td><%= @product.ean %></td>
                             </tr>
                             <tr>
                               <th>Dun:</th>
-                              <td><%= @product&.dun %></td>
+                              <td><%= @product.dun %></td>
                             </tr>
-                            <% if @product&.display.present? %>
+                            <% if @product.display.present? %>
                               <tr>
                                 <th>Display:</th>
-                                <td><%= @product&.display %></td>
+                                <td><%= @product.display %></td>
                               </tr>
                             <% end %>
                             <tr>
                               <th>Embalagem:</th>
-                              <td><%= @product&.quantitie %></td>
+                              <td><%= @product.quantitie %></td>
                             </tr>
                             <tr>
                               <td colspan="2" style="text-align: center;font-size:12px;">
                                 Está mensagem foi enviada automaticamente por: <br>
-                                <%= @company&.fantasy_name %>
+                                <%= @company.fantasy_name %>
                               </td>
                             </tr>
                           </table>
