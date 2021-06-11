@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GroupsController < ApplicationController
+class GroupsController < HomeController
   include MenuResources
   before_action :set_resources, only: %i[show]
   layout 'home'

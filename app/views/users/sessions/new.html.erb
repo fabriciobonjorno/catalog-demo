@@ -114,8 +114,13 @@
 </style>
 <section>
   <div class="container">
+  <% @company = Company.first %>
     <div class="user signinBx">
-      <div class="imgBx"><%= image_tag 'logo3.png' %></div>
+      <div class="imgBx">
+      <% if @company&.photo_company&.attached? %>
+        <%= image_tag @company.photo_company %>
+      <% end %>
+      </div>
       <div class="formBx">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <h2>Login</h2>
