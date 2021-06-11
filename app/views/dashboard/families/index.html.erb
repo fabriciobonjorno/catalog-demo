@@ -26,10 +26,10 @@
           <tbody>
             <% @families.each do |family| %>
               <tr>
-                <th scope="row"><%= family.id %></th>
-                <td><%= family.group&.manufacturer&.description %></td>
-                <td><%= family.group.description %></td>
-                <td><%= family.description %></td>
+                <th scope="row"><%= family&.id %></th>
+                <td><%= family&.group&.manufacturer&.description %></td>
+                <td><%= family&.group&.description %></td>
+                <td><%= family&.description %></td>
                 <td>
                   <%= link_to edit_dashboard_family_path(family), onclick:"editshow()", remote: true, class:"btn btn-info", data: {toggle:"tooltip", placement:"top"}, title:"Editar Grupo" do %>
                     <i class="far fa-edit"></i>

@@ -23,8 +23,8 @@
           <tbody>
             <% @layoutpdf.each do |lay| %>
               <tr>
-                <th scope="row"><%= lay.color_header %></th>
-                <% if lay.type_logo == '1'  %>
+                <th scope="row"><%= lay&.color_header %></th>
+                <% if lay&.type_logo == '1'  %>
                     <th scope="row"><%= 'Direita' %></th>
                 <% else %>
                     <th scope="row"><%= 'Esquerda' %></th>

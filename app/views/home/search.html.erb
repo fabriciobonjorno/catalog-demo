@@ -1,6 +1,6 @@
 <section class="container mt-5 mb-5">
   <% if @products.present? %>
-    <h3 class="h3-responsive text-muted text-center title-home"><%= pluralize(@products.count, 'Resultado encontrado') %> : </h3>
+    <h3 class="h3-responsive text-muted text-center title-home"><%= pluralize(@products&.count, 'Resultado encontrado') %> : </h3>
     <section class="container-product mt-" style=" ">
       <%= render 'products' %>
     </section>

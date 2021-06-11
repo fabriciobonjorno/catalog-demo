@@ -1,20 +1,20 @@
 <section class="container mt-5 mb-5">
   <h3 class="h3-responsive text-muted text-center title-home"><%= @group.description %></h3>
   <section class="container-product mt-" style=" ">
-    <% @group.products.each do |product| %>
+    <% @group&.products.each do |product| %>
       <%= link_to group_product_path(@group, product) do %>
         <figure>
           <div class="eng-prods">
-            <% if product.photo_product.attached? %>
+            <% if product&.photo_product&.attached? %>
               <span>
-                <%= image_tag product.photo_product,title: product.description %>
+                <%= image_tag product&.photo_product,title: product&.description %>
               </span>
             <% else %>
               <span>
                 <%= image_tag 'sem-imagem.jpg', class:"img-fluid img-item" %>
               </span>
             <% end %>
-            <div class="prod-description"><%= product.description %></div>
+            <div class="prod-description"><%= product&.description %></div>
           </div>
         </figure>
       <% end %>

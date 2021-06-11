@@ -92,7 +92,7 @@
               </ol>
             </nav>
             <div class="product_name text-center mt-4">
-              <span class=" deal-text"><%= @product.code %> - <%= @product.description %></span>
+              <span class=" deal-text"><%= @product&.code %> - <%= @product&.description %></span>
             </div>
             <div class="row row-underline">
             </div>
@@ -104,7 +104,7 @@
                       <th class="col-md-4"><span class="p_specification">Ean :</span> </th>
                       <td class="col-md-8">
                         <ul>
-                          <li><%= @product.ean %></li>
+                          <li><%= @product&.ean %></li>
                         </ul>
                       </td>
                     </tr>
@@ -112,7 +112,7 @@
                       <th class="col-md-4"><span class="p_specification">Dun :</span> </th>
                       <td class="col-md-8">
                         <ul>
-                          <li><%= @product.dun %></li>
+                          <li><%= @product&.dun %></li>
                         </ul>
                       </td>
                     </tr>
@@ -120,7 +120,7 @@
                       <th class="col-md-4"><span class="p_specification">Display :</span> </th>
                       <td class="col-md-8">
                         <ul>
-                          <li><%= @product.display if @product.display.present? %></li>
+                          <li><%= @product&.display if @product&.display.present? %></li>
                         </ul>
                       </td>
                     </tr>
@@ -128,7 +128,7 @@
                       <th class="col-md-4"><span class="p_specification">Ncm :</span> </th>
                       <td class="col-md-8">
                         <ul>
-                          <li><%= @product.tax_classification.description %></li>
+                          <li><%= @product&.tax_classification&.description %></li>
                         </ul>
                       </td>
                     </tr>
@@ -136,7 +136,7 @@
                       <th class="col-md-4"><span class="p_specification">Embalagem :</span> </th>
                       <td class="col-md-8">
                         <ul>
-                          <li><%= @product.quantitie %></li>
+                          <li><%= @product&.quantitie %></li>
                         </ul>
                       </td>
                     </tr>
@@ -150,7 +150,7 @@
                     <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a>
                   </div>
                 </div>
-                <%= sanitize(@product.note.gsub("\n", '<br>')).html_safe %>
+                <%= sanitize(@product&.note&.gsub("\n", '<br>'))&.html_safe %>
               </div>
             </div>
           </div>

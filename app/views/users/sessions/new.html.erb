@@ -118,7 +118,7 @@
     <div class="user signinBx">
       <div class="imgBx">
       <% if @company&.photo_company&.attached? %>
-        <%= image_tag @company.photo_company %>
+        <%= image_tag @company&.photo_company %>
       <% end %>
       </div>
       <div class="formBx">

@@ -18,8 +18,8 @@
       
         <div class="p-2 mb-2 text-center">
           <h6>Foto de perfil</h6>
-          <% if @user.photo_profile.attached? %>
-            <%= image_tag @user.photo_profile.variant(resize_to_limit: [300,500]), class: 'img_prev mt-2', style: 'max-width: 300px; max-height: 500px' %>
+          <% if @user&.photo_profile&.attached? %>
+            <%= image_tag @user&.photo_profile&.variant(resize_to_limit: [300,500]), class: 'img_prev mt-2', style: 'max-width: 300px; max-height: 500px' %>
           <% else %>
             <%= image_tag("sem-imagem.jpg", class: "img_prev", style: 'max-width: 300px;') %>
           <% end %>
@@ -53,7 +53,7 @@
       
     <div class="form-row">
       <div class="form-check col-md-12 col-lg-10 offset-lg-1">
-        <% if current_user.admin? %>
+        <% if current_user&.admin? %>
           <%= f.check_box :active, class: "form-check-input" %>
             <label class="form-check-label">
               <%= f.check_box :profile, class: "form-check-input" %>
