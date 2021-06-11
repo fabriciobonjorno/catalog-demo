@@ -65,6 +65,10 @@ class DashboardController < ApplicationController
                     .where("#{v_manufacturer} = ?", p_manufacturer.to_s)
                     .where("#{v_group} = ?", p_group.to_s)
                     .where("#{v_family} = ?", p_family.to_s)
+    
+    if @query.blank?
+      redirect_to dashboard_path, alert: @query.errors.full_messages.to_sentence
+    end
 
     respond_to do |format|
       format.html
