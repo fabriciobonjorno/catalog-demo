@@ -356,3 +356,20 @@ p .card-text{
     margin-top: 0;
     margin-bottom: 0;
 }
+.glider-next {
+    right: -32px;
+}
+.glider-next, .glider-prev {
+    background: rgb(255, 255, 255);
+    left: -32px;
+    display: flex;
+    justify-content: center;
+    -webkit-box-pack: center;
+    width: 65px;
+    height: 65px;
+    -webkit-box-align: center;
+    cursor: pointer;
+    border-radius: 50px;
+    color: rgb(230, 0, 20);
+    opacity: 0.6;
+}
